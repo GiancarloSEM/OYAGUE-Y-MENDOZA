@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oyague & Mendoza Inmobiliaria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════ NAV ═══════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <span class="logo-om">O&M</span>
+      <span class="logo-text">Oyague & Mendoza</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#propiedades">Propiedades</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#testimonios">Testimonios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="nav-cta">Consultar ahora</a>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#inicio" onclick="closeMobile()">Inicio</a></li>
+      <li><a href="#propiedades" onclick="closeMobile()">Propiedades</a></li>
+      <li><a href="#equipo" onclick="closeMobile()">Equipo</a></li>
+      <li><a href="#testimonios" onclick="closeMobile()">Testimonios</a></li>
+      <li><a href="#contacto" onclick="closeMobile()">Contacto</a></li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════════ HERO ═══════════════════════════════════════ -->
+  <section id="inicio" class="hero">
+    <div class="hero-bg">
+      <div class="hero-overlay"></div>
+      <div class="hero-grain"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow reveal">Inmobiliaria de Confianza · Huancayo, Perú</p>
+      <h1 class="hero-title reveal">
+        Tu hogar ideal,<br/><em>hecho realidad</em>
+      </h1>
+      <p class="hero-sub reveal">Terrenos, departamentos y propiedades seleccionadas con el respaldo de años de experiencia en el mercado inmobiliario peruano.</p>
+      <div class="hero-actions reveal">
+        <a href="#propiedades" class="btn-primary">Ver propiedades</a>
+        <a href="#contacto" class="btn-ghost">Hablar con un asesor</a>
+      </div>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="stat">
+        <span class="stat-num">120+</span>
+        <span class="stat-label">Propiedades vendidas</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">15</span>
+        <span class="stat-label">Años de experiencia</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">98%</span>
+        <span class="stat-label">Clientes satisfechos</span>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Explorar</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ PROPIEDADES ═══════════════════════════════ -->
+  <section id="propiedades" class="section-propiedades">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Nuestro portafolio</p>
+        <h2 class="section-title">Propiedades destacadas</h2>
+        <p class="section-sub">Encuentra el espacio perfecto para construir tu futuro</p>
+      </div>
+
+      <!-- Filtros -->
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="terreno">Terrenos</button>
+        <button class="filter-btn" data-filter="departamento">Departamentos</button>
+        <button class="filter-btn" data-filter="casa">Casas</button>
+      </div>
+
+      <!-- Grid propiedades -->
+      <div class="props-grid" id="propsGrid">
+
+        <div class="prop-card" data-type="terreno">
+          <div class="prop-img" style="background:linear-gradient(135deg,#c9a96e22,#8b7355aa),url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80') center/cover">
+            <span class="prop-badge">Terreno</span>
+            <span class="prop-price">S/ 85,000</span>
+          </div>
+          <div class="prop-info">
+            <h3>Terreno El Tambo</h3>
+            <p class="prop-location">📍 El Tambo, Huancayo</p>
+            <div class="prop-specs">
+              <span>🏞 300 m²</span>
+              <span>Habilitado</span>
+              <span>Escritura lista</span>
+            </div>
+            <a href="#contacto" class="prop-cta">Consultar</a>
+          </div>
+        </div>
+
+        <div class="prop-card featured" data-type="departamento">
+          <div class="prop-img" style="background:linear-gradient(135deg,#2c4a6e22,#1a3a5eaa),url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80') center/cover">
+            <span class="prop-badge">Departamento</span>
+            <span class="prop-badge-featured">Destacado</span>
+            <span class="prop-price">S/ 220,000</span>
+          </div>
+          <div class="prop-info">
+            <h3>Dpto. Moderno Chilca</h3>
+            <p class="prop-location">📍 Chilca, Huancayo</p>
+            <div class="prop-specs">
+              <span>🛏 3 hab.</span>
+              <span>🚿 2 baños</span>
+              <span>🚗 Cochera</span>
+            </div>
+            <a href="#contacto" class="prop-cta">Consultar</a>
+          </div>
+        </div>
+
+        <div class="prop-card" data-type="terreno">
+          <div class="prop-img" style="background:linear-gradient(135deg,#4a6e2c22,#3a5e1aaa),url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=600&q=80') center/cover">
+            <span class="prop-badge">Terreno</span>
+            <span class="prop-price">S/ 120,000</span>
+          </div>
+          <div class="prop-info">
+            <h3>Terreno Urb. Los Jardines</h3>
+            <p class="prop-location">📍 Huancayo Centro</p>
+            <div class="prop-specs">
+              <span>🏞 450 m²</span>
+              <span>Esquinero</span>
+              <span>Zona residencial</span>
+            </div>
+            <a href="#contacto" class="prop-cta">Consultar</a>
+          </div>
+        </div>
+
+        <div class="prop-card" data-type="departamento">
+          <div class="prop-img" style="background:linear-gradient(135deg,#6e2c4a22,#5e1a3aaa),url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80') center/cover">
+            <span class="prop-badge">Departamento</span>
+            <span class="prop-price">S/ 175,000</span>
+          </div>
+          <div class="prop-info">
+            <h3>Dpto. Vista Panorámica</h3>
+            <p class="prop-location">📍 San Carlos, Huancayo</p>
+            <div class="prop-specs">
+              <span>🛏 2 hab.</span>
+              <span>🚿 1 baño</span>
+              <span>85 m²</span>
+            </div>
+            <a href="#contacto" class="prop-cta">Consultar</a>
+          </div>
+        </div>
+
+        <div class="prop-card" data-type="casa">
+          <div class="prop-img" style="background:linear-gradient(135deg,#6e4a2c22,#5e3a1aaa),url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80') center/cover">
+            <span class="prop-badge">Casa</span>
+            <span class="prop-price">S/ 350,000</span>
+          </div>
+          <div class="prop-info">
+            <h3>Casa Familiar La Punta</h3>
+            <p class="prop-location">📍 La Punta, Huancayo</p>
+            <div class="prop-specs">
+              <span>🛏 4 hab.</span>
+              <span>🚿 3 baños</span>
+              <span>200 m²</span>
+            </div>
+            <a href="#contacto" class="prop-cta">Consultar</a>
+          </div>
+        </div>
+
+        <div class="prop-card" data-type="terreno">
+          <div class="prop-img" style="background:linear-gradient(135deg,#2c6e6e22,#1a5e5eaa),url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80') center/cover">
+            <span class="prop-badge">Terreno</span>
+            <span class="prop-price">S/ 65,000</span>
+          </div>
+          <div class="prop-info">
+            <h3>Terreno Saño</h3>
+            <p class="prop-location">📍 Saño, Huancayo</p>
+            <div class="prop-specs">
+              <span>🏞 200 m²</span>
+              <span>Plano</span>
+              <span>Acceso vehicular</span>
+            </div>
+            <a href="#contacto" class="prop-cta">Consultar</a>
+          </div>
+        </div>
+
+      </div><!-- /props-grid -->
+
+      <div class="props-more">
+        <a href="#contacto" class="btn-outline">Ver catálogo completo →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ SERVICIOS ════════════════════════════════ -->
+  <section class="section-servicios">
+    <div class="container">
+      <div class="section-header light">
+        <p class="section-eyebrow">Lo que ofrecemos</p>
+        <h2 class="section-title">Servicios inmobiliarios</h2>
+      </div>
+      <div class="servicios-grid">
+        <div class="servicio-card">
+          <div class="servicio-icon">🏡</div>
+          <h3>Compra y venta</h3>
+          <p>Asesoría completa en la compra o venta de tu propiedad, con documentación legal y tasación incluida.</p>
+        </div>
+        <div class="servicio-card">
+          <div class="servicio-icon">📋</div>
+          <h3>Trámites legales</h3>
+          <p>Gestión de escrituras, independización, cambio de nombre y todos los trámites en registros públicos.</p>
+        </div>
+        <div class="servicio-card">
+          <div class="servicio-icon">🏗</div>
+          <h3>Terrenos habilitados</h3>
+          <p>Terrenos con servicios básicos, zonificación residencial y comercial en las mejores ubicaciones de Huancayo.</p>
+        </div>
+        <div class="servicio-card">
+          <div class="servicio-icon">🤝</div>
+          <h3>Asesoría de inversión</h3>
+          <p>Te orientamos para que tu inversión inmobiliaria sea segura, rentable y acorde a tus objetivos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ EQUIPO ═══════════════════════════════════ -->
+  <section id="equipo" class="section-equipo">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Quiénes somos</p>
+        <h2 class="section-title">Nuestro equipo</h2>
+        <p class="section-sub">Profesionales comprometidos con encontrar la propiedad ideal para ti</p>
+      </div>
+      <div class="equipo-grid">
+
+        <div class="miembro-card">
+          <div class="miembro-foto" style="background:linear-gradient(135deg,#c9a96e,#8b7355)">
+            <span class="miembro-initials">AO</span>
+          </div>
+          <div class="miembro-info">
+            <h3>Arq. Luzmarina Ninahuanca</h3>
+            <p class="miembro-rol">Arquitecta Y Urbanista</p>
+            <p class="miembro-desc">Más de 15 años en el sector inmobiliario de Huancayo. Especialista en diseño arquitectónico y valoración de propiedades.</p>
+            <div class="miembro-social">
+              <a href="tel:+51999000001" class="social-link">📞</a>
+              <a href="mailto:ana@oyaguemendoza.com" class="social-link">✉️</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="miembro-card">
+          <div class="miembro-foto" style="background:linear-gradient(135deg,#2c4a6e,#1a3a5e)">
+            <span class="miembro-initials">CM</span>
+          </div>
+          <div class="miembro-info">
+            <h3>CO. Máximo Ninahuanca</h3>
+            <p class="miembro-rol">CO - Founder</p>
+            <p class="miembro-desc">Experto en negociación y cierre de operaciones inmobiliarias. Conocimiento profundo del mercado junin.</p>
+            <div class="miembro-social">
+              <a href="tel:+51999000002" class="social-link">📞</a>
+              <a href="mailto:carlos@oyaguemendoza.com" class="social-link">✉️</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="miembro-card">
+          <div class="miembro-foto" style="background:linear-gradient(135deg,#4a6e2c,#3a5e1a)">
+            <span class="miembro-initials">LV</span>
+          </div>
+          <div class="miembro-info">
+            <h3>Eco. Gabriel  Ninahuanca</h3>
+            <p class="miembro-rol">Ecologista Inventor</p>
+            <p class="miembro-desc">Especializada en atención al cliente y búsqueda personalizada de propiedades según el perfil y presupuesto de cada familia.</p>
+            <div class="miembro-social">
+              <a href="tel:+51999000003" class="social-link">📞</a>
+              <a href="mailto:lucia@oyaguemendoza.com" class="social-link">✉️</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="miembro-card">
+          <div class="miembro-foto" style="background:linear-gradient(135deg,#6e2c4a,#5e1a3a)">
+            <span class="miembro-initials">RP</span>
+          </div>
+          <div class="miembro-info">
+            <h3>Ing. Gabriel Gomez de Sousa</h3>
+            <p class="miembro-rol">Mecatronico</p>
+            <p class="miembro-desc">Abogado especializado en derecho inmobiliario. Gestiona todos los trámites en SUNARP y notarías de la región.</p>
+            <div class="miembro-social">
+              <a href="tel:+51999000004" class="social-link">📞</a>
+              <a href="mailto:rodrigo@oyaguemendoza.com" class="social-link">✉️</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ TESTIMONIOS ══════════════════════════════ -->
+  <section id="testimonios" class="section-testimonios">
+    <div class="container">
+      <div class="section-header light">
+        <p class="section-eyebrow">Lo que dicen</p>
+        <h2 class="section-title">Testimonios de clientes</h2>
+      </div>
+      <div class="testimonios-slider" id="testimoniosSlider">
+
+        <div class="testimonio active">
+          <div class="testimonio-stars">★★★★★</div>
+          <p class="testimonio-text">"Encontramos el terreno perfecto gracias al equipo de Oyague & Mendoza. El proceso fue rápido, transparente y sin sorpresas. ¡Totalmente recomendados!"</p>
+          <div class="testimonio-autor">
+            <div class="autor-avatar" style="background:#c9a96e">MR</div>
+            <div>
+              <strong>María Ramos</strong>
+              <span>Compró terreno en El Tambo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonio">
+          <div class="testimonio-stars">★★★★★</div>
+          <p class="testimonio-text">"Excelente atención, nos ayudaron a vender nuestra casa en menos de 2 meses. Muy profesionales en cada etapa del proceso, desde la valoración hasta la firma."</p>
+          <div class="testimonio-autor">
+            <div class="autor-avatar" style="background:#2c4a6e">JH</div>
+            <div>
+              <strong>Jorge Huamán</strong>
+              <span>Vendió casa en Huancayo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonio">
+          <div class="testimonio-stars">★★★★★</div>
+          <p class="testimonio-text">"Buscaba un departamento dentro de mi presupuesto y lo encontré. Carlos me asesoró con paciencia y honestidad. Es la inmobiliaria que siempre recomendaré."</p>
+          <div class="testimonio-autor">
+            <div class="autor-avatar" style="background:#4a6e2c">SP</div>
+            <div>
+              <strong>Sandra Pérez</strong>
+              <span>Compró departamento en Chilca</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonio">
+          <div class="testimonio-stars">★★★★★</div>
+          <p class="testimonio-text">"Invertí en un terreno con su asesoría y fue la mejor decisión. Conocen muy bien el mercado de Huancayo y te guían para que tu inversión sea segura."</p>
+          <div class="testimonio-autor">
+            <div class="autor-avatar" style="background:#6e4a2c">AT</div>
+            <div>
+              <strong>Andrés Torres</strong>
+              <span>Inversión en terreno</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="slider-dots" id="sliderDots"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ CTA BANNER ═══════════════════════════════ -->
+  <section class="section-cta">
+    <div class="cta-content">
+      <h2>¿Listo para encontrar<br/><em>tu propiedad ideal?</em></h2>
+      <p>Nuestros asesores están disponibles para guiarte en cada paso del proceso.</p>
+      <a href="#contacto" class="btn-primary large">Contáctanos hoy</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ CONTACTO ═════════════════════════════════ -->
+  <section id="contacto" class="section-contacto">
+    <div class="container contacto-grid">
+      <div class="contacto-info">
+        <p class="section-eyebrow">Estamos aquí para ayudarte</p>
+        <h2 class="section-title">Contáctanos</h2>
+        <p class="contacto-desc">Escríbenos o llámanos. Responderemos a la brevedad posible con información detallada sobre las propiedades de tu interés.</p>
+        <div class="contacto-items">
+          <div class="contacto-item">
+            <span class="ci-icon">📍</span>
+            <div>
+              <strong>Dirección</strong>
+              <p>Av. Progreso N°1104, El tambo, Junín, Perú</p>
+            </div>
+          </div>
+          <div class="contacto-item">
+            <span class="ci-icon">📞</span>
+            <div>
+              <strong>Teléfono / WhatsApp</strong>
+              <p><a href="tel:+51941914867">+51 941 914 867</a></p>
+            </div>
+          </div>
+          <div class="contacto-item">
+            <span class="ci-icon">✉️</span>
+            <div>
+              <strong>Correo</strong>
+              <p><a href="mailto:info@oyaguemendoza.com">info@oyaguemendoza.com</a></p>
+            </div>
+          </div>
+          <div class="contacto-item">
+            <span class="ci-icon">🕐</span>
+            <div>
+              <strong>Horario de atención</strong>
+              <p>Lun – Sáb: 8:00 am – 6:00 pm</p>
+            </div>
+          </div>
+        </div>
+        <div class="whatsapp-cta">
+          <a href="https://wa.me/51941914867?text=Hola,%20me%20interesa%20una%20propiedad" target="_blank" class="btn-whatsapp">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Chatear por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="contacto-form-wrap">
+        <form class="contacto-form" id="contactoForm" onsubmit="submitForm(event)">
+          <h3>Envíanos un mensaje</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre completo *</label>
+              <input type="text" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-group">
+              <label>Teléfono</label>
+              <input type="tel" placeholder="+51 999 000 000" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Correo electrónico *</label>
+            <input type="email" placeholder="tu@correo.com" required />
+          </div>
+          <div class="form-group">
+            <label>¿Qué te interesa?</label>
+            <select>
+              <option value="">Seleccionar...</option>
+              <option>Terreno</option>
+              <option>Departamento</option>
+              <option>Casa</option>
+              <option>Asesoría de inversión</option>
+              <option>Vender mi propiedad</option>
+              <option>Trámites legales</option> 
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Mensaje</label>
+            <textarea rows="4" placeholder="Cuéntanos qué propiedad estás buscando, tu presupuesto aproximado, zona de interés..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary full">Enviar mensaje</button>
+          <div class="form-success" id="formSuccess">
+            ✅ ¡Mensaje enviado! Te contactaremos pronto.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ FOOTER ═══════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="logo-om">O&M</span>
+        <p>Oyague & Mendoza Inmobiliaria</p>
+        <p class="footer-tagline">Tu propiedad, nuestra prioridad.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Propiedades</h4>
+        <ul>
+          <li><a href="#propiedades">Terrenos</a></li>
+          <li><a href="#propiedades">Departamentos</a></li>
+          <li><a href="#propiedades">Casas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#equipo">Nuestro equipo</a></li>
+          <li><a href="#testimonios">Testimonios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="#">Términos y condiciones</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Oyague & Mendoza Inmobiliaria. Todos los derechos reservados.</p>
+      <p>Desarrollado con ❤️ · Huancayo, Perú</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a href="https://wa.me/51941914867?text=Hola,%20me%20interesa%20una%20propiedad" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
