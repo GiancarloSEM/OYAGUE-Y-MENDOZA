@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Admin — Oyague & Mendoza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="css/admin-styles.css"/>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo"><h1>Oyague & Mendoza</h1><span>Panel Administrativo</span></div>
+    <label>Correo electrónico</label>
+    <input type="email" id="loginEmail" placeholder="admin@oyaguemendoza.com" />
+    <label>Contraseña</label>
+    <input type="password" id="loginPass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()" />
+    <button class="login-btn" onclick="doLogin()">Iniciar sesión</button>
+    <p class="login-err" id="loginErr"></p>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="adminScreen">
+  <aside class="admin-sidebar">
+    <div class="sidebar-brand"><h2>Panel Admin</h2><span>Oyague & Mendoza</span></div>
+    <nav class="sidebar-nav">
+      <button class="sidebar-link active" onclick="showPanel('dashboard',this)"><span class="sl-icon">📊</span> Dashboard</button>
+      <div class="sidebar-section">Propiedades</div>
+      <button class="sidebar-link" onclick="showPanel('productos',this)"><span class="sl-icon">🏠</span> Propiedades</button>
+      <button class="sidebar-link" onclick="showPanel('avance',this)"><span class="sl-icon">📈</span> Avance de Proyecto</button>
+      <div class="sidebar-section">Servicios</div>
+      <button class="sidebar-link" onclick="showPanel('servicios',this)"><span class="sl-icon">🎨</span> Trabajos / Portfolio</button>
+      <div class="sidebar-section">Contenido</div>
+      <button class="sidebar-link" onclick="showPanel('noticias',this)"><span class="sl-icon">📰</span> Noticias</button>
+      <button class="sidebar-link" onclick="showPanel('equipo',this)"><span class="sl-icon">👥</span> Equipo</button>
+      <button class="sidebar-link" onclick="window.open('index.html','_blank')"><span class="sl-icon">🌐</span> Ver sitio</button>
+      <button class="sidebar-link" onclick="window.open('servicios.html','_blank')"><span class="sl-icon">🔗</span> Ver servicios</button>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user" id="sidebarUser"></div>
+      <button class="logout-btn" onclick="doLogout()">Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+
+    <!-- DASHBOARD -->
+    <div class="admin-panel active" id="panel-dashboard">
+      <div class="admin-topbar"><h1>Dashboard</h1></div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-card-num" id="statTotal">—</div><div class="stat-card-label">Propiedades</div></div>
+        <div class="stat-card"><div class="stat-card-num" id="statDepas">—</div><div class="stat-card-label">Departamentos</div></div>
+        <div class="stat-card"><div class="stat-card-num" id="statTerrenos">—</div><div class="stat-card-label">Terrenos</div></div>
+        <div class="stat-card"><div class="stat-card-num" id="statCasas">—</div><div class="stat-card-label">Casas</div></div>
+      </div>
+      <div class="table-wrap">
+        <div class="table-header"><h3>Últimas propiedades</h3></div>
+        <table><thead><tr><th>Imagen</th><th>Título</th><th>Tipo</th><th>Precio</th><th>Avance</th></tr></thead>
+        <tbody id="dashTable"><tr><td colspan="5" style="text-align:center;color:var(--gray);padding:32px">Cargando...</td></tr></tbody></table>
+      </div>
+    </div>
+
+    <!-- PROPIEDADES -->
+    <div class="admin-panel" id="panel-productos">
+      <div class="admin-topbar">
+        <h1>Propiedades</h1>
+        <button class="btn-add" onclick="openForm()">+ Agregar propiedad</button>
+      </div>
+      <div class="table-wrap">
+        <div class="table-header">
+          <h3>Lista de propiedades</h3>
+          <input class="search-input" type="text" placeholder="Buscar..." oninput="filterTable(this.value)" />
+        </div>
+        <table>
+          <thead><tr><th>Imagen</th><th>Título</th><th>Tipo</th><th>Precio</th><th>Ubicación</th><th>Card</th><th>Avance</th><th>Acciones</th></tr></thead>
+          <tbody id="productsTable"><tr><td colspan="8" style="text-align:center;color:var(--gray);padding:32px">Cargando...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- AVANCE -->
+    <div class="admin-panel" id="panel-avance">
+      <div class="admin-topbar"><h1>Avance de Proyecto</h1></div>
+      <p style="font-size:.88rem;color:var(--gray);margin-bottom:24px;">Actualiza el avance de cada departamento o casa.</p>
+      <div class="avance-manager-grid" id="avanceManagerGrid">
+        <div style="text-align:center;color:var(--gray);padding:32px">Cargando...</div>
+      </div>
+    </div>
+
+    <!-- SERVICIOS -->
+    <div class="admin-panel" id="panel-servicios">
+      <div class="admin-topbar">
+        <h1>Trabajos / Portfolio</h1>
+        <button class="btn-add" onclick="openSrvForm()">+ Agregar trabajo</button>
+      </div>
+      <div class="srv-tabs">
+        <button class="srv-tab active" onclick="showSrvTab('interiores',this)">🛋️ Diseño de Interiores</button>
+        <button class="srv-tab" onclick="showSrvTab('urbanos',this)">🏙️ Proyectos Urbanos</button>
+        <button class="srv-tab" onclick="showSrvTab('arquitectonicos',this)">🏛️ Proyectos Arquitectónicos</button>
+      </div>
+      <div class="srv-panel active" id="srvpanel-interiores">
+        <div class="table-wrap">
+          <div class="table-header"><h3>Diseño de Interiores</h3></div>
+          <table><thead><tr><th>Imagen</th><th>Título</th><th>Subtítulo</th><th>Año</th><th>Card</th><th>Acciones</th></tr></thead>
+          <tbody id="srvTable-interiores"><tr><td colspan="6" style="text-align:center;color:var(--gray);padding:32px">Cargando...</td></tr></tbody></table>
+        </div>
+      </div>
+      <div class="srv-panel" id="srvpanel-urbanos">
+        <div class="table-wrap">
+          <div class="table-header"><h3>Proyectos Urbanos</h3></div>
+          <table><thead><tr><th>Imagen</th><th>Título</th><th>Subtítulo</th><th>Año</th><th>Card</th><th>Acciones</th></tr></thead>
+          <tbody id="srvTable-urbanos"><tr><td colspan="6" style="text-align:center;color:var(--gray);padding:32px">Cargando...</td></tr></tbody></table>
+        </div>
+      </div>
+      <div class="srv-panel" id="srvpanel-arquitectonicos">
+        <div class="table-wrap">
+          <div class="table-header"><h3>Proyectos Arquitectónicos</h3></div>
+          <table><thead><tr><th>Imagen</th><th>Título</th><th>Subtítulo</th><th>Año</th><th>Card</th><th>Acciones</th></tr></thead>
+          <tbody id="srvTable-arquitectonicos"><tr><td colspan="6" style="text-align:center;color:var(--gray);padding:32px">Cargando...</td></tr></tbody></table>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTICIAS -->
+    <div class="admin-panel" id="panel-noticias">
+      <div class="admin-topbar">
+        <h1>Noticias</h1>
+        <button class="btn-add" onclick="openNoticiaForm()">+ Agregar noticia</button>
+      </div>
+      <div class="table-wrap">
+        <div class="table-header">
+          <h3>Lista de noticias</h3>
+          <input class="search-input" type="text" placeholder="Buscar..." oninput="filterNoticias(this.value)" />
+        </div>
+        <table>
+          <thead>
+            <tr><th>Imagen</th><th>Título</th><th>Categoría</th><th>Fecha</th><th>Acciones</th></tr>
+          </thead>
+          <tbody id="noticiasTable">
+            <tr><td colspan="5" style="text-align:center;color:var(--gray);padding:32px">Cargando...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- EQUIPO -->
+    <div class="admin-panel" id="panel-equipo">
+      <div class="admin-topbar">
+        <h1>Nuestro Equipo</h1>
+        <button class="btn-add" onclick="openEquipoForm()">+ Agregar miembro</button>
+      </div>
+      <div class="table-wrap">
+        <div class="table-header"><h3>Miembros del equipo</h3></div>
+        <table>
+          <thead>
+            <tr><th>Foto</th><th>Nombre</th><th>Rol</th><th>Teléfono</th><th>Orden</th><th>Acciones</th></tr>
+          </thead>
+          <tbody id="equipoTable">
+            <tr><td colspan="6" style="text-align:center;color:var(--gray);padding:32px">Cargando...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ═══════════ MODAL PROPIEDAD ═══════════ -->
+<div class="modal-bg" id="productModal">
+  <div class="modal-form">
+    <div class="modal-form-header">
+      <h3 id="formTitle">Agregar propiedad</h3>
+      <button class="modal-form-close" onclick="closeForm()">✕</button>
+    </div>
+    <div class="modal-form-body">
+      <input type="hidden" id="editId" />
+      <div class="form-section">
+        <div class="form-section-title">📋 Información básica</div>
+        <div class="form-grid">
+          <div class="form-group full"><label>Título *</label><input type="text" id="fTitulo" placeholder="Ej: Departamento Moderno Chilca" /></div>
+          <div class="form-group"><label>Tipo *</label>
+            <select id="fTipo" onchange="onTipoChange()">
+              <option value="departamento">Departamento</option>
+              <option value="terreno">Terreno</option>
+              <option value="casa">Casa</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Precio total</label><input type="text" id="fPrecio" placeholder="S/ 220,000" /></div>
+          <div class="form-group"><label>Precio por m²</label><input type="text" id="fPrecioM2" placeholder="S/ 2,000/m²" /></div>
+          <div class="form-group"><label>Área</label><input type="text" id="fArea" placeholder="110 m²" /></div>
+          <div class="form-group"><label>Habitaciones</label><input type="number" id="fHab" placeholder="3" min="0" /></div>
+          <div class="form-group"><label>Baños</label><input type="number" id="fBanos" placeholder="2" min="0" /></div>
+          <div class="form-group full"><label>Ubicación</label><input type="text" id="fUbicacion" placeholder="Urb. Los Cipreses, Chilca, Huancayo" /></div>
+          <div class="form-group full"><label>Descripción</label><textarea id="fDesc" rows="3" placeholder="Descripción del producto..."></textarea></div>
+          <div class="form-group"><label>Búsqueda en Maps</label><input type="text" id="fMapQuery" placeholder="Chilca, Huancayo, Perú" /></div>
+          <div class="form-group"><label>Coordenadas (lat, lng)</label><input type="text" id="fMapEmbed" placeholder="-12.1500,-75.2200" /></div>
+        </div>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title">🏠 Detalles interiores</div>
+        <p class="field-hint" style="margin-bottom:12px;">Ej: "Sala - comedor" → "28 m²"</p>
+        <div class="dynamic-list" id="detallesList"></div>
+        <button class="btn-row-add" onclick="addDetalleRow()">+ Agregar detalle</button>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title">✨ Acabados y materiales</div>
+        <p class="field-hint" style="margin-bottom:12px;">Escribe un acabado por línea.</p>
+        <div class="dynamic-list" id="acabadosList"></div>
+        <button class="btn-row-add" onclick="addAcabadoRow()">+ Agregar acabado</button>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title">➕ Adicionales incluidos</div>
+        <p class="field-hint" style="margin-bottom:12px;">Ej: "Seguridad 24/7", "Ascensor"</p>
+        <div class="dynamic-list" id="adicionalesList"></div>
+        <button class="btn-row-add" onclick="addAdicionalRow()">+ Agregar adicional</button>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title">🖼️ Apariencia en la galería</div>
+        <p class="field-hint" style="margin-bottom:14px;">Elige cómo se verá este producto en el sitio web.</p>
+        <div class="card-type-grid" id="propCardTypeGrid">
+          <div class="card-type-opt selected" id="prop-ct-normal" onclick="selectPropCardType('normal')">
+            <div class="ct-preview ct-preview-normal"></div>
+            <div class="ct-label">Normal</div><div class="ct-desc">Tamaño estándar</div>
+          </div>
+          <div class="card-type-opt" id="prop-ct-featured" onclick="selectPropCardType('featured')">
+            <div class="ct-preview ct-preview-featured"></div>
+            <div class="ct-label">Destacado</div><div class="ct-desc">Grande, 2 columnas</div>
+          </div>
+          <div class="card-type-opt" id="prop-ct-tall" onclick="selectPropCardType('tall')">
+            <div class="ct-preview ct-preview-tall"></div>
+            <div class="ct-label">Alta</div><div class="ct-desc">Doble altura</div>
+          </div>
+        </div>
+        <p class="field-hint" style="margin-top:10px;">💡 Solo puede haber un "Destacado". Los demás se ajustan solos.</p>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title">📸 Fotos del producto</div>
+        <div class="upload-area">
+          <input type="file" id="fileInput" accept="image/*" multiple onchange="handleFiles(this.files)" />
+          <div class="upload-icon">📁</div>
+          <div class="upload-text"><strong>Haz clic aquí</strong> para seleccionar fotos<small>Varias a la vez · JPG, PNG, WEBP</small></div>
+        </div>
+        <div class="upload-progress" id="uploadProgress">
+          <div class="upload-bar"><div class="upload-bar-fill" id="uploadBarFill"></div></div>
+          <div class="upload-status" id="uploadStatus">Subiendo...</div>
+        </div>
+        <div class="gallery-preview" id="galleryPreview"></div>
+        <input type="hidden" id="fGallery" />
+      </div>
+      <div class="form-section avance-form-section" id="avanceFormSection">
+        <div class="form-section-title">📈 Avance del proyecto</div>
+        <p class="field-hint" style="margin-bottom:14px;">Solo aplica para departamentos y casas.</p>
+        <div class="etapas-selector">
+          <div class="etapa-opt selected" onclick="selectEtapa(0)"><span class="e-icon">🚀</span><span class="e-name">Lanzamiento</span></div>
+          <div class="etapa-opt" onclick="selectEtapa(1)"><span class="e-icon">💰</span><span class="e-name">Pre Venta</span></div>
+          <div class="etapa-opt" onclick="selectEtapa(2)"><span class="e-icon">🏗️</span><span class="e-name">En Construcción</span></div>
+          <div class="etapa-opt" onclick="selectEtapa(3)"><span class="e-icon">✨</span><span class="e-name">Acabados</span></div>
+          <div class="etapa-opt" onclick="selectEtapa(4)"><span class="e-icon">🏠</span><span class="e-name">Entrega</span></div>
+        </div>
+        <div class="etapa-bar"><div class="etapa-bar-fill" id="etapaBarFill" style="width:0%"></div></div>
+        <div class="form-group">
+          <label>Descripción del avance</label>
+          <textarea id="fEtapaDesc" rows="2" placeholder="Ej: Iniciamos la construcción del tercer piso..."></textarea>
+        </div>
+        <input type="hidden" id="fEtapa" value="0" />
+      </div>
+    </div>
+    <div class="modal-form-footer">
+      <button class="btn-cancel" onclick="closeForm()">Cancelar</button>
+      <button class="btn-save" id="btnSave" onclick="saveProduct()">Guardar propiedad</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MODAL SERVICIO ═══════════ -->
+<div class="modal-bg" id="srvModal">
+  <div class="modal-form">
+    <div class="modal-form-header">
+      <h3 id="srvFormTitle">Agregar trabajo</h3>
+      <button class="modal-form-close" onclick="closeSrvForm()">✕</button>
+    </div>
+    <div class="modal-form-body">
+      <input type="hidden" id="srvEditId" />
+      <div class="form-section">
+        <div class="form-section-title">📋 Información del trabajo</div>
+        <div class="form-grid">
+          <div class="form-group full"><label>Título *</label><input type="text" id="srvTitulo" placeholder="Ej: Sala Contemporánea — Chilca" /></div>
+          <div class="form-group"><label>Categoría *</label>
+            <select id="srvCategoria">
+              <option value="interiores">🛋️ Diseño de Interiores</option>
+              <option value="urbanos">🏙️ Proyectos Urbanos</option>
+              <option value="arquitectonicos">🏛️ Proyectos Arquitectónicos</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Año</label><input type="text" id="srvAño" placeholder="2025" /></div>
+          <div class="form-group full"><label>Subtítulo / Categoría visual</label><input type="text" id="srvSubtitulo" placeholder="Ej: Residencial · Huancayo" /></div>
+          <div class="form-group full"><label>Descripción</label><textarea id="srvDesc" rows="3" placeholder="Descripción del proyecto..."></textarea></div>
+        </div>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title">🖼️ Apariencia en la galería de servicios</div>
+        <div class="card-type-grid">
+          <div class="card-type-opt selected" id="srv-ct-normal" onclick="selectSrvCardType('normal')">
+            <div class="ct-preview ct-preview-normal"></div>
+            <div class="ct-label">Normal</div><div class="ct-desc">Tamaño estándar</div>
+          </div>
+          <div class="card-type-opt" id="srv-ct-featured" onclick="selectSrvCardType('featured')">
+            <div class="ct-preview ct-preview-featured"></div>
+            <div class="ct-label">Destacado</div><div class="ct-desc">Grande, más ancho</div>
+          </div>
+          <div class="card-type-opt" id="srv-ct-tall" onclick="selectSrvCardType('tall')">
+            <div class="ct-preview ct-preview-tall"></div>
+            <div class="ct-label">Alta</div><div class="ct-desc">Doble altura</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title">📸 Imagen del trabajo</div>
+        <div class="upload-area">
+          <input type="file" id="srvFileInput" accept="image/*" onchange="handleSrvFile(this.files)" />
+          <div class="upload-icon">📁</div>
+          <div class="upload-text"><strong>Haz clic</strong> para subir la imagen<small>JPG, PNG, WEBP</small></div>
+        </div>
+        <div class="upload-progress" id="srvUploadProgress">
+          <div class="upload-bar"><div class="upload-bar-fill" id="srvUploadBarFill"></div></div>
+          <div class="upload-status" id="srvUploadStatus">Subiendo...</div>
+        </div>
+        <div class="gallery-preview" id="srvImgPreview"></div>
+        <input type="hidden" id="srvImgUrl" />
+      </div>
+    </div>
+    <div class="modal-form-footer">
+      <button class="btn-cancel" onclick="closeSrvForm()">Cancelar</button>
+      <button class="btn-save" id="btnSrvSave" onclick="saveSrvItem()">Guardar trabajo</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MODAL NOTICIA ═══════════ -->
+<div class="modal-bg" id="noticiaModal">
+  <div class="modal-form">
+    <div class="modal-form-header">
+      <h3 id="noticiaFormTitle">Agregar noticia</h3>
+      <button class="modal-form-close" onclick="closeNoticiaForm()">✕</button>
+    </div>
+    <div class="modal-form-body">
+      <input type="hidden" id="noticiaEditId" />
+      <div class="form-section">
+        <div class="form-section-title">📋 Información de la noticia</div>
+        <div class="form-grid">
+          <div class="form-group full"><label>Título *</label><input type="text" id="nTitulo" placeholder="Ej: Oyague y Mendoza inaugura nueva urbanización" /></div>
+          <div class="form-group"><label>Categoría *</label>
+            <select id="nCategoria">
+              <option value="empresa">🏢 Empresa</option>
+              <option value="mercado">📊 Mercado</option>
+              <option value="consejos">💡 Consejos</option>
+              <option value="inversion">💰 Inversión</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Fecha de publicación *</label><input type="date" id="nFecha" /></div>
+          <div class="form-group full"><label>Extracto / Resumen</label><textarea id="nExtracto" rows="3" placeholder="Breve descripción que aparece en la tarjeta de la noticia..."></textarea></div>
+          <div class="form-group full">
+            <label>Enlace (URL)</label>
+            <input type="url" id="nUrl" placeholder="https://www.instagram.com/oyagueymendozaoficial" />
+            <span class="field-hint">Deja vacío para enlazar al Instagram por defecto.</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title">🖼️ Imagen de portada</div>
+        <div class="upload-area">
+          <input type="file" id="noticiaFileInput" accept="image/*" onchange="handleNoticiaFile(this.files)" />
+          <div class="upload-icon">📁</div>
+          <div class="upload-text"><strong>Haz clic</strong> para subir la imagen<small>JPG, PNG, WEBP · Recomendado 800×500 px</small></div>
+        </div>
+        <div class="upload-progress" id="noticiaUploadProgress">
+          <div class="upload-bar"><div class="upload-bar-fill" id="noticiaUploadBarFill"></div></div>
+          <div class="upload-status" id="noticiaUploadStatus">Subiendo...</div>
+        </div>
+        <div class="img-preview-single" id="noticiaImgPreview"></div>
+        <input type="hidden" id="nImgUrl" />
+      </div>
+    </div>
+    <div class="modal-form-footer">
+      <button class="btn-cancel" onclick="closeNoticiaForm()">Cancelar</button>
+      <button class="btn-save" id="btnNoticiaSave" onclick="saveNoticia()">Guardar noticia</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MODAL EQUIPO ═══════════ -->
+<div class="modal-bg" id="equipoModal">
+  <div class="modal-form">
+    <div class="modal-form-header">
+      <h3 id="equipoFormTitle">Agregar miembro</h3>
+      <button class="modal-form-close" onclick="closeEquipoForm()">✕</button>
+    </div>
+    <div class="modal-form-body">
+      <input type="hidden" id="equipoEditId" />
+      <div class="form-section">
+        <div class="form-section-title">👤 Información del miembro</div>
+        <div class="form-grid">
+          <div class="form-group full"><label>Nombre completo *</label><input type="text" id="eName" placeholder="Ej: Arq. Luzmarina Ninahuanca" /></div>
+          <div class="form-group"><label>Rol / Cargo *</label><input type="text" id="eRol" placeholder="Ej: Arquitecta y Urbanista" /></div>
+          <div class="form-group">
+            <label>Orden de aparición</label>
+            <input type="number" id="eOrden" placeholder="1" min="1" value="1" />
+            <span class="field-hint">Número más bajo aparece primero.</span>
+          </div>
+          <div class="form-group"><label>Teléfono / WhatsApp</label><input type="tel" id="eTelefono" placeholder="+51 941 914 867" /></div>
+          <div class="form-group"><label>Correo electrónico</label><input type="email" id="eEmail" placeholder="info@oyaguemendoza.com" /></div>
+          <div class="form-group full"><label>Descripción</label><textarea id="eDesc" rows="3" placeholder="Breve descripción profesional del miembro..."></textarea></div>
+        </div>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title">📸 Foto del miembro</div>
+        <div class="upload-area">
+          <input type="file" id="equipoFileInput" accept="image/*" onchange="handleEquipoFile(this.files)" />
+          <div class="upload-icon">📁</div>
+          <div class="upload-text"><strong>Haz clic</strong> para subir la foto<small>JPG, PNG, WEBP · Recomendado formato cuadrado o retrato</small></div>
+        </div>
+        <div class="upload-progress" id="equipoUploadProgress">
+          <div class="upload-bar"><div class="upload-bar-fill" id="equipoUploadBarFill"></div></div>
+          <div class="upload-status" id="equipoUploadStatus">Subiendo...</div>
+        </div>
+        <div class="img-preview-single" id="equipoImgPreview"></div>
+        <input type="hidden" id="eImgUrl" />
+      </div>
+    </div>
+    <div class="modal-form-footer">
+      <button class="btn-cancel" onclick="closeEquipoForm()">Cancelar</button>
+      <button class="btn-save" id="btnEquipoSave" onclick="saveEquipo()">Guardar miembro</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/admin-logic.js"></script>
+</body>
+</html>
