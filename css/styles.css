@@ -75,7 +75,7 @@ a { color: inherit; text-decoration: none; }
 .chevron { transition: transform .25s; }
 .has-dropdown:hover .chevron { transform: rotate(180deg); }
 
-.dropdown-menu { position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%) translateY(-6px); background: var(--dark-2); border: 1px solid rgba(149,187,48,.25); border-radius: 8px; padding: 8px 0; min-width: 190px; list-style: none; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; z-index: 200; box-shadow: 0 8px 32px rgba(0,0,0,.3); }
+.dropdown-menu { position: absolute; top: 100%; padding-top: 12px; left: 50%; transform: translateX(-50%) translateY(-6px); background: var(--dark-2); border: 1px solid rgba(149,187,48,.25); border-radius: 8px; padding: 8px 0; min-width: 190px; list-style: none; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; z-index: 200; box-shadow: 0 8px 32px rgba(0,0,0,.3); }
 .has-dropdown:hover .dropdown-menu { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
 .dropdown-menu li a { color: rgba(255,255,255,.75); font-family: var(--font-main); font-size: .85rem; font-weight: 500; padding: 10px 20px; display: flex; align-items: center; gap: 10px; transition: background var(--transition), color var(--transition); }
 .dropdown-menu li a:hover { background: rgba(149,187,48,.2); color: var(--green-lt); }
@@ -850,6 +850,27 @@ a { color: inherit; text-decoration: none; }
 .noticia-modal-actions {
   display: flex; gap: 12px; flex-wrap: wrap;
   padding-top: 20px; border-top: 1px solid var(--cream-2);
+}
+
+/* ── FIX DROPDOWN GAP ── */
+.has-dropdown { position: relative; }
+.has-dropdown::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  width: 100%;
+  height: 12px;
+}
+.dropdown-menu {
+  top: calc(100% + 12px) !important;
+  padding: 8px 0 !important;
+}
+.has-dropdown:hover .dropdown-menu,
+.has-dropdown:focus-within .dropdown-menu {
+  opacity: 1 !important;
+  pointer-events: all !important;
+  transform: translateX(-50%) translateY(0) !important;
 }
 
 @media (max-width: 640px) {

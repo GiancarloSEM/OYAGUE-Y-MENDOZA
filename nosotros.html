@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nosotros — Oyague & Mendoza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="css/index-premium.css"/>
+  <style>
+    /* ── HERO NOSOTROS ── */
+    .nos-hero {
+      min-height: 70vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 0 80px;
+      overflow: hidden;
+    }
+    .nos-hero-bg {
+      position: absolute; inset: 0;
+      background: url('fotos/depa0/depa0-1.jpeg') center/cover no-repeat;
+    }
+    .nos-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(14,14,12,.3) 0%, rgba(14,14,12,.75) 50%, rgba(14,14,12,.97) 100%);
+    }
+    .nos-hero-content {
+      position: relative; z-index: 1;
+      max-width: 1160px; margin: 0 auto;
+      padding: 90px 48px 0;
+      width: 100%;
+    }
+    .nos-hero-eyebrow {
+      font-family: var(--font-sans); font-size: .72rem; font-weight: 800;
+      letter-spacing: .3em; text-transform: uppercase;
+      color: var(--green-lt); margin-bottom: 20px; display: block;
+    }
+    .nos-hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem,7vw,6rem);
+      font-weight: 300; line-height: 1.0;
+      color: var(--white); letter-spacing: -.01em;
+      margin-bottom: 28px;
+    }
+    .nos-hero-title em {
+      font-style: italic; color: var(--green-lt); font-weight: 300;
+    }
+    .nos-hero-desc {
+      font-family: var(--font-sans); font-size: 1rem;
+      color: rgba(255,255,255,.55); max-width: 480px;
+      line-height: 1.8;
+    }
+
+    /* ── SECCIÓN PRINCIPAL ── */
+    .nos-page-main {
+      background: var(--dark-2);
+      padding: 120px 0;
+      position: relative;
+    }
+    .nos-page-main::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(149,187,48,.3), transparent);
+    }
+    .nos-page-inner {
+      max-width: 1160px; margin: 0 auto; padding: 0 48px;
+    }
+
+    /* Stats */
+    .nos-page-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; margin-bottom: 100px;
+    }
+    .nos-page-stat {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      padding: 48px 40px; text-align: center;
+      transition: background .3s, border-color .3s;
+    }
+    .nos-page-stat:hover {
+      background: rgba(149,187,48,.05);
+      border-color: rgba(149,187,48,.2);
+    }
+    .nos-page-stat-num {
+      font-family: var(--font-serif); font-size: 4rem;
+      font-weight: 300; color: var(--green-lt); line-height: 1;
+      display: block; margin-bottom: 10px;
+    }
+    .nos-page-stat-label {
+      font-family: var(--font-sans); font-size: .72rem;
+      font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+    }
+
+    /* Bloque misión/visión */
+    .nos-mv-block {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3px; margin-bottom: 100px;
+    }
+    .nos-mv-item {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      padding: 60px 52px;
+      position: relative; overflow: hidden;
+      transition: background .3s, border-color .3s;
+    }
+    .nos-mv-item::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; width: 3px; height: 0;
+      background: var(--green);
+      transition: height .5s ease;
+    }
+    .nos-mv-item:hover::before { height: 100%; }
+    .nos-mv-item:hover {
+      background: rgba(149,187,48,.05);
+      border-color: rgba(149,187,48,.2);
+    }
+    .nos-mv-num {
+      font-family: var(--font-serif); font-size: 5rem;
+      font-weight: 300; color: rgba(149,187,48,.07);
+      line-height: 1; margin-bottom: 24px; display: block;
+    }
+    .nos-mv-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
+    .nos-mv-title {
+      font-family: var(--font-serif); font-size: 1.8rem;
+      font-weight: 300; color: var(--white);
+      margin-bottom: 20px; line-height: 1.1;
+    }
+    .nos-mv-title em { font-style: italic; color: var(--green-lt); }
+    .nos-mv-text {
+      font-family: var(--font-sans); font-size: .92rem;
+      color: rgba(255,255,255,.45); line-height: 1.85;
+    }
+    .nos-mv-text strong { color: var(--green-lt); font-weight: 700; }
+
+    /* Imagen + quote */
+    .nos-img-section {
+      position: relative; margin-bottom: 100px;
+      border-radius: 4px; overflow: hidden; height: 420px;
+    }
+    .nos-img-section img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .nos-img-overlay-dark {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(14,14,12,.9) 0%, rgba(14,14,12,.4) 60%, transparent 100%);
+      display: flex; align-items: center; padding: 0 64px;
+    }
+    .nos-img-quote-text {
+      font-family: var(--font-serif); font-size: 2rem;
+      font-weight: 300; color: var(--white);
+      max-width: 560px; line-height: 1.35;
+    }
+    .nos-img-quote-text em { font-style: italic; color: var(--green-lt); }
+
+    /* Valores */
+    .nos-valores-header {
+      text-align: center; margin-bottom: 64px;
+    }
+    .nos-valores-eyebrow {
+      font-family: var(--font-sans); font-size: .7rem; font-weight: 800;
+      letter-spacing: .28em; text-transform: uppercase;
+      color: var(--green); display: block; margin-bottom: 16px;
+    }
+    .nos-valores-title {
+      font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300; color: var(--white);
+    }
+    .nos-valores-title em { font-style: italic; color: var(--green-lt); }
+
+    .nos-valores-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2px; margin-bottom: 100px;
+    }
+    .nos-valor-item {
+      background: rgba(255,255,255,.025);
+      border: 1px solid rgba(255,255,255,.05);
+      padding: 40px 28px;
+      transition: all .3s;
+    }
+    .nos-valor-item:hover {
+      background: rgba(149,187,48,.08);
+      border-color: rgba(149,187,48,.25);
+      transform: translateY(-4px);
+    }
+    .nos-valor-icon { font-size: 2.2rem; margin-bottom: 18px; display: block; }
+    .nos-valor-name {
+      font-family: var(--font-sans); font-size: .95rem;
+      font-weight: 700; color: var(--white); margin-bottom: 10px;
+    }
+    .nos-valor-desc {
+      font-family: var(--font-sans); font-size: .83rem;
+      color: rgba(255,255,255,.4); line-height: 1.7;
+    }
+
+    /* Social */
+    .nos-social-section {
+      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(255,255,255,.06);
+      padding: 60px; text-align: center;
+    }
+    .nos-social-title {
+      font-family: var(--font-serif); font-size: 1.8rem;
+      font-weight: 300; color: var(--white); margin-bottom: 10px;
+    }
+    .nos-social-sub {
+      font-family: var(--font-sans); font-size: .88rem;
+      color: rgba(255,255,255,.35); margin-bottom: 32px;
+    }
+    .nos-social-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .nos-soc-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 24px; border-radius: 2px;
+      font-family: var(--font-sans); font-size: .82rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: var(--white); transition: all .3s; text-decoration: none;
+    }
+    .nos-soc-btn.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .nos-soc-btn.facebook { background: #1877F2; }
+    .nos-soc-btn.tiktok { background: #010101; border: 1px solid rgba(255,255,255,.1); }
+    .nos-soc-btn:hover { opacity: .85; transform: translateY(-2px); }
+
+    /* CTA final */
+    .nos-cta {
+      background: linear-gradient(135deg, rgba(10,30,6,.97), rgba(26,60,10,.97));
+      padding: 100px 0; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .nos-cta::before {
+      content: ''; position: absolute;
+      top: -100px; right: -100px; width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(149,187,48,.1) 0%, transparent 70%);
+    }
+    .nos-cta-inner { position: relative; z-index: 1; }
+    .nos-cta-title {
+      font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300; color: var(--white); margin-bottom: 16px;
+    }
+    .nos-cta-title em { font-style: italic; color: var(--green-lt); }
+    .nos-cta-sub {
+      font-family: var(--font-sans); font-size: .95rem;
+      color: rgba(255,255,255,.45); margin-bottom: 40px;
+    }
+    .nos-cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── CÓMO TRABAJAMOS ── */
+    .nos-como-section {
+      padding: 100px 0;
+      background: var(--dark-2);
+      position: relative;
+    }
+    .nos-como-section::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(149,187,48,.3), transparent);
+    }
+    .nos-como-header { text-align: center; margin-bottom: 72px; }
+    .nos-como-eyebrow {
+      font-family: var(--font-sans); font-size: .7rem; font-weight: 800;
+      letter-spacing: .28em; text-transform: uppercase;
+      color: var(--green); display: block; margin-bottom: 16px;
+    }
+    .nos-como-title {
+      font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300; color: var(--white);
+    }
+    .nos-como-title em { font-style: italic; color: var(--green-lt); }
+
+    .nos-como-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    /* Card base */
+    .nos-como-card {
+      display: flex; flex-direction: column;
+      background: var(--dark-3);
+      border: 1px solid rgba(255,255,255,.06);
+      overflow: hidden;
+      transition: border-color .35s, transform .35s, box-shadow .35s;
+    }
+    .nos-como-card:hover {
+      border-color: rgba(149,187,48,.3);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(0,0,0,.5);
+    }
+
+    /* Bloque de TEXTO */
+    .nos-como-text-block {
+      padding: 32px 20px 20px;
+      text-align: center;
+      flex: 1;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .nos-como-step-num {
+      font-family: var(--font-sans); font-size: .65rem; font-weight: 800;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--green); display: block; margin-bottom: 10px;
+    }
+    .nos-como-step-title {
+      font-family: var(--font-sans); font-size: .98rem; font-weight: 700;
+      color: var(--white); margin-bottom: 10px; line-height: 1.3;
+    }
+    .nos-como-step-desc {
+      font-family: var(--font-sans); font-size: .82rem;
+      color: rgba(255,255,255,.45); line-height: 1.75;
+    }
+
+    /* Triángulo verde apuntando ABAJO — va entre texto y foto (card impar) */
+    .nos-como-tri-down {
+      width: 100%; height: 64px; flex-shrink: 0;
+      background: var(--green);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      display: flex; align-items: center; justify-content: center;
+      padding-bottom: 6px;
+      transition: background .3s;
+    }
+    .nos-como-card:hover .nos-como-tri-down { background: var(--green-lt); }
+
+    /* Triángulo verde apuntando ARRIBA — va entre foto y texto (card par) */
+    .nos-como-tri-up {
+      width: 100%; height: 64px; flex-shrink: 0;
+      background: var(--green);
+      clip-path: polygon(50% 0, 100% 100%, 0 100%);
+      display: flex; align-items: flex-end; justify-content: center;
+      padding-bottom: 6px;
+      transition: background .3s;
+    }
+    .nos-como-card:hover .nos-como-tri-up { background: var(--green-lt); }
+
+    .nos-como-tri-icon { font-size: 1.5rem; line-height: 1; }
+
+    /* Imagen */
+    .nos-como-foto {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(.5) brightness(.7);
+      transition: filter .5s;
+      flex-shrink: 0;
+    }
+    .nos-como-card:hover .nos-como-foto {
+      filter: grayscale(.1) brightness(.85);
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .nos-como-grid { grid-template-columns: 1fr 1fr; }
+      .nos-hero-content { padding: 90px 24px 0; }
+      .nos-page-inner { padding: 0 24px; }
+      .nos-page-stats { grid-template-columns: 1fr 1fr 1fr; }
+      .nos-mv-block { grid-template-columns: 1fr; }
+      .nos-valores-grid { grid-template-columns: 1fr 1fr; }
+      .nos-social-section { padding: 40px 24px; }
+    }
+    @media (max-width: 640px) {
+      .nos-como-grid { grid-template-columns: 1fr; }
+      .nos-hero { min-height: 60vh; padding: 0 0 60px; }
+      .nos-page-main { padding: 72px 0; }
+      .nos-page-stats { grid-template-columns: 1fr; }
+      .nos-valores-grid { grid-template-columns: 1fr; }
+      .nos-img-section { height: 280px; }
+      .nos-img-overlay-dark { padding: 0 28px; }
+      .nos-img-quote-text { font-size: 1.3rem; }
+      .nos-mv-item { padding: 40px 28px; }
+      .nos-cta { padding: 72px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ══════ NAV ══════ -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <a href="index.html"><img src="fotos/logos/5.png" alt="Oyague y Mendoza Inmobiliaria" class="nav-logo-img" /></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#inicio">Inicio</a></li>
+
+    <li class="has-dropdown">
+      <a href="index.html#productos" class="dropdown-trigger">
+        Productos
+        <svg class="chevron" viewBox="0 0 10 6" width="10"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="index.html#productos" onclick="sessionStorage.setItem('filter','departamento')"><span class="dd-icon">🏢</span>Departamentos</a></li>
+        <li><a href="index.html#productos" onclick="sessionStorage.setItem('filter','terreno')"><span class="dd-icon">🏞</span>Terrenos</a></li>
+        <li><a href="index.html#productos" onclick="sessionStorage.setItem('filter','casa')"><span class="dd-icon">🏡</span>Casas</a></li>
+        <li><a href="servicios.html"><span class="dd-icon">🎨</span>Diseño</a></li>
+      </ul>
+    </li>
+
+    <li class="has-dropdown">
+      <a href="#" class="dropdown-trigger">
+        Nosotros
+        <svg class="chevron" viewBox="0 0 10 6" width="10"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="nosotros.html"><span class="dd-icon">🏢</span>Quiénes somos</a></li>
+        <li><a href="equipo.html"><span class="dd-icon">👥</span>Nuestro equipo</a></li>
+      </ul>
+    </li>
+
+    <li class="has-dropdown">
+      <a href="esg.html" class="dropdown-trigger">
+        ESG
+        <svg class="chevron" viewBox="0 0 10 6" width="10"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="esg.html#ambiental"><span class="dd-icon">🌿</span>Ambiental</a></li>
+        <li><a href="esg.html#social"><span class="dd-icon">🤝</span>Social</a></li>
+        <li><a href="esg.html#gobernanza"><span class="dd-icon">⚖️</span>Gobernanza</a></li>
+      </ul>
+    </li>
+
+    <li><a href="index.html#noticias">Noticias</a></li>
+    <li><a href="index.html#contacto">Contacto</a></li>
+  </ul>
+  <div class="nav-social">
+    <a href="https://www.instagram.com/oyagueymendozaoficial/?hl=es" target="_blank" class="nav-social-link">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
+    <a href="https://web.facebook.com/profile.php?id=61572488620640&locale=es_LA" target="_blank" class="nav-social-link">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+  </div>
+  <a href="index.html#contacto" class="nav-cta">Consultar ahora</a>
+  <button class="hamburger" id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobile()">✕</button>
+  <ul>
+    <li><a href="index.html#inicio" onclick="closeMobile()">Inicio</a></li>
+    <li class="mob-group">
+      <span class="mob-label">Productos</span>
+      <ul>
+        <li><a href="index.html#productos" onclick="closeMobile()">🏢 Departamentos</a></li>
+        <li><a href="index.html#productos" onclick="closeMobile()">🏞 Terrenos</a></li>
+        <li><a href="index.html#productos" onclick="closeMobile()">🏡 Casas</a></li>
+      </ul>
+    </li>
+    <li><a href="servicios.html" onclick="closeMobile()">Diseño</a></li>
+    <li class="mob-group">
+      <span class="mob-label">Nosotros</span>
+      <ul>
+        <li><a href="nosotros.html" onclick="closeMobile()">🏢 Quiénes somos</a></li>
+        <li><a href="equipo.html" onclick="closeMobile()">👥 Nuestro equipo</a></li>
+      </ul>
+    </li>
+    <li class="mob-group">
+      <span class="mob-label">ESG</span>
+      <ul>
+        <li><a href="esg.html#ambiental" onclick="closeMobile()">🌿 Ambiental</a></li>
+        <li><a href="esg.html#social" onclick="closeMobile()">🤝 Social</a></li>
+        <li><a href="esg.html#gobernanza" onclick="closeMobile()">⚖️ Gobernanza</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#noticias" onclick="closeMobile()">Noticias</a></li>
+    <li><a href="index.html#contacto" onclick="closeMobile()">Contacto</a></li>
+  </ul>
+</div>
+
+<!-- ══════ HERO ══════ -->
+<section class="nos-hero">
+  <div class="nos-hero-bg"></div>
+  <div class="nos-hero-overlay"></div>
+  <div class="nos-hero-content">
+    <span class="nos-hero-eyebrow">Oyague & Mendoza — Huancayo, Perú</span>
+    <h1 class="nos-hero-title">
+      Quiénes<br/><em>somos</em>
+    </h1>
+    <p class="nos-hero-desc">Una empresa inmobiliaria comprometida con la calidad, la sostenibilidad y el bienestar de las familias de la región Junín.</p>
+  </div>
+</section>
+
+<!-- ══════ MAIN ══════ -->
+<section class="nos-page-main">
+  <div class="nos-page-inner">
+
+    <!-- Stats -->
+    <div class="nos-page-stats reveal">
+      <div class="nos-page-stat">
+        <span class="nos-page-stat-num">120+</span>
+        <span class="nos-page-stat-label">Propiedades vendidas</span>
+      </div>
+      <div class="nos-page-stat">
+        <span class="nos-page-stat-num">15+</span>
+        <span class="nos-page-stat-label">Años de experiencia</span>
+      </div>
+      <div class="nos-page-stat">
+        <span class="nos-page-stat-num">98%</span>
+        <span class="nos-page-stat-label">Clientes satisfechos</span>
+      </div>
+    </div>
+
+    <!-- Misión / Visión -->
+    <div class="nos-mv-block">
+      <div class="nos-mv-item reveal">
+        <span class="nos-mv-num">01</span>
+        <span class="nos-mv-icon">🎯</span>
+        <h3 class="nos-mv-title">Nuestra <em>misión</em></h3>
+        <p class="nos-mv-text">Ofrecemos a nuestros clientes viviendas de la generación <strong>ECOEFICIENTE</strong> basadas en una entrega de calidad, seguimiento de posventa y servicios a precios adecuados, para satisfacer las necesidades del cliente con un respaldo tecnológico y de calidad, logrando al mismo tiempo una rentabilidad para nuestros accionistas.</p>
+      </div>
+      <div class="nos-mv-item reveal">
+        <span class="nos-mv-num">02</span>
+        <span class="nos-mv-icon">🌿</span>
+        <h3 class="nos-mv-title">Nuestra <em>visión</em></h3>
+        <p class="nos-mv-text">Somos Oyague y Mendoza, una empresa enfocada al servicio y la plena satisfacción de nuestros clientes, por lo que innovamos constantemente para exceder los estándares establecidos. Nuestra visión es a largo plazo, ya que la relación con nuestros clientes <strong>no termina con la venta de una vivienda</strong>, justamente en ese momento es cuando comienza.</p>
+      </div>
+    </div>
+
+    <!-- Imagen + quote -->
+    <div class="nos-img-section reveal">
+      <img src="fotos/depa0/depa0-3.jpeg" alt="Oyague y Mendoza" />
+      <div class="nos-img-overlay-dark">
+        <p class="nos-img-quote-text">
+          "Innovamos constantemente para<br/><em>exceder los estándares establecidos</em>"
+        </p>
+      </div>
+    </div>
+
+    <!-- Valores -->
+    <div class="nos-valores-header reveal">
+      <span class="nos-valores-eyebrow">Lo que nos define</span>
+      <h2 class="nos-valores-title">Nuestros <em>valores</em></h2>
+    </div>
+    <div class="nos-valores-grid">
+      <div class="nos-valor-item reveal">
+        <span class="nos-valor-icon">🏆</span>
+        <div class="nos-valor-name">Calidad</div>
+        <p class="nos-valor-desc">Cada proyecto refleja nuestro compromiso con la excelencia constructiva y los acabados de primera línea.</p>
+      </div>
+      <div class="nos-valor-item reveal">
+        <span class="nos-valor-icon">🤝</span>
+        <div class="nos-valor-name">Compromiso</div>
+        <p class="nos-valor-desc">Acompañamos a nuestros clientes antes, durante y después de cada transacción inmobiliaria.</p>
+      </div>
+      <div class="nos-valor-item reveal">
+        <span class="nos-valor-icon">🌱</span>
+        <div class="nos-valor-name">Sostenibilidad</div>
+        <p class="nos-valor-desc">Desarrollamos proyectos ecoeficientes que respetan el entorno natural de los Andes peruanos.</p>
+      </div>
+      <div class="nos-valor-item reveal">
+        <span class="nos-valor-icon">🔍</span>
+        <div class="nos-valor-name">Transparencia</div>
+        <p class="nos-valor-desc">Operamos con honestidad y claridad en cada etapa del proceso, sin sorpresas ni letras pequeñas.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════ CÓMO TRABAJAMOS ══════ -->
+<section class="nos-como-section">
+  <div class="nos-page-inner">
+    <div class="nos-como-header reveal">
+      <span class="nos-como-eyebrow">Nuestro proceso</span>
+      <h2 class="nos-como-title">¿Cómo <em>trabajamos?</em></h2>
+    </div>
+    <div class="nos-como-grid">
+
+      <!-- CARD 1: texto → triángulo abajo → foto -->
+      <div class="nos-como-card reveal">
+        <div class="nos-como-text-block">
+          <span class="nos-como-step-num">01</span>
+          <div class="nos-como-step-title">Entendemos tus necesidades</div>
+          <p class="nos-como-step-desc">Comunicación directa para definir objetivos y adaptar soluciones a tu perfil y presupuesto.</p>
+        </div>
+        <div class="nos-como-tri-down">
+          <span class="nos-como-tri-icon">💬</span>
+        </div>
+        <div class="nos-como-foto" style="background-image:url('fotos/depa%201/dep1-2.jpeg')"></div>
+      </div>
+
+      <!-- CARD 2: foto → triángulo arriba → texto -->
+      <div class="nos-como-card reveal">
+        <div class="nos-como-foto" style="background-image:url('fotos/depa%202/dep2-3.jpeg')"></div>
+        <div class="nos-como-tri-up">
+          <span class="nos-como-tri-icon">📐</span>
+        </div>
+        <div class="nos-como-text-block">
+          <span class="nos-como-step-num">02</span>
+          <div class="nos-como-step-title">Planificamos tu proyecto</div>
+          <p class="nos-como-step-desc">Metodologías validadas y diseño integral desde la primera consulta hasta la entrega final.</p>
+        </div>
+      </div>
+
+      <!-- CARD 3: texto → triángulo abajo → foto -->
+      <div class="nos-como-card reveal">
+        <div class="nos-como-text-block">
+          <span class="nos-como-step-num">03</span>
+          <div class="nos-como-step-title">Ejecución con recursos óptimos</div>
+          <p class="nos-como-step-desc">Equipo experto e infraestructura estratégica para eficiencia y cumplimiento de plazos.</p>
+        </div>
+        <div class="nos-como-tri-down">
+          <span class="nos-como-tri-icon">🏗️</span>
+        </div>
+        <div class="nos-como-foto" style="background-image:url('fotos/depa%203/dep3-3.jpeg')"></div>
+      </div>
+
+      <!-- CARD 4: foto → triángulo arriba → texto -->
+      <div class="nos-como-card reveal">
+        <div class="nos-como-foto" style="background-image:url('fotos/depa%201/dep1-4.jpeg')"></div>
+        <div class="nos-como-tri-up">
+          <span class="nos-como-tri-icon">🏆</span>
+        </div>
+        <div class="nos-como-text-block">
+          <span class="nos-como-step-num">04</span>
+          <div class="nos-como-step-title">Calidad garantizada</div>
+          <p class="nos-como-step-desc">Supervisión rigurosa para proyectos funcionales que superan las expectativas del cliente.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════ MAIN (social) continuación ══════ -->
+<section class="nos-page-main" style="padding-top:80px;padding-bottom:80px;">
+  <div class="nos-page-inner">
+    <!-- Social -->
+    <div class="nos-social-section reveal">
+      <h3 class="nos-social-title">Síguenos en <em>redes sociales</em></h3>
+      <p class="nos-social-sub">Mantente al día con nuestros proyectos, noticias y novedades del sector inmobiliario</p>
+      <div class="nos-social-btns">
+        <a href="https://www.instagram.com/oyagueymendozaoficial/?hl=es" target="_blank" class="nos-soc-btn instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+        <a href="https://web.facebook.com/profile.php?id=61572488620640&locale=es_LA" target="_blank" class="nos-soc-btn facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
+        </a>
+        <a href="https://www.tiktok.com/@oyagueymendoza" target="_blank" class="nos-soc-btn tiktok">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+          TikTok
+        </a>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ CTA ══════ -->
+<section class="nos-cta">
+  <div class="nos-cta-inner">
+    <h2 class="nos-cta-title">¿Listo para encontrar<br/><em>tu propiedad ideal?</em></h2>
+    <p class="nos-cta-sub">Nuestro equipo está disponible para asesorarte en cada paso del proceso.</p>
+    <div class="nos-cta-btns">
+      <a href="index.html#contacto" class="btn-primary large">Contáctanos</a>
+      <a href="https://wa.me/51941914867?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20Oyague%20y%20Mendoza" target="_blank" class="btn-ghost" style="border-color:rgba(255,255,255,.35)">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FOOTER ══════ -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="fotos/logos/4.png" alt="Oyague y Mendoza" class="footer-logo-img" />
+      <p class="footer-tagline">Tu propiedad, nuestra prioridad.</p>
+      <div class="footer-partnership">
+        <p class="partner-label">Empresa del grupo</p>
+        <a href="https://rino.pe" target="_blank" class="partner-container">
+          <img src="fotos/logos/rinu.png" alt="Rinosirunti" class="partner-logo-img" />
+          <div class="partner-info">
+            <p class="footer-tagline">Ingeniería de Vanguardia</p>
+          </div>
+        </a>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/oyagueymendozaoficial/?hl=es" target="_blank" class="footer-soc">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://web.facebook.com/profile.php?id=61572488620640&locale=es_LA" target="_blank" class="footer-soc">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Productos</h4><ul><li><a href="index.html#productos">Departamentos</a></li><li><a href="index.html#productos">Terrenos</a></li><li><a href="index.html#productos">Casas</a></li></ul></div>
+    <div class="footer-col"><h4>Empresa</h4><ul><li><a href="nosotros.html">Sobre Nosotros</a></li><li><a href="equipo.html">Nuestro equipo</a></li><li><a href="esg.html">ESG</a></li><li><a href="index.html#noticias">Noticias</a></li><li><a href="index.html#contacto">Contacto</a></li></ul></div>
+    <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Política de privacidad</a></li><li><a href="#">Términos y condiciones</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Oyague & Mendoza Inmobiliaria. Todos los derechos reservados.</p><p>Huancayo, Perú</p></div>
+</footer>
+
+<a href="https://wa.me/51941914867" class="whatsapp-float" target="_blank">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<script>
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+function closeMobile() { mobileMenu.classList.remove('open'); }
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// Cursor premium
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+if (cursor && cursorRing) {
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cursor.style.left=mx+'px'; cursor.style.top=my+'px'; });
+  (function animRing(){ rx+=(mx-rx)*.12; ry+=(my-ry)*.12; cursorRing.style.left=rx+'px'; cursorRing.style.top=ry+'px'; requestAnimationFrame(animRing); })();
+  document.querySelectorAll('a,button').forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
+  });
+}
+</script>
+</body>
+</html>

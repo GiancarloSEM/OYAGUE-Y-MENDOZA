@@ -24,8 +24,12 @@ document.querySelectorAll('a, button, .srv-work, .srv-tab-btn').forEach(el => {
 });
 
 /* ── NAV ── */
-const nav = document.getElementById('srvNav');
-window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+function closeMobile() { mobileMenu.classList.remove('open'); }
 
 function toggleMobile() {
   document.getElementById('srvMobileMenu').classList.toggle('open');

@@ -14,6 +14,7 @@
 <body>
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
+
 <!-- ══════════════════════ NAV ══════════════════════ -->
 <nav id="navbar">
   <div class="nav-logo">
@@ -21,6 +22,7 @@
   </div>
   <ul class="nav-links">
     <li><a href="#inicio">Inicio</a></li>
+
     <li class="has-dropdown">
       <a href="#productos" class="dropdown-trigger">
         Productos
@@ -30,16 +32,37 @@
         <li><a href="#productos" onclick="filterAndScroll('departamento')"><span class="dd-icon">🏢</span>Departamentos</a></li>
         <li><a href="#productos" onclick="filterAndScroll('terreno')"><span class="dd-icon">🏞</span>Terrenos</a></li>
         <li><a href="#productos" onclick="filterAndScroll('casa')"><span class="dd-icon">🏡</span>Casas</a></li>
+        <li><a href="servicios.html"><span class="dd-icon">🎨</span>Diseño</a></li>
       </ul>
     </li>
-    <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="servicios.html">Servicios</a></li>
-    <li><a href="#equipo">Equipo</a></li>
+
+    <li class="has-dropdown">
+      <a href="nosotros.html" class="dropdown-trigger">
+        Nosotros
+        <svg class="chevron" viewBox="0 0 10 6" width="10"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="nosotros.html"><span class="dd-icon">🏢</span>Quiénes somos</a></li>
+        <li><a href="equipo.html"><span class="dd-icon">👥</span>Nuestro equipo</a></li>
+      </ul>
+    </li>
+
+    <li class="has-dropdown">
+      <a href="esg.html" class="dropdown-trigger">
+        ESG
+        <svg class="chevron" viewBox="0 0 10 6" width="10"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="esg.html#ambiental"><span class="dd-icon">🌿</span>Ambiental</a></li>
+        <li><a href="esg.html#social"><span class="dd-icon">🤝</span>Social</a></li>
+        <li><a href="esg.html#gobernanza"><span class="dd-icon">⚖️</span>Gobernanza</a></li>
+      </ul>
+    </li>
+
     <li><a href="#noticias">Noticias</a></li>
-    <li><a href="#testimonios">Testimonios</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
-  <!-- Redes sociales en nav -->
+
   <div class="nav-social">
     <a href="https://www.instagram.com/oyagueymendozaoficial/?hl=es" target="_blank" class="nav-social-link" aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -55,6 +78,7 @@
   <button class="hamburger" id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
 </nav>
 
+<!-- ══════════════════════ MOBILE MENU ══════════════════════ -->
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="closeMobile()">✕</button>
   <ul>
@@ -65,13 +89,25 @@
         <li><a href="#productos" onclick="filterAndScroll('departamento');closeMobile()">🏢 Departamentos</a></li>
         <li><a href="#productos" onclick="filterAndScroll('terreno');closeMobile()">🏞 Terrenos</a></li>
         <li><a href="#productos" onclick="filterAndScroll('casa');closeMobile()">🏡 Casas</a></li>
+        <li><a href="servicios.html" onclick="closeMobile()">🎨 Diseño</a></li>
       </ul>
     </li>
-    <li><a href="#nosotros" onclick="closeMobile()">Nosotros</a></li>
-    <li><a href="servicios.html" onclick="closeMobile()">Servicios</a></li> <li><a href="#equipo" onclick="closeMobile()">Equipo</a></li>
-    <li><a href="#equipo" onclick="closeMobile()">Equipo</a></li>
+    <li class="mob-group">
+      <span class="mob-label">Nosotros</span>
+      <ul>
+        <li><a href="nosotros.html" onclick="closeMobile()">🏢 Quiénes somos</a></li>
+        <li><a href="equipo.html" onclick="closeMobile()">👥 Nuestro equipo</a></li>
+      </ul>
+    </li>
+    <li class="mob-group">
+      <span class="mob-label">ESG</span>
+      <ul>
+        <li><a href="esg.html#ambiental" onclick="closeMobile()">🌿 Ambiental</a></li>
+        <li><a href="esg.html#social" onclick="closeMobile()">🤝 Social</a></li>
+        <li><a href="esg.html#gobernanza" onclick="closeMobile()">⚖️ Gobernanza</a></li>
+      </ul>
+    </li>
     <li><a href="#noticias" onclick="closeMobile()">Noticias</a></li>
-    <li><a href="#testimonios" onclick="closeMobile()">Testimonios</a></li>
     <li><a href="#contacto" onclick="closeMobile()">Contacto</a></li>
     <li class="mob-social-row">
       <a href="https://www.instagram.com/oyagueymendozaoficial/?hl=es" target="_blank" class="mob-social-link">
@@ -102,13 +138,6 @@
       <a href="#contacto" class="btn-ghost">Hablar con un asesor</a>
     </div>
   </div>
-  <!-- <div class="hero-stats reveal">
-    <div class="stat"><span class="stat-num">120+</span><span class="stat-label">Propiedades vendidas</span></div>
-    <div class="stat-divider"></div>
-    <div class="stat"><span class="stat-num">15</span><span class="stat-label">Años de experiencia</span></div>
-    <div class="stat-divider"></div>
-    <div class="stat"><span class="stat-num">98%</span><span class="stat-label">Clientes satisfechos</span></div>
-  </div> -->
   <div class="hero-scroll"><span>Explorar</span><div class="scroll-line"></div></div>
 </section>
 
@@ -239,8 +268,6 @@
 <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
   <div class="modal-box" id="modalBox">
     <button class="modal-close" onclick="closeModal()">✕</button>
-
-    <!-- FOTO PRINCIPAL -->
     <div class="modal-carousel" id="modalCarousel">
       <div class="carousel-track" id="carouselTrack"></div>
       <button class="carousel-btn prev" id="carouselPrev" onclick="carouselMove(-1)">&#8592;</button>
@@ -251,10 +278,7 @@
       </div>
       <div class="modal-price-abs"><span id="modalPrice"></span></div>
     </div>
-
-    <!-- THUMBNAILS -->
     <div class="carousel-thumbs" id="carouselThumbs"></div>
-
     <div class="modal-body">
       <div class="modal-top"><div>
         <h2 id="modalTitle"></h2>
@@ -281,8 +305,6 @@
         <div class="modal-section-title">👓 Recorrido Virtual 360°</div>
         <div id="modalTourFrame"></div>
       </div>
-
-      <!-- MAPA -->
       <div class="modal-section" id="modalMapSection">
         <div class="modal-section-title">📍 Ubicación</div>
         <div class="modal-map-header">
@@ -294,24 +316,17 @@
         </div>
         <div id="modalMapFrame"></div>
       </div>
-
-      <!-- AVANCE DEL PROYECTO -->
       <div class="modal-section" id="modalAvanceSection" style="display:none;">
         <div class="modal-section-title">📈 Avance del proyecto</div>
-        <!-- Barra de progreso -->
         <div class="avance-bar-wrap">
           <div class="avance-bar-track">
             <div class="avance-bar-fill" id="avanceBarFill" style="width:0%"></div>
             <div class="avance-bar-dots" id="avanceBarDots"></div>
           </div>
         </div>
-        <!-- Etapas -->
         <div class="avance-etapas" id="avanceEtapas"></div>
-        <!-- Descripción -->
         <p class="avance-desc-text" id="avanceDesc"></p>
       </div>
-
-
       <div class="modal-actions">
         <a href="#contacto" class="btn-primary" onclick="closeModal()">Consultar esta propiedad</a>
         <a id="modalWA" href="#" target="_blank" class="btn-wa-modal">
@@ -322,59 +337,6 @@
     </div>
   </div>
 </div>
-
-<!-- ══════════════════════ SOBRE NOSOTROS ════════════ -->
-<section id="nosotros" class="section-nosotros">
-  <div class="container">
-    <div class="section-header">
-      <p class="section-eyebrow">Quiénes somos</p>
-      <h2 class="section-title">Sobre <em>nosotros</em></h2>
-      <p class="section-sub">Innovamos constantemente para exceder los estándares establecidos y acompañarte más allá de la venta</p>
-    </div>
-
-    <!-- Stats row centrada -->
-    <div class="nos-stats-bar">
-      <div class="nos-stat-item"><span class="nos-num">120+</span><span class="nos-label">Propiedades vendidas</span></div>
-      <div class="nos-stat-div"></div>
-      <div class="nos-stat-item"><span class="nos-num">15+</span><span class="nos-label">Años de experiencia</span></div>
-      <div class="nos-stat-div"></div>
-      <div class="nos-stat-item"><span class="nos-num">98%</span><span class="nos-label">Clientes satisfechos</span></div>
-    </div>
-
-    <!-- Misión y Visión en 2 columnas simétricas -->
-    <div class="mv-grid">
-      <div class="mv-col">
-        <div class="mv-col-icon">🎯</div>
-        <h3 class="mv-col-title">Misión</h3>
-        <p class="mv-col-text">Ofrecemos a nuestros clientes viviendas de la generación <strong>ECOEFICIENTE</strong> basadas en una entrega de calidad, seguimiento de posventa y servicios a precios adecuados, para satisfacer las necesidades del cliente con un respaldo tecnológico y de calidad, logrando al mismo tiempo una rentabilidad para nuestros accionistas.</p>
-      </div>
-      <div class="mv-col">
-        <div class="mv-col-icon">🌿</div>
-        <h3 class="mv-col-title">Visión</h3>
-        <p class="mv-col-text">Somos Oyague y Mendoza, una empresa enfocada al servicio y la plena satisfacción de nuestros clientes, por lo que innovamos constantemente para exceder los estándares establecidos. Nuestra visión es a largo plazo, ya que la relación con nuestros clientes <strong>no termina con la venta de una vivienda</strong>, justamente en ese momento es cuando comienza.</p>
-      </div>
-    </div>
-
-    <!-- Redes sociales -->
-    <div class="nosotros-social">
-      <span class="nos-social-label">Síguenos en redes</span>
-      <div class="nos-social-links">
-        <a href="https://www.instagram.com/oyagueymendozaoficial/?hl=es" target="_blank" class="nos-soc-btn instagram">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          Instagram
-        </a>
-        <a href="https://web.facebook.com/profile.php?id=61572488620640&locale=es_LA" target="_blank" class="nos-soc-btn facebook">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          Facebook
-        </a>
-        <a href="https://www.tiktok.com/@oyagueymendoza" target="_blank" class="nos-soc-btn tiktok">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
-          TikTok
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ══════════════════════ SERVICIOS ════════════════ -->
 <section class="section-servicios">
@@ -392,75 +354,6 @@
   </div>
 </section>
 
-<!-- ══════════════════════ EQUIPO ════════════════════ -->
-<section id="equipo" class="section-equipo">
-  <div class="container">
-    <div class="section-header">
-      <p class="section-eyebrow">Quiénes somos</p>
-      <h2 class="section-title">Nuestro equipo</h2>
-      <p class="section-sub">Profesionales comprometidos con encontrar la propiedad ideal para ti</p>
-    </div>
-    <div class="equipo-grid">
-      <div class="miembro-card">
-          <div class="miembro-foto-v2" style="background-image: url('fotos/depa0/depa0-1.jpeg')">
-            <div class="miembro-overlay"></div>
-          </div>
-          <div class="miembro-info">
-            <h3>Arq. Luzmarina Ninahuanca</h3>
-            <p class="miembro-rol">Arquitecta Y Urbanista</p>
-            <p class="miembro-desc">Más de 15 años en el sector inmobiliario de Huancayo. Especialista en diseño arquitectónico y valoración de propiedades.</p>
-            <div class="miembro-social">
-              <a href="tel:+51941914867" class="social-link">📞</a>
-              <a href="mailto:info@oyaguemendoza.com" class="social-link">✉️</a>
-            </div>
-          </div>
-      </div>
-      <div class="miembro-card">
-          <div class="miembro-foto-v2" style="background-image: url('fotos/depa0/depa0-2.jpeg')">
-            <div class="miembro-overlay"></div>
-          </div>
-          <div class="miembro-info">
-            <h3>CO. Máximo Ninahuanca</h3>
-            <p class="miembro-rol">CO - Founder</p>
-            <p class="miembro-desc">Experto en negociación y cierre de operaciones inmobiliarias. Conocimiento profundo del mercado junín.</p>
-            <div class="miembro-social">
-              <a href="tel:+51941914867" class="social-link">📞</a>
-              <a href="mailto:info@oyaguemendoza.com" class="social-link">✉️</a>
-            </div>
-          </div>
-      </div>
-      <div class="miembro-card">
-          <div class="miembro-foto-v2" style="background-image: url('fotos/depa0/depa0-3.jpeg')">
-            <div class="miembro-overlay"></div>
-          </div>
-          <div class="miembro-info">
-            <h3>Eco. Gabriel Ninahuanca</h3>
-            <p class="miembro-rol">Ecologista Inventor</p>
-            <p class="miembro-desc">Especializado en soluciones sostenibles y búsqueda personalizada de propiedades según el perfil de cada familia.</p>
-            <div class="miembro-social">
-              <a href="tel:+51941914867" class="social-link">📞</a>
-              <a href="mailto:info@oyaguemendoza.com" class="social-link">✉️</a>
-            </div>
-          </div>
-      </div>
-      <div class="miembro-card">
-          <div class="miembro-foto-v2" style="background-image: url('fotos/depa0/depa0-4.jpeg')">
-            <div class="miembro-overlay"></div>
-          </div>
-          <div class="miembro-info">
-            <h3>Ing. Gabriel Gomez de Sousa</h3>
-            <p class="miembro-rol">Mecatrónico</p>
-            <p class="miembro-desc">Enfocado en innovación y automatización, aportando eficiencia y tecnología a los proyectos inmobiliarios.</p>
-            <div class="miembro-social">
-              <a href="tel:+51941914867" class="social-link">📞</a>
-              <a href="mailto:info@oyaguemendoza.com" class="social-link">✉️</a>
-            </div>
-          </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ══════════════════════ NOTICIAS ══════════════════ -->
 <section id="noticias" class="section-noticias">
   <div class="container">
@@ -469,13 +362,11 @@
       <h2 class="section-title">Noticias y novedades</h2>
       <p class="section-sub">Las últimas noticias del sector inmobiliario y las novedades de Oyague y Mendoza</p>
     </div>
-
-      <div class="noticias-grid" id="noticiasGrid">
-        <div style="grid-column:1/-1;text-align:center;padding:48px;color:var(--gray)">
-          Cargando noticias...
-        </div>
+    <div class="noticias-grid" id="noticiasGrid">
+      <div style="grid-column:1/-1;text-align:center;padding:48px;color:var(--gray)">
+        Cargando noticias...
       </div>
-
+    </div>
     <div class="noticias-more">
       <a href="https://www.instagram.com/oyagueymendozaoficial/?hl=es" target="_blank" class="btn-editorial"><span></span>Ver todas en Instagram</a>
     </div>
@@ -535,39 +426,39 @@
       </a>
     </div>
     <div class="contacto-form-wrap">
-              <form class="contacto-form" id="contactoForm" onsubmit="submitForm(event)">
-          <h3>Envíanos un mensaje</h3>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Nombre completo *</label>
-              <input type="text" name="user_name" placeholder="Tu nombre" required />
-            </div>
-            <div class="form-group">
-              <label>Teléfono</label>
-              <input type="tel" name="user_phone" placeholder="+51 941 914 867" />
-            </div>
+      <form class="contacto-form" id="contactoForm" onsubmit="submitForm(event)">
+        <h3>Envíanos un mensaje</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre completo *</label>
+            <input type="text" name="user_name" placeholder="Tu nombre" required />
           </div>
           <div class="form-group">
-            <label>Correo electrónico *</label>
-            <input type="email" name="user_email" placeholder="tu@correo.com" required />
+            <label>Teléfono</label>
+            <input type="tel" name="user_phone" placeholder="+51 941 914 867" />
           </div>
-          <div class="form-group">
-            <label>¿Qué te interesa?</label>
-            <select name="user_subject">
-              <option value="">Seleccionar...</option>
-              <option>Departamento</option>
-              <option>Terreno</option>
-              <option>Casa</option>
-              <option>Asesoría de inversión</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Mensaje</label>
-            <textarea name="user_message" rows="4" placeholder="Cuéntanos qué producto estás buscando..."></textarea>
-          </div>
-          <button type="submit" class="btn-primary full" id="btnEnviar">Enviar mensaje</button>
-          <div class="form-success" id="formSuccess">✅ ¡Mensaje enviado! Te contactaremos pronto.</div>
-        </form>
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico *</label>
+          <input type="email" name="user_email" placeholder="tu@correo.com" required />
+        </div>
+        <div class="form-group">
+          <label>¿Qué te interesa?</label>
+          <select name="user_subject">
+            <option value="">Seleccionar...</option>
+            <option>Departamento</option>
+            <option>Terreno</option>
+            <option>Casa</option>
+            <option>Asesoría de inversión</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mensaje</label>
+          <textarea name="user_message" rows="4" placeholder="Cuéntanos qué producto estás buscando..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary full" id="btnEnviar">Enviar mensaje</button>
+        <div class="form-success" id="formSuccess">✅ ¡Mensaje enviado! Te contactaremos pronto.</div>
+      </form>
     </div>
   </div>
 </section>
@@ -576,20 +467,18 @@
 <footer class="footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-        <img src="fotos/logos/4.png" alt="Oyague y Mendoza" class="footer-logo-img" />
-        <p class="footer-tagline">Tu propiedad, nuestra prioridad.</p>
-
-        <div class="footer-partnership">
-          <p class="partner-label">Empresa del grupo</p>
-          <a href="https://rino.pe" target="_blank" class="partner-container">
-            <img src="fotos/logos/rinu.png" alt="Rinosirunti" class="partner-logo-img" />
-            <div class="partner-info">
-              <a> </a>
-              <p class="footer-tagline">Ingeniería de Vanguardia</p>
-            </div>
-          </a>
-        </div>
-      <!-- Redes en footer -->
+      <img src="fotos/logos/4.png" alt="Oyague y Mendoza" class="footer-logo-img" />
+      <p class="footer-tagline">Tu propiedad, nuestra prioridad.</p>
+      <div class="footer-partnership">
+        <p class="partner-label">Empresa del grupo</p>
+        <a href="https://rino.pe" target="_blank" class="partner-container">
+          <img src="fotos/logos/rinu.png" alt="Rinosirunti" class="partner-logo-img" />
+          <div class="partner-info">
+            <a> </a>
+            <p class="footer-tagline">Ingeniería de Vanguardia</p>
+          </div>
+        </a>
+      </div>
       <div class="footer-social">
         <a href="https://www.instagram.com/oyagueymendozaoficial/?hl=es" target="_blank" class="footer-soc" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -602,11 +491,28 @@
         </a>
       </div>
     </div>
-    <div class="footer-col"><h4>Productos</h4><ul><li><a href="#productos" onclick="filterAndScroll('departamento')">Departamentos</a></li><li><a href="#productos" onclick="filterAndScroll('terreno')">Terrenos</a></li><li><a href="#productos" onclick="filterAndScroll('casa')">Casas</a></li></ul></div>
-    <div class="footer-col"><h4>Empresa</h4><ul><li><a href="#nosotros">Sobre Nosotros</a></li><li><a href="#equipo">Nuestro equipo</a></li><li><a href="#noticias">Noticias</a></li><li><a href="#testimonios">Testimonios</a></li><li><a href="#contacto">Contacto</a></li></ul></div>
-    <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Política de privacidad</a></li><li><a href="#">Términos y condiciones</a></li></ul></div>
+    <div class="footer-col"><h4>Productos</h4><ul>
+      <li><a href="#productos" onclick="filterAndScroll('departamento')">Departamentos</a></li>
+      <li><a href="#productos" onclick="filterAndScroll('terreno')">Terrenos</a></li>
+      <li><a href="#productos" onclick="filterAndScroll('casa')">Casas</a></li>
+      <li><a href="servicios.html">Diseño</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Empresa</h4><ul>
+      <li><a href="nosotros.html">Sobre Nosotros</a></li>
+      <li><a href="equipo.html">Nuestro equipo</a></li>
+      <li><a href="esg.html">ESG</a></li>
+      <li><a href="#noticias">Noticias</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Legal</h4><ul>
+      <li><a href="#">Política de privacidad</a></li>
+      <li><a href="#">Términos y condiciones</a></li>
+    </ul></div>
   </div>
-  <div class="footer-bottom"><p>© 2026 Oyague & Mendoza Inmobiliaria. Todos los derechos reservados.</p><p>Huancayo, Perú</p></div>
+  <div class="footer-bottom">
+    <p>© 2026 Oyague & Mendoza Inmobiliaria. Todos los derechos reservados.</p>
+    <p>Huancayo, Perú</p>
+  </div>
 </footer>
 
 <!-- MODAL NOTICIAS -->
@@ -639,15 +545,10 @@
 </a>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
 <script type="text/javascript">
-   (function(){
-      // Reemplaza esto con tu Public Key real que está en la sección "Account" de EmailJS
-      emailjs.init("pDJsAQ--QHRTuqXvp"); 
-   })();
+  (function(){ emailjs.init("pDJsAQ--QHRTuqXvp"); })();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script src="js/scripts.js"></script>
 <script src="js/index-premium.js"></script>
 </body>
