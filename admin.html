@@ -38,6 +38,7 @@
       <div class="sidebar-section">Contenido</div>
       <button class="sidebar-link" onclick="showPanel('noticias',this)"><span class="sl-icon">📰</span> Noticias</button>
       <button class="sidebar-link" onclick="showPanel('equipo',this)"><span class="sl-icon">👥</span> Equipo</button>
+      <button class="sidebar-link" onclick="showPanel('colaboradores',this)"><span class="sl-icon">🤝</span> Colaboradores</button>
       <button class="sidebar-link" onclick="window.open('index.html','_blank')"><span class="sl-icon">🌐</span> Ver sitio</button>
       <button class="sidebar-link" onclick="window.open('servicios.html','_blank')"><span class="sl-icon">🔗</span> Ver servicios</button>
     </nav>
@@ -166,6 +167,29 @@
         </table>
       </div>
     </div>
+
+    <div class="admin-panel" id="panel-colaboradores">
+  <div class="admin-topbar">
+    <h1>Colaboradores</h1>
+    <button class="btn-add" onclick="openColabForm()">+ Agregar colaborador</button>
+  </div>
+  <p style="font-size:.88rem;color:var(--gray);margin-bottom:24px;">
+    Practicantes, trabajadores y colaboradores que aparecen en la página de Equipo.
+  </p>
+  <div class="table-wrap">
+    <div class="table-header"><h3>Lista de colaboradores</h3></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Foto</th><th>Nombre</th><th>Rol</th><th>Orden</th><th>Estado</th><th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="colaboradoresTable">
+        <tr><td colspan="6" style="text-align:center;color:var(--gray);padding:32px">Cargando...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
   </main>
 </div>
@@ -439,8 +463,69 @@
   </div>
 </div>
 
+<div class="modal-bg" id="colaboradorModal">
+  <div class="modal-form">
+    <div class="modal-form-header">
+      <h3 id="colabFormTitle">Agregar colaborador</h3>
+      <button class="modal-form-close" onclick="closeColabForm()">✕</button>
+    </div>
+    <div class="modal-form-body">
+      <div class="form-section">
+        <div class="form-section-title">👤 Información del colaborador</div>
+        <div class="form-grid">
+          <div class="form-group full">
+            <label>Nombre completo *</label>
+            <input type="text" id="cNombre" placeholder="Ej: Juan Pérez García" />
+          </div>
+          <div class="form-group full">
+            <label>Rol / Cargo *</label>
+            <input type="text" id="cRol" placeholder="Ej: Practicante de Arquitectura" />
+          </div>
+          <div class="form-group">
+            <label>Orden de aparición</label>
+            <input type="number" id="cOrden" placeholder="1" min="1" value="1" />
+            <span class="field-hint">Número más bajo aparece primero.</span>
+          </div>
+          <div class="form-group" style="display:flex;align-items:center;gap:12px;padding-top:24px;">
+            <input type="checkbox" id="cActivo" checked style="width:18px;height:18px;accent-color:var(--green);" />
+            <label for="cActivo" style="font-size:.85rem;font-weight:600;color:var(--dark);text-transform:none;letter-spacing:0;">
+              Mostrar en la página web
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title">📸 Foto PNG sin fondo</div>
+        <p class="field-hint" style="margin-bottom:14px;">
+          ⚠️ Debe ser PNG con fondo transparente para que el efecto del rayo verde funcione.
+        </p>
+        <div class="upload-area">
+          <input type="file" id="colaboradorFileInput" accept="image/png,image/webp" onchange="handleColabFile(this.files)" />
+          <div class="upload-icon">📁</div>
+          <div class="upload-text">
+            <strong>Haz clic</strong> para subir la foto
+            <small>PNG sin fondo · Formato retrato recomendado</small>
+          </div>
+        </div>
+        <div class="upload-progress" id="colaboradorUploadProgress">
+          <div class="upload-bar"><div class="upload-bar-fill" id="colaboradorUploadBarFill"></div></div>
+          <div class="upload-status" id="colaboradorUploadStatus">Subiendo...</div>
+        </div>
+        <div class="img-preview-single" id="colaboradorImgPreview"></div>
+        <input type="hidden" id="cImgUrl" />
+      </div>
+    </div>
+    <div class="modal-form-footer">
+      <button class="btn-cancel" onclick="closeColabForm()">Cancelar</button>
+      <button class="btn-save" id="btnColabSave" onclick="saveColab()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+
 <div class="toast" id="toast"></div>
 
 <script src="js/admin-logic.js"></script>
+<script src="js/admin-colab-logic.js"></script>
 </body>
 </html>

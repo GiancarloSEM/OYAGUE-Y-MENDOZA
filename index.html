@@ -9,7 +9,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/index-premium.css" />
+  <link rel="stylesheet" href="css/index-verde.css" />
   <script src="js/index-premium.js"></script>
+  <style>
+  #galleryGrid { opacity: 0; transition: opacity .3s ease; }
+</style>
 </head>
 <body>
 <div class="cursor" id="cursor"></div>
@@ -551,5 +555,14 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/scripts.js"></script>
 <script src="js/index-premium.js"></script>
+<script src="js/supabase-propiedades.js"></script>
+<script>
+// Fallback: si supabase-propiedades.js no cargó o tardó demasiado,
+// mostrar las cards hardcodeadas después de 3 segundos
+setTimeout(() => {
+  const g = document.getElementById('galleryGrid');
+  if (g && g.style.opacity === '0') g.style.opacity = '1';
+}, 3000);
+</script>
 </body>
 </html>

@@ -33,6 +33,7 @@ function enterAdmin(email) {
   loadAllServicios();
   loadNoticias();
   loadEquipo();
+  loadColaboradores();
 }
 
 // ── NAV ──────────────────────────────────────────
@@ -347,6 +348,8 @@ async function saveProduct() {
   closeForm();
   showToast(editingId?'✅ Propiedad actualizada':'✅ Propiedad creada','success');
   loadProducts();
+  localStorage.removeItem('oyague_productos');
+localStorage.removeItem('oyague_productos_time');
 }
 async function deleteProduct(id) {
   if (!confirm('¿Eliminar esta propiedad?')) return;
