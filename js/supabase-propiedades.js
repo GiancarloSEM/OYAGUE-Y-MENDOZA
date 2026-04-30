@@ -105,9 +105,15 @@
   }
 
   // ── ABRIR MODAL CON DATOS DE SUPABASE ───────────
-  window.openModalDynamic = function(id) {
+ window.openModalDynamic = function(id) {
     const sbProd = window.supabaseProducts || [];
     const p = sbProd.find(x => String(x.id) === String(id));
+
+    // ── BOSQUE VERTICAL: redirigir a página dedicada ──
+    if (p && p.titulo && p.titulo.toLowerCase().includes('bosque vertical')) {
+      window.location.href = 'bosque-vertical.html';
+      return;
+    }
 
     // Si no está en Supabase, intentar modal hardcodeado
     if (!p) {
@@ -222,6 +228,27 @@
         </a>
       </div>`);
 
+    // Bosque Vertical — beneficios si es departamento
+    const anteriorBV = document.querySelector('.modal-bv-section');
+    if (anteriorBV) anteriorBV.remove();
+    if (p.tipo === 'departamento') {
+      addSec.insertAdjacentHTML('afterend', `
+        <div class="modal-section modal-bv-section">
+          <div class="modal-section-title">🌿 Proyecto Bosque Vertical 1</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px;">
+            <div style="background:var(--green-bg);padding:12px;text-align:center;font-size:.82rem;color:var(--dark);font-weight:600;">🏊 Piscina</div>
+            <div style="background:var(--green-bg);padding:12px;text-align:center;font-size:.82rem;color:var(--dark);font-weight:600;">🏋️ Gimnasio</div>
+            <div style="background:var(--green-bg);padding:12px;text-align:center;font-size:.82rem;color:var(--dark);font-weight:600;">🧖 Spa</div>
+            <div style="background:var(--green-bg);padding:12px;text-align:center;font-size:.82rem;color:var(--dark);font-weight:600;">☕ Café Bar</div>
+            <div style="background:var(--green-bg);padding:12px;text-align:center;font-size:.82rem;color:var(--dark);font-weight:600;">🌿 Bio Huerto</div>
+            <div style="background:var(--green-bg);padding:12px;text-align:center;font-size:.82rem;color:var(--dark);font-weight:600;">🔥 Parrillas</div>
+          </div>
+          <a href="bosque-vertical.html" class="btn-primary" style="background:transparent;border:1px solid var(--green);color:var(--green);width:100%;text-align:center;display:block;padding:13px 32px;text-decoration:none;">
+            Ver proyecto completo →
+          </a>
+        </div>`);
+    }
+
     // WhatsApp
     document.getElementById('modalWA').href =
       `https://wa.me/51941914867?text=${encodeURIComponent(`Hola, me interesa: ${p.titulo} (${p.precio || ''}). ¿Más información?`)}`;
@@ -260,6 +287,7 @@ async function loadPropsFromSupabase() {
         bindCursorToCards();
       }
       window.listData = data.map((p, i) => buildListItem(p));
+      listData = window.listData;
       // Actualizar en segundo plano sin bloquear
       fetchAndCache(true);
       return;
@@ -291,6 +319,7 @@ async function fetchAndCache(silent) {
 
     window.supabaseProducts = data;
     window.listData = data.map((p, i) => buildListItem(p));
+    listData = window.listData;
 
     if (grid) {
       grid.innerHTML = data.map((p, i) => buildCard(p, i + 1)).join('');

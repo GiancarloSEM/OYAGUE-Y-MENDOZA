@@ -1,0 +1,456 @@
+/* ═══════════════════════════════════════════════════
+   OYAGUE & MENDOZA — paginas-verde-blanco.css
+   Aplica la paleta verde/blanco a nosotros.html,
+   equipo.html y esg.html encima de index-premium.css
+═══════════════════════════════════════════════════ */
+
+/* ── BODY ── */
+body { background: #050505 !important; }
+
+/* ── CURSOR ── */
+.cursor { background: #6a8f1a !important; }
+.cursor-ring { border-color: rgba(106,143,26,.5) !important; }
+body.cursor-hover .cursor { background: #95BB30 !important; }
+body.cursor-hover .cursor-ring { border-color: #95BB30 !important; }
+
+/* ── NAV ── */
+
+/* ── FIX TAMAÑO DE LETRA DEL NAV ──
+   index-premium.css modifica el tamaño/peso de los links
+   Este fix lo restaura al mismo tamaño que esg.html */
+#navbar .nav-links a {
+  font-size: .85rem !important;
+  font-weight: 600 !important;
+  letter-spacing: .05em !important;
+}
+#navbar .nav-cta {
+  font-size: .83rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .05em !important;
+  padding: 9px 22px !important;
+}
+
+/* Gradiente oscuro en la parte superior del hero para que el nav sea legible */
+.nos-hero::before,
+.eq-hero::before,
+.esg-hero::before,
+.srv-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 180px;
+  background: linear-gradient(to bottom, rgba(0,0,0,.55) 0%, transparent 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Nav sin scroll — links blancos sobre el gradiente oscuro del hero */
+#navbar:not(.scrolled) .nav-links a { color: rgba(255,255,255,.9) !important; }
+#navbar:not(.scrolled) .nav-links a:hover { color: #CEE632 !important; }
+#navbar:not(.scrolled) .nav-social-link { color: rgba(255,255,255,.7) !important; }
+#navbar:not(.scrolled) .nav-social-link:hover { color: #CEE632 !important; }
+#navbar:not(.scrolled) .hamburger span { background: #fff !important; }
+#navbar:not(.scrolled) .nav-cta { background: #95BB30 !important; color: #fff !important; }
+
+/* Nav scrolled — verde sobre blanco */
+#navbar.scrolled {
+  background: rgba(8,8,8,.96) !important;
+  backdrop-filter: blur(20px) !important;
+  border-bottom: 2px solid #95BB30 !important;
+}
+#navbar.scrolled .nav-links a { color: rgba(245,242,236,.85) !important; }
+#navbar.scrolled .nav-links a:hover { color: #CEE632 !important; }
+#navbar.scrolled .nav-social-link { color: rgba(245,242,236,.6) !important; }
+#navbar.scrolled .nav-social-link:hover { color: #95BB30 !important; }
+#navbar.scrolled .hamburger span { background: rgba(245,242,236,.9) !important; }
+#navbar.scrolled .nav-cta { background: #95BB30 !important; color: #fff !important; }
+#navbar.scrolled .nav-cta:hover { background: #6a8f1a !important; }
+
+
+.section-cta,
+.nos-cta,
+.esg-cta {
+  background: #111 !important;
+  border-top: 2px solid #95BB30 !important;
+  border-bottom: 2px solid #95BB30 !important;
+  box-shadow: 0 2px 20px rgba(149,187,48,.1) !important;
+}
+
+/* ── DROPDOWN — siempre blanco con letras verdes ──
+   Funciona tanto sin scroll como con scroll */
+.dropdown-menu {
+  background: #111 !important;
+  border: 1px solid rgba(149,187,48,.35) !important;
+  border-top: 2px solid #95BB30 !important;
+  box-shadow: 0 12px 40px rgba(149,187,48,.15) !important;
+}
+.dropdown-menu li a {
+  color: rgba(245,242,236,.8) !important;
+  font-size: .85rem !important;
+  font-weight: 600 !important;
+}
+.dropdown-menu li a:hover {
+  background: rgba(149,187,48,.1) !important;
+  color: #6a8f1a !important;
+}
+.dd-icon { color: #95BB30 !important; }
+
+/* ── MOBILE MENU ── */
+.mobile-menu { background: #0a0a0a !important; }
+.mobile-menu > ul > li > a { color: #fff !important; font-family: var(--font-sans) !important; font-size: 1.4rem !important; font-weight: 700 !important; }
+.mobile-menu > ul > li > a:hover { color: #CEE632 !important; }
+.mob-label { color: rgba(206,230,50,.5) !important; }
+.mob-group ul li a { color: rgba(255,255,255,.7) !important; }
+.mob-group ul li a:hover { color: #CEE632 !important; }
+
+/* ── FOOTER ── */
+.footer { background: #000000 !important; }
+.footer-col h4 { color: #CEE632 !important; }
+.footer-col a { color: rgb(255, 255, 255) !important; }
+.footer-col a:hover { color: #CEE632 !important; }
+.footer-bottom { border-top-color: rgba(206,230,50,.15) !important; }
+.footer-bottom p { color: rgba(255,255,255,.35) !important; }
+.footer-tagline { color: #CEE632 !important; }
+.partner-label { color: rgba(255,255,255,.4) !important; }
+.footer-partnership { border-top-color: rgba(206,230,50,.15) !important; }
+.footer-soc { background: rgba(206,230,50,.1) !important; border-color: rgba(206,230,50,.2) !important; color: rgba(255,255,255,.5) !important; }
+.footer-soc:hover { background: #CEE632 !important; color: #2a4a0f !important; border-color: #CEE632 !important; }
+
+/* ── WHATSAPP FLOAT ── */
+.whatsapp-float { box-shadow: 0 4px 20px rgba(37,211,102,.4) !important; }
+
+/* ══════════════════════════════════════════════════
+   NOSOTROS.HTML
+══════════════════════════════════════════════════ */
+
+body { background: #050505 !important; }
+
+/* Sección principal — fondo blanco */
+.nos-page-main {
+  background: #050505 !important;
+}
+.nos-page-main::before {
+  background: linear-gradient(to right, transparent, #95BB30, transparent) !important;
+}
+
+/* Stats — fondo verde muy suave */
+.nos-page-stats {
+  background: #111 !important;
+  border-radius: 16px !important;
+  padding: 32px !important;
+  border: 1px solid rgba(149,187,48,.1) !important;
+}
+.nos-page-stat {
+  background: transparent !important;
+  border-color: rgba(149,187,48,.25) !important;
+}
+.nos-page-stat:hover {
+  background: rgba(149,187,48,.05) !important;
+  border-color: #95BB30 !important;
+}
+.nos-page-stat-num { color: #95BB30 !important; }
+.nos-page-stat-label { color: rgba(245,242,236,.4) !important; }
+
+/* Misión/Visión — blanco con sombra sutil */
+.nos-mv-item {
+  background: #111 !important;
+  border-color: rgba(149,187,48,.1) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,.3) !important;
+}
+.nos-mv-item::before { background: #95BB30 !important; }
+.nos-mv-item:hover {
+  background: #181818 !important;
+  border-color: #95BB30 !important;
+}
+.nos-mv-num { color: rgba(149,187,48,.15) !important; }
+.nos-mv-title { color: #f5f2ec !important; }
+.nos-mv-title em { color: #95BB30 !important; }
+.nos-mv-text { color: rgba(245,242,236,.5) !important; }
+.nos-mv-text strong { color: #6a8f1a !important; }
+
+/* Imagen quote */
+.nos-img-quote-text { color: #fff !important; }
+.nos-img-quote-text em { color: #CEE632 !important; }
+
+/* Bloque valores — mismo verde clarito que sección noticias */
+.nos-valores-bloque {
+  background: #0a0a0a !important;
+  margin: 60px calc(-50vw + 50%) 0 !important;
+  padding: 60px calc(50vw - 50%) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+.nos-valores-bloque::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: radial-gradient(ellipse at 80% 50%, rgba(149,187,48,.08) 0%, transparent 60%) !important;
+  pointer-events: none !important;
+}
+.nos-valores-eyebrow { color: #6a8f1a !important; }
+.nos-valores-title { color: #f5f2ec !important; }
+.nos-valores-title em { color: #95BB30 !important; }
+.nos-valor-item {
+  background: #111 !important;
+  border-color: rgba(149,187,48,.1) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,.2) !important;
+}
+.nos-valor-item:hover {
+  background: rgba(149,187,48,0.1) !important;
+  border-color: #95BB30 !important;
+}
+.nos-valor-name { color: #f5f2ec !important; }
+.nos-valor-desc { color: rgba(245,242,236,.4) !important; }
+
+/* Social section — verde clarito */
+.nos-social-section {
+  background: #111 !important;
+  border-color: rgba(149,187,48,.1) !important;
+  border-radius: 16px !important;
+}
+.nos-social-title { color: #f5f2ec !important; }
+.nos-social-sub { color: rgba(245,242,236,.4) !important; }
+
+/* Como trabajamos — mismo verde clarito que sección noticias */
+.nos-como-section {
+  background: #050505 !important;
+  position: relative !important;
+}
+.nos-como-section::before {
+  background: linear-gradient(to right, transparent, rgba(149,187,48,.3), transparent) !important;
+}
+.nos-como-eyebrow { color: #6a8f1a !important; }
+.nos-como-title { color: #f5f2ec !important; }
+.nos-como-title em { color: #95BB30 !important; }
+.nos-como-card {
+  background: #111 !important;
+  border-color: rgba(149,187,48,.1) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,.3) !important;
+}
+.nos-como-card:hover {
+  background: rgba(149,187,48,0.08) !important;
+  border-color: #95BB30 !important;
+}
+.nos-como-step-num { color: #95BB30 !important; }
+.nos-como-step-title { color: #f5f2ec !important; }
+.nos-como-step-desc { color: rgba(245,242,236,.5) !important; }
+.nos-como-tri-down { background: #95BB30 !important; }
+.nos-como-tri-up { background: #95BB30 !important; }
+.nos-como-card:hover .nos-como-tri-down,
+.nos-como-card:hover .nos-como-tri-up { background: #CEE632 !important; }
+.nos-como-foto { filter: brightness(.88) !important; }
+
+/* Segunda nos-page-main (redes sociales) — verde claro */
+.nos-page-main:last-of-type {
+  background: #0a0a0a !important;
+}
+
+/* CTA nosotros */
+.nos-cta {
+  background: linear-gradient(135deg, #4a7a1a 0%, #95BB30 40%, #CEE632 70%, #6a8f1a 100%) !important;
+}
+.nos-cta-title { color: #fff !important; }
+.nos-cta-title em { color: #1a3a0a !important; }
+.nos-cta-sub { color: rgba(255,255,255,.85) !important; }
+
+/* Section titles globales en nosotros */
+.section-eyebrow { color: #6a8f1a !important; }
+.section-title { color: #f5f2ec !important; }
+.section-title em { color: #95BB30 !important; }
+.section-sub { color: rgba(245,242,236,.4) !important; }
+
+/* ══════════════════════════════════════════════════
+   EQUIPO.HTML
+══════════════════════════════════════════════════ */
+
+/* Sección principal equipo — degradado verde suave */
+.eq-main {
+  background: #050505 !important;
+}
+.eq-main::before {
+  background: linear-gradient(to right, transparent, #95BB30, transparent) !important;
+}
+.eq-eyebrow { color: #6a8f1a !important; }
+.eq-title { color: #f5f2ec !important; }
+.eq-title em { color: #95BB30 !important; }
+.eq-sub { color: rgba(245,242,236,.5) !important; }
+
+/* Cards equipo — blanco con sombra verde */
+.eq-card {
+  background: #111 !important;
+  border-color: rgba(149,187,48,.1) !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,.4) !important;
+}
+.eq-card:hover {
+  border-color: #95BB30 !important;
+  box-shadow: 0 12px 40px rgba(149,187,48,.2) !important;
+}
+.eq-card-foto::after {
+  background: linear-gradient(to top, rgba(42,74,15,.8), transparent 50%) !important;
+}
+.eq-card-num { color: rgba(149,187,48,.4) !important; }
+.eq-card:hover .eq-card-num { color: #95BB30 !important; }
+.eq-card-nombre { color: #f5f2ec !important; }
+.eq-card-rol { color: #95BB30 !important; }
+.eq-card-desc { color: rgba(245,242,236,.4) !important; }
+.eq-card-btn {
+  background: rgba(149,187,48,.1) !important;
+  border-color: rgba(149,187,48,.2) !important;
+  color: #6a8f1a !important;
+}
+.eq-card-btn:hover {
+  background: #95BB30 !important;
+  border-color: #95BB30 !important;
+  color: #fff !important;
+}
+
+/* Separator */
+.eq-sep-line { background: linear-gradient(to right, transparent, #95BB30, transparent) !important; }
+.eq-sep-text { color: #6a8f1a !important; }
+
+/* Join section — bloque verde oscuro para romper el blanco */
+.eq-join {
+  background: linear-gradient(135deg, #2a4a0f 0%, #3a6a15 100%) !important;
+  border-color: rgba(206,230,50,.2) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+.eq-join::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -60px; right: -60px !important;
+  width: 300px; height: 300px !important;
+  background: radial-gradient(circle, rgba(206,230,50,.1) 0%, transparent 70%) !important;
+  pointer-events: none !important;
+}
+.eq-join-eyebrow { color: #CEE632 !important; }
+.eq-join-title { color: #fff !important; }
+.eq-join-title em { color: #CEE632 !important; }
+.eq-join-sub { color: rgba(255,255,255,.7) !important; }
+.eq-btn-primary { background: #95BB30 !important; color: #fff !important; }
+.eq-btn-primary:hover { background: #CEE632 !important; color: #1a3a0a !important; }
+
+/* CTA equipo */
+.eq-cta {
+  background: linear-gradient(135deg, #4a7a1a 0%, #95BB30 40%, #CEE632 70%, #6a8f1a 100%) !important;
+}
+.eq-cta-title { color: #fff !important; }
+.eq-cta-title em { color: #1a3a0a !important; }
+.eq-cta-sub { color: rgba(255,255,255,.85) !important; }
+
+/* Sección colaboradores — fondo verde muy clarito */
+.eq-adicional-section {
+  background: #0a0a0a !important;
+}
+.eq-adicional-section::before {
+  background: linear-gradient(to right, transparent, #95BB30, #CEE632, #95BB30, transparent) !important;
+}
+.eq-adicional-eyebrow { color: #6a8f1a !important; }
+.eq-adicional-title { color: #f5f2ec !important; }
+.eq-adicional-title em { color: #95BB30 !important; }
+.eq-adicional-sub { color: rgba(245,242,236,.5) !important; }
+.eq-adic-card {
+  background: #111 !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,.3) !important;
+}
+.eq-adic-info { background: #181818 !important; }
+.eq-adic-nombre { color: #f5f2ec !important; }
+.eq-adic-rol { color: #95BB30 !important; }
+
+/* ══════════════════════════════════════════════════
+   ESG.HTML
+══════════════════════════════════════════════════ */
+
+/* Nav sticky ESG */
+.esg-nav-sticky {
+  background: rgba(42,74,15,.97) !important;
+  border-bottom-color: rgba(149,187,48,.2) !important;
+}
+
+/* Secciones ESG → tonos verdes claros */
+.esg-section.ambiental {
+  background: #050505 !important;
+}
+.esg-section.ambiental::before {
+  background: linear-gradient(to right, transparent, rgba(72,187,120,.4), transparent) !important;
+}
+.esg-section.social {
+  background: #0a0a0a !important;
+}
+.esg-section.social::before {
+  background: linear-gradient(to right, transparent, rgba(99,179,237,.4), transparent) !important;
+}
+.esg-section.gobernanza {
+  background: #050505 !important;
+}
+.esg-section.gobernanza::before {
+  background: linear-gradient(to right, transparent, rgba(214,158,46,.4), transparent) !important;
+}
+
+/* Títulos ESG */
+.esg-sec-title { color: #f5f2ec !important; }
+.ambiental .esg-sec-title em { color: #38a169 !important; }
+.social .esg-sec-title em { color: #3182ce !important; }
+.gobernanza .esg-sec-title em { color: #c09817 !important; }
+.esg-sec-desc { color: rgba(245,242,236,.5) !important; }
+
+/* Cards ESG */
+.ambiental .esg-card {
+  background: rgba(72,187,120,.06) !important;
+  border-color: rgba(72,187,120,.2) !important;
+}
+.ambiental .esg-card:hover {
+  background: rgba(72,187,120,.12) !important;
+  border-color: rgba(72,187,120,.4) !important;
+}
+.social .esg-card {
+  background: rgba(99,179,237,.06) !important;
+  border-color: rgba(99,179,237,.2) !important;
+}
+.social .esg-card:hover {
+  background: rgba(99,179,237,.12) !important;
+  border-color: rgba(99,179,237,.4) !important;
+}
+.gobernanza .esg-card {
+  background: rgba(214,158,46,.06) !important;
+  border-color: rgba(214,158,46,.2) !important;
+}
+.gobernanza .esg-card:hover {
+  background: rgba(214,158,46,.12) !important;
+  border-color: rgba(214,158,46,.4) !important;
+}
+.esg-card-title { color: #f5f2ec !important; }
+.esg-card-text { color: rgba(245,242,236,.4) !important; }
+.esg-card-num { opacity: .15 !important; color: #f5f2ec !important; }
+
+/* Métricas ESG */
+.esg-metric {
+  background: #111 !important;
+  border-color: rgba(149,187,48,.1) !important;
+}
+.esg-metric-label { color: rgba(245,242,236,.5) !important; }
+
+/* CTA ESG */
+.esg-cta {
+  background: linear-gradient(135deg, #4a7a1a 0%, #95BB30 40%, #CEE632 70%, #6a8f1a 100%) !important;
+}
+.esg-cta-eyebrow { color: rgba(255,255,255,.8) !important; }
+.esg-cta-title { color: #fff !important; }
+.esg-cta-title em { color: #1a3a0a !important; }
+.esg-cta-sub { color: rgba(255,255,255,.85) !important; }
+
+/* Botones en CTA */
+.btn-primary { background: #95BB30 !important; color: #fff !important; }
+.btn-primary:hover { background: #6a8f1a !important; color: #fff !important; }
+.btn-ghost { border-color: rgba(255,255,255,.6) !important; color: #fff !important; }
+.btn-ghost:hover { background: rgba(255,255,255,.15) !important; border-color: #fff !important; }
+
+/* Noise texture override */
+body::before { opacity: .01 !important; }
+
+/* Eyebrow lines */
+.eyebrow-line { background: #95BB30 !important; }
+
+
+
+

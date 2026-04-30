@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css"/>
   <link rel="stylesheet" href="css/servicios-styles.css" />
+  <link rel="stylesheet" href="css/servicios-verde-blanco.css" />
 </head>
 <body>
 
@@ -19,7 +20,7 @@
 <!-- NAV -->
 <nav id="navbar">
   <div class="nav-logo">
-    <a href="index.html"><img src="fotos/logos/5.png" alt="Oyague y Mendoza Inmobiliaria" class="nav-logo-img" /></a>
+    <a href="index.html"><img src="fotos/logos/4.png" alt="Oyague y Mendoza Inmobiliaria" class="nav-logo-img" style="filter: brightness(0) invert(1);" /></a>
   </div>
   <ul class="nav-links">
     <li><a href="index.html#inicio">Inicio</a></li>
@@ -29,33 +30,25 @@
         <svg class="chevron" viewBox="0 0 10 6" width="10"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
       </a>
       <ul class="dropdown-menu">
-        <li><a href="index.html#productos"><span class="dd-icon">🏢</span>Departamentos</a></li>
-        <li><a href="index.html#productos"><span class="dd-icon">🏞</span>Terrenos</a></li>
-        <li><a href="index.html#productos"><span class="dd-icon">🏡</span>Casas</a></li>
-        <li><a href="servicios.html"><span class="dd-icon">🎨</span>Diseño</a></li>
+        <li><a href="bosque-vertical.html">Departamentos</a></li>
+        <li><a href="terrenos.html">Terrenos</a></li>
+        <li><a href="casas.html">Casas</a></li>
+        <li><a href="diseno.html">Diseño</a></li>
       </ul>
     </li>
-    <li class="has-dropdown">
-      <a href="nosotros.html" class="dropdown-trigger">
-        Nosotros
-        <svg class="chevron" viewBox="0 0 10 6" width="10"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-      </a>
-      <ul class="dropdown-menu">
-        <li><a href="nosotros.html"><span class="dd-icon">🏢</span>Quiénes somos</a></li>
-        <li><a href="equipo.html"><span class="dd-icon">👥</span>Nuestro equipo</a></li>
-      </ul>
-    </li>
+    
     <li class="has-dropdown">
       <a href="esg.html" class="dropdown-trigger">
         ESG
         <svg class="chevron" viewBox="0 0 10 6" width="10"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
       </a>
       <ul class="dropdown-menu">
-        <li><a href="esg.html#ambiental"><span class="dd-icon">🌿</span>Ambiental</a></li>
-        <li><a href="esg.html#social"><span class="dd-icon">🤝</span>Social</a></li>
-        <li><a href="esg.html#gobernanza"><span class="dd-icon">⚖️</span>Gobernanza</a></li>
+        <li><a href="esg.html#ambiental">Ambiental</a></li>
+        <li><a href="esg.html#social">Social</a></li>
+        <li><a href="esg.html#gobernanza">Gobernanza</a></li>
       </ul>
     </li>
+    <li><a href="nosotros.html">Nosotros</a></li>
     <li><a href="index.html#noticias">Noticias</a></li>
     <li><a href="index.html#contacto">Contacto</a></li>
   </ul>
@@ -87,13 +80,7 @@
         <li><a href="servicios.html" onclick="closeMobile()">🎨 Diseño</a></li>
       </ul>
     </li>
-    <li class="mob-group">
-      <span class="mob-label">Nosotros</span>
-      <ul>
-        <li><a href="nosotros.html" onclick="closeMobile()">🏢 Quiénes somos</a></li>
-        <li><a href="equipo.html" onclick="closeMobile()">👥 Nuestro equipo</a></li>
-      </ul>
-    </li>
+    
     <li class="mob-group">
       <span class="mob-label">ESG</span>
       <ul>
@@ -102,6 +89,8 @@
         <li><a href="esg.html#gobernanza" onclick="closeMobile()">⚖️ Gobernanza</a></li>
       </ul>
     </li>
+
+    <li><a href="nosotros.html" onclick="closeMobile()">Nosotros</a></li>
     <li><a href="index.html#noticias" onclick="closeMobile()">Noticias</a></li>
     <li><a href="index.html#contacto" onclick="closeMobile()">Contacto</a></li>
   </ul>
@@ -176,56 +165,6 @@
         </div>
         <!-- ID AGREGADO: srvGrid-interiores -->
         <div class="srv-works-grid" id="srvGrid-interiores">
-          <div class="srv-work reveal-up">
-            <div class="srv-work-bg" style="background-image:url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&q=85')"></div>
-            <div class="srv-work-overlay"></div>
-            <div class="srv-work-content">
-              <span class="srv-work-cat">Residencial · Huancayo</span>
-              <div class="srv-work-title">Sala Contemporánea — Chilca</div>
-              <div class="srv-work-year">2025</div>
-              <div class="srv-work-cta">Ver proyecto <div class="srv-work-cta-line"></div></div>
-            </div>
-          </div>
-          <div class="srv-work reveal-up">
-            <div class="srv-work-bg" style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=85')"></div>
-            <div class="srv-work-overlay"></div>
-            <div class="srv-work-content">
-              <span class="srv-work-cat">Comercial</span>
-              <div class="srv-work-title">Oficina Ejecutiva — El Tambo</div>
-              <div class="srv-work-year">2025</div>
-              <div class="srv-work-cta">Ver proyecto <div class="srv-work-cta-line"></div></div>
-            </div>
-          </div>
-          <div class="srv-work reveal-up">
-            <div class="srv-work-bg" style="background-image:url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=900&q=85')"></div>
-            <div class="srv-work-overlay"></div>
-            <div class="srv-work-content">
-              <span class="srv-work-cat">Residencial</span>
-              <div class="srv-work-title">Suite — San Carlos</div>
-              <div class="srv-work-year">2024</div>
-              <div class="srv-work-cta">Ver proyecto <div class="srv-work-cta-line"></div></div>
-            </div>
-          </div>
-          <div class="srv-work reveal-up">
-            <div class="srv-work-bg" style="background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=900&q=85')"></div>
-            <div class="srv-work-overlay"></div>
-            <div class="srv-work-content">
-              <span class="srv-work-cat">Cocina</span>
-              <div class="srv-work-title">Cocina Moderna — Huancayo</div>
-              <div class="srv-work-year">2024</div>
-              <div class="srv-work-cta">Ver proyecto <div class="srv-work-cta-line"></div></div>
-            </div>
-          </div>
-          <div class="srv-work reveal-up">
-            <div class="srv-work-bg" style="background-image:url('https://images.unsplash.com/photo-1584622781564-1d987f7333c1?w=900&q=85')"></div>
-            <div class="srv-work-overlay"></div>
-            <div class="srv-work-content">
-              <span class="srv-work-cat">Baño · Lujo</span>
-              <div class="srv-work-title">Baño de Diseño — La Punta</div>
-              <div class="srv-work-year">2023</div>
-              <div class="srv-work-cta">Ver proyecto <div class="srv-work-cta-line"></div></div>
-            </div>
-          </div>
         </div>
       </div>
       <div class="srv-features-section">
@@ -280,57 +219,7 @@
         </div>
         <!-- ID AGREGADO: srvGrid-urbanos -->
         <div class="srv-works-grid" id="srvGrid-urbanos">
-          <div class="srv-work reveal-up">
-            <div class="srv-work-bg" style="background-image:url('fotos/urbanizacion/urb-1.jpeg')"></div>
-            <div class="srv-work-overlay"></div>
-            <div class="srv-work-content">
-              <span class="srv-work-cat">Urbanización residencial</span>
-              <div class="srv-work-title">Urb. Los Jardines — Huancayo</div>
-              <div class="srv-work-year">2025 · En desarrollo</div>
-              <div class="srv-work-cta">Ver proyecto <div class="srv-work-cta-line"></div></div>
-            </div>
-          </div>
-          <div class="srv-work reveal-up">
-            <div class="srv-work-bg" style="background-image:url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=900&q=85')"></div>
-            <div class="srv-work-overlay"></div>
-            <div class="srv-work-content">
-              <span class="srv-work-cat">Habilitación urbana</span>
-              <div class="srv-work-title">Sector Saño — Expansión</div>
-              <div class="srv-work-year">2024 · Completado</div>
-              <div class="srv-work-cta">Ver proyecto <div class="srv-work-cta-line"></div></div>
-            </div>
-          </div>
-          <div class="srv-work reveal-up">
-            <div class="srv-work-bg" style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=900&q=85')"></div>
-            <div class="srv-work-overlay"></div>
-            <div class="srv-work-content">
-              <span class="srv-work-cat">Lotes comerciales</span>
-              <div class="srv-work-title">Zona Comercial El Tambo</div>
-              <div class="srv-work-year">2024 · Completado</div>
-              <div class="srv-work-cta">Ver proyecto <div class="srv-work-cta-line"></div></div>
-            </div>
-          </div>
-          <div class="srv-work reveal-up">
-            <div class="srv-work-bg" style="background-image:url('https://images.unsplash.com/photo-1494526585095-c41746f85a35?w=900&q=85')"></div>
-            <div class="srv-work-overlay"></div>
-            <div class="srv-work-content">
-              <span class="srv-work-cat">Áreas verdes</span>
-              <div class="srv-work-title">Parque Residencial San Carlos</div>
-              <div class="srv-work-year">2023 · Completado</div>
-              <div class="srv-work-cta">Ver proyecto <div class="srv-work-cta-line"></div></div>
-            </div>
-          </div>
-          <div class="srv-work reveal-up">
-            <div class="srv-work-bg" style="background-image:url('https://images.unsplash.com/photo-1464082354059-27db6ce50048?w=900&q=85')"></div>
-            <div class="srv-work-overlay"></div>
-            <div class="srv-work-content">
-              <span class="srv-work-cat">Infraestructura vial</span>
-              <div class="srv-work-title">Vías y servicios — La Punta</div>
-              <div class="srv-work-year">2023 · Completado</div>
-              <div class="srv-work-cta">Ver proyecto <div class="srv-work-cta-line"></div></div>
-            </div>
-          </div>
-        </div>
+    </div>
       </div>
       <div class="srv-features-section">
         <div class="srv-features-header">
@@ -384,56 +273,6 @@
         </div>
         <!-- ID AGREGADO: srvGrid-arquitectonicos -->
         <div class="srv-works-grid" id="srvGrid-arquitectonicos">
-          <div class="srv-work reveal-up">
-            <div class="srv-work-bg" style="background-image:url('fotos/depa%201/dep1-1.jpeg')"></div>
-            <div class="srv-work-overlay"></div>
-            <div class="srv-work-content">
-              <span class="srv-work-cat">Edificio multifamiliar</span>
-              <div class="srv-work-title">Edificio Los Cipreses — Chilca</div>
-              <div class="srv-work-year">2025 · En construcción</div>
-              <div class="srv-work-cta">Ver proyecto <div class="srv-work-cta-line"></div></div>
-            </div>
-          </div>
-          <div class="srv-work reveal-up">
-            <div class="srv-work-bg" style="background-image:url('fotos/depa%202/dep2-1.jpeg')"></div>
-            <div class="srv-work-overlay"></div>
-            <div class="srv-work-content">
-              <span class="srv-work-cat">Torre residencial</span>
-              <div class="srv-work-title">Torre San Carlos — Panorámica</div>
-              <div class="srv-work-year">2025 · Pre venta</div>
-              <div class="srv-work-cta">Ver proyecto <div class="srv-work-cta-line"></div></div>
-            </div>
-          </div>
-          <div class="srv-work reveal-up">
-            <div class="srv-work-bg" style="background-image:url('fotos/depa%203/dep3-1.jpeg')"></div>
-            <div class="srv-work-overlay"></div>
-            <div class="srv-work-content">
-              <span class="srv-work-cat">Conjunto premium</span>
-              <div class="srv-work-title">Premium Huancayo — Centro</div>
-              <div class="srv-work-year">2024 · Acabados</div>
-              <div class="srv-work-cta">Ver proyecto <div class="srv-work-cta-line"></div></div>
-            </div>
-          </div>
-          <div class="srv-work reveal-up">
-            <div class="srv-work-bg" style="background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=900&q=85')"></div>
-            <div class="srv-work-overlay"></div>
-            <div class="srv-work-content">
-              <span class="srv-work-cat">Vivienda unifamiliar</span>
-              <div class="srv-work-title">Casa La Punta — Diseño</div>
-              <div class="srv-work-year">2024 · Entregado</div>
-              <div class="srv-work-cta">Ver proyecto <div class="srv-work-cta-line"></div></div>
-            </div>
-          </div>
-          <div class="srv-work reveal-up">
-            <div class="srv-work-bg" style="background-image:url('https://images.unsplash.com/photo-1613977257363-707ba9348227?w=900&q=85')"></div>
-            <div class="srv-work-overlay"></div>
-            <div class="srv-work-content">
-              <span class="srv-work-cat">Comercial</span>
-              <div class="srv-work-title">Local Comercial — El Tambo</div>
-              <div class="srv-work-year">2023 · Entregado</div>
-              <div class="srv-work-cta">Ver proyecto <div class="srv-work-cta-line"></div></div>
-            </div>
-          </div>
         </div>
       </div>
       <div class="srv-features-section">
@@ -475,8 +314,21 @@
   <div class="srv-footer-inner">
     <div>
       <img src="fotos/logos/4.png" alt="Oyague y Mendoza" class="srv-footer-logo" style="height:44px;width:auto;filter:brightness(0) invert(1);opacity:.8;margin-bottom:12px;display:block;" />
-      <p class="srv-footer-tagline">Tu propiedad, nuestra prioridad.</p>
-      <div class="srv-footer-social">
+        <p class="srv-footer-tagline">Tu propiedad, nuestra prioridad.</p>
+
+        <!-- Rinosirunti partnership -->
+        <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);">
+          <p style="font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.4);margin-bottom:12px;">Empresa del grupo</p>
+          <a href="https://rino.pe" target="_blank" style="display:flex;align-items:center;gap:12px;text-decoration:none;transition:opacity .3s;" onmouseenter="this.style.opacity='.8'" onmouseleave="this.style.opacity='1'">
+            <img src="fotos/logos/rinu.png" alt="Rinosirunti" style="height:35px;width:auto;filter:grayscale(1) brightness(2);transition:filter .3s;" onmouseenter="this.style.filter='none'" onmouseleave="this.style.filter='grayscale(1) brightness(2)'" />
+            <a> </a>
+            <div>
+              <p style="font-family:var(--font-serif);font-style:italic;font-size:1rem;color:#CEE632;margin:0;">Ingeniería de Vanguardia</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="srv-footer-social">
         <a href="https://www.instagram.com/oyagueymendozaoficial/?hl=es" target="_blank" class="srv-footer-soc" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
@@ -500,7 +352,6 @@
       <h4>Empresa</h4>
       <ul>
         <li><a href="nosotros.html">Nosotros</a></li>
-        <li><a href="equipo.html">Equipo</a></li>
         <li><a href="index.html#testimonios">Testimonios</a></li>
         <li><a href="index.html#contacto">Contacto</a></li>
       </ul>

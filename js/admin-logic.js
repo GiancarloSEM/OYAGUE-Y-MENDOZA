@@ -32,8 +32,10 @@ function enterAdmin(email) {
   loadProducts();
   loadAllServicios();
   loadNoticias();
+  loadTestimonios();
   loadEquipo();
   loadColaboradores();
+  
 }
 
 // ── NAV ──────────────────────────────────────────
@@ -349,7 +351,7 @@ async function saveProduct() {
   showToast(editingId?'✅ Propiedad actualizada':'✅ Propiedad creada','success');
   loadProducts();
   localStorage.removeItem('oyague_productos');
-localStorage.removeItem('oyague_productos_time');
+  localStorage.removeItem('oyague_productos_time');
 }
 async function deleteProduct(id) {
   if (!confirm('¿Eliminar esta propiedad?')) return;
@@ -424,7 +426,7 @@ function renderSrvTable(cat) {
 }
 function openSrvForm() {
   editingSrvId=null; srvImgUploaded='';
-  ['srvTitulo','srvSubtitulo','srvDesc','srvAño','srvImgUrl'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  ['srvTitulo','srvSubtitulo','srvDesc','srvAño','srvImgUrl','srvHistoria'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
   document.getElementById('srvCategoria').value=srvTabActual;
   document.getElementById('srvImgPreview').innerHTML='';
   document.getElementById('srvUploadProgress').style.display='none';
@@ -442,6 +444,7 @@ function editSrv(id) {
   document.getElementById('srvCategoria').value = item.categoria||'interiores';
   document.getElementById('srvSubtitulo').value = item.subtitulo||'';
   document.getElementById('srvDesc').value      = item.descripcion||'';
+  document.getElementById('srvHistoria').value  = item.historia || '';
   document.getElementById('srvAño').value       = item.año||'';
   document.getElementById('srvImgUrl').value    = item.imagen_url||'';
   document.getElementById('srvImgPreview').innerHTML='';
@@ -462,6 +465,7 @@ async function saveSrvItem() {
     categoria:   document.getElementById('srvCategoria').value,
     subtitulo:   document.getElementById('srvSubtitulo').value,
     descripcion: document.getElementById('srvDesc').value,
+    historia:    document.getElementById('srvHistoria').value,
     año:         document.getElementById('srvAño').value,
     imagen_url:  imgUrl,
     card_type:   srvCardType,
@@ -634,15 +638,20 @@ let editingEquipoId = null;
 let equipoImgUploaded = '';
 
 async function loadEquipo() {
+  console.log('loadEquipo iniciado, supabaseClient:', supabaseClient);
   if (!supabaseClient) return;
   const { data, error } = await supabaseClient
     .from('equipo').select('*').order('orden', { ascending: true });
+  console.log('equipo data:', data, 'error:', error);
   if (!error && data) allEquipo = data;
   renderEquipoTable(allEquipo);
 }
 
 function renderEquipoTable(data) {
+  
+  console.log('renderEquipoTable data:', data);
   const tbody = document.getElementById('equipoTable');
+  console.log('tbody encontrado:', tbody);
   if (!data.length) {
     tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--gray);padding:32px">No hay miembros del equipo. ¡Agrega el primero!</td></tr>';
     return;
@@ -676,7 +685,8 @@ function openEquipoForm() {
 }
 
 function editEquipo(id) {
-  const m = allEquipo.find(x => x.id === id); if (!m) return;
+  console.log('editEquipo id:', id, 'allEquipo:', allEquipo);
+  const m = allEquipo.find(x => x.id == id); console.log('miembro encontrado:', JSON.stringify(m)); if (!m) return;
   editingEquipoId = id; equipoImgUploaded = m.foto_url || '';
   document.getElementById('equipoFormTitle').textContent = 'Editar miembro';
   document.getElementById('eName').value      = m.nombre || '';
@@ -690,6 +700,8 @@ function editEquipo(id) {
   if (m.foto_url) addSinglePreview(m.foto_url, 'equipoImgPreview', 'removeEquipoImg');
   document.getElementById('equipoUploadProgress').style.display = 'none';
   document.getElementById('equipoModal').classList.add('open');
+  console.log('modal clase:', document.getElementById('equipoModal').className);
+  console.log('modal display:', window.getComputedStyle(document.getElementById('equipoModal')).display);
 }
 
 function closeEquipoForm() { document.getElementById('equipoModal').classList.remove('open'); }
@@ -743,6 +755,8 @@ async function saveEquipo() {
   closeEquipoForm();
   showToast(editingEquipoId ? '✅ Miembro actualizado' : '✅ Miembro creado', 'success');
   loadEquipo();
+  localStorage.removeItem('oyague_equipo');
+  localStorage.removeItem('oyague_equipo_time');
 }
 
 async function deleteEquipo(id) {
@@ -753,6 +767,8 @@ async function deleteEquipo(id) {
   }
   showToast('Miembro eliminado', 'success');
   loadEquipo();
+  localStorage.removeItem('oyague_equipo');
+  localStorage.removeItem('oyague_equipo_time'); 
 }
 
 // ── HELPER COMPARTIDO — preview imagen simple ──

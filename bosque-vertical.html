@@ -1,0 +1,3096 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Departamentos — Oyague & Mendoza Inmobiliaria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/index-premium.css" />
+  <link rel="stylesheet" href="css/index-verde-blanco.css" />
+  <link rel="stylesheet" href="css/index-playfair-premium.css" />
+
+  <style>
+    /* ══════════════════════════════════════════════
+       BOSQUE VERTICAL — estilos exclusivos de página
+    ══════════════════════════════════════════════ */
+
+    /* ── Variables locales ── */
+    :root {
+      --bv-green: #95BB30;
+      --bv-green-lt: #CEE632;
+      --bv-green-dk: #6a8f1a;
+      --bv-green-bg: rgba(149,187,48,.1);
+      --bv-black: #f5f2ec;
+      --bv-white: #050505;
+      --bv-dark: #050505;
+      --bv-dark-2: #111111;
+      --bv-dark-3: #181818;
+      --bv-gray-1: #1c1c1c;
+      --bv-gray-6: #e8e8e8;
+      --bv-gray-7: #f5f5f5;
+      --bv-radius: 0px;
+      --bv-transition: .35s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    /* Forzar Navbar oscuro (venciendo a index-playfair-premium) */
+    #navbar.scrolled {
+      background: rgba(5, 5, 5, 0.96) !important;
+      backdrop-filter: blur(20px) !important;
+      border-bottom: 1px solid rgba(149, 187, 48, 0.2) !important;
+    }
+    #navbar.scrolled .nav-links a { color: rgba(245, 242, 236, 0.8) !important; }
+    #navbar.scrolled .nav-links a:hover { color: #CEE632 !important; }
+    #navbar.scrolled .nav-logo-img { filter: brightness(0) invert(1) !important; }
+    #navbar.scrolled .hamburger span { background: #f5f2ec !important; }
+    #navbar.scrolled .nav-social-link { color: rgba(245, 242, 236, 0.5) !important; }
+    #navbar.scrolled .nav-social-link:hover { color: #95BB30 !important; }
+    #navbar.scrolled .nav-cta { color: #050505 !important; }
+
+    /* Dropdown oscuro */
+    .dropdown-menu {
+      background: #111111 !important;
+      border: 1px solid rgba(149, 187, 48, 0.2) !important;
+      border-top: 2px solid #95BB30 !important;
+    }
+    .dropdown-menu li a { color: rgba(245, 242, 236, 0.7) !important; }
+    .dropdown-menu li a:hover {
+      background: rgba(149, 187, 48, 0.1) !important;
+      color: #CEE632 !important;
+    }
+
+    /* ── Cursor ── */
+    body {
+      cursor: none;
+      background: var(--bv-dark);
+      color: var(--bv-black);
+    }
+
+    @media(max-width:768px) {
+      body {
+        cursor: auto !important;
+      }
+
+      .cursor,
+      .cursor-ring {
+        display: none !important;
+      }
+    }
+
+    /* ── HERO BV ── */
+    .bv-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .bv-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 220px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, .55), transparent);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .bv-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('fotos/edificio.jpg') center/cover no-repeat;
+      transform-origin: center;
+      transition: transform 14s ease;
+    }
+
+    .bv-hero:hover .bv-hero-bg {
+      transform: scale(1.04);
+    }
+
+    .bv-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(17, 17, 17, .12) 0%, rgba(17, 17, 17, .52) 40%, rgba(17, 17, 17, .94) 100%);
+      z-index: 1;
+    }
+
+    .bv-hero-grain {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      opacity: .03;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .bv-hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 56px 88px;
+    }
+
+    .bv-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--bv-green-lt);
+      margin-bottom: 22px;
+    }
+
+    .bv-hero-badge::before {
+      content: '';
+      display: inline-block;
+      width: 36px;
+      height: 1px;
+      background: var(--bv-green);
+    }
+
+    .bv-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 400;
+      line-height: .96;
+      letter-spacing: -.03em;
+      color: var(--bv-white);
+      margin-bottom: 24px;
+    }
+
+    .bv-hero-title em {
+      font-style: italic;
+      color: var(--bv-green-lt);
+      font-weight: 300;
+    }
+
+    .bv-hero-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: .97rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: rgba(255, 255, 255, .55);
+      max-width: 480px;
+      margin-bottom: 44px;
+    }
+
+    .bv-hero-stats {
+      display: flex;
+      gap: 0;
+      border-top: 1px solid rgba(255, 255, 255, .1);
+      padding-top: 36px;
+      margin-top: 0;
+    }
+
+    .bv-hero-stat {
+      padding-right: 48px;
+      margin-right: 48px;
+      border-right: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    .bv-hero-stat:last-child {
+      border-right: none;
+      margin-right: 0;
+    }
+
+    .bv-stat-n {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--bv-green-lt);
+      line-height: 1;
+      display: block;
+    }
+
+    .bv-stat-l {
+      font-family: 'Inter', sans-serif;
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .4);
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ── SECCIÓN EDIFICIO ── */
+    .bv-section {
+      padding: 112px 0;
+    }
+
+    .bv-section-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .bv-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--bv-green-dk);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .bv-eyebrow::before,
+    .bv-eyebrow::after {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--bv-green);
+    }
+
+    .bv-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -.02em;
+      color: var(--bv-black);
+      margin-bottom: 16px;
+    }
+
+    .bv-title em {
+      font-style: italic;
+      color: var(--bv-green);
+      font-weight: 300;
+    }
+
+    .bv-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: .92rem;
+      font-weight: 300;
+      color: rgba(245,242,236,.6);
+      line-height: 1.8;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── EDIFICIO HOTSPOT INTERACTIVO ── */
+    .bv-building-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* Contenedor del render con hotspots */
+    .bv-building-render {
+      position: relative;
+      line-height: 0;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0, 0, 0, .18);
+    }
+
+    .bv-building-render img {
+      width: 100%;
+      height: auto;
+      display: block;
+      user-select: none;
+      pointer-events: none;
+      filter: grayscale(1) brightness(0.65);
+      transition: filter 0.5s ease;
+    }
+
+    /* Overlay de hotspots */
+    .bv-hotspots {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* Cada hotspot clickeable */
+    .bv-hotspot {
+      position: absolute;
+      cursor: none;
+      transition: background .2s ease, box-shadow .2s ease;
+      border: 1.5px solid transparent;
+    }
+
+    .bv-hotspot:hover {
+      border-color: rgba(255, 255, 255, .9) !important;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, .3);
+      z-index: 10;
+    }
+
+    .bv-hotspot.disponible {
+      background: rgba(149, 187, 48, .22);
+    }
+
+    .bv-hotspot.reservado {
+      background: rgba(230, 184, 0, .22);
+    }
+
+    .bv-hotspot.vendido {
+      background: rgba(217, 64, 64, .22);
+    }
+
+    .bv-hotspot.disponible:hover {
+      background: rgba(149, 187, 48, .45);
+      border-color: #95BB30 !important;
+    }
+
+    .bv-hotspot.reservado:hover {
+      background: rgba(230, 184, 0, .45);
+      border-color: #e6b800 !important;
+    }
+
+    .bv-hotspot.vendido:hover {
+      background: rgba(217, 64, 64, .45);
+      border-color: #d94040 !important;
+    }
+
+    /* Tooltip al hacer hover */
+    .bv-hotspot-tip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(17, 17, 17, .92);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      padding: 5px 10px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .2s;
+      backdrop-filter: blur(6px);
+    }
+
+    .bv-hotspot-tip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 4px solid transparent;
+      border-top-color: rgba(17, 17, 17, .92);
+    }
+
+    .bv-hotspot:hover .bv-hotspot-tip {
+      opacity: 1;
+    }
+
+    /* Badge de piso en el render */
+    .bv-floor-badge {
+      position: absolute;
+      left: 1%;
+      font-family: 'Inter', sans-serif;
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: rgba(255, 255, 255, .9);
+      background: rgba(0, 0, 0, .5);
+      padding: 2px 6px;
+      pointer-events: none;
+      z-index: 5;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Panel lateral */
+    .bv-panel {
+      position: sticky;
+      top: 100px;
+    }
+
+    .bv-legend {
+      background: var(--bv-dark-2);
+      border: 1px solid rgba(149,187,48,.1);
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+
+    .bv-legend-title {
+      font-family: 'Inter', sans-serif;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(245,242,236,.4);
+      margin-bottom: 18px;
+    }
+
+    .bv-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: .85rem;
+      font-weight: 400;
+      color: var(--bv-gray-1);
+      margin-bottom: 12px;
+    }
+
+    .bv-legend-dot {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    .bv-legend-dot.disponible {
+      background: #95BB30;
+    }
+
+    .bv-legend-dot.reservado {
+      background: #e6b800;
+    }
+
+    .bv-legend-dot.vendido {
+      background: #d94040;
+    }
+
+    /* Instrucción hover */
+    .bv-legend-hint {
+      font-family: 'Inter', sans-serif;
+      font-size: .75rem;
+      font-weight: 300;
+      color: rgba(245,242,236,.4);
+      line-height: 1.6;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(149,187,48,.1);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .bv-legend-hint svg {
+      flex-shrink: 0;
+      margin-top: 1px;
+      color: var(--bv-green);
+    }
+
+    .bv-summary-card {
+      background: #111;
+      padding: 28px;
+      border: 1px solid rgba(149,187,48,.15);
+    }
+
+    .bv-summary-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--bv-white);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .bv-summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, .07);
+      padding: 10px 0;
+      font-family: 'Inter', sans-serif;
+      font-size: .82rem;
+    }
+
+    .bv-summary-row:last-child {
+      border-bottom: none;
+    }
+
+    .bv-summary-row span:first-child {
+      color: rgba(255, 255, 255, .4);
+      font-weight: 300;
+    }
+
+    .bv-summary-row span:last-child {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .bv-summary-cta {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      background: var(--bv-green);
+      color: var(--bv-white);
+      font-family: 'Inter', sans-serif;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 14px;
+      text-align: center;
+      border: none;
+      cursor: none;
+      transition: background .25s;
+    }
+
+    .bv-summary-cta:hover {
+      background: var(--bv-green-dk);
+    }
+
+    /* ── MODAL UNIDAD ── */
+    .bv-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(17, 17, 17, .82);
+      backdrop-filter: blur(10px);
+      z-index: 600;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .bv-modal-overlay.open {
+      display: flex;
+      animation: bvFadeIn .28s ease;
+    }
+
+    @keyframes bvFadeIn {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .bv-modal {
+      background: var(--bv-dark-2);
+      width: 100%;
+      max-width: 780px;
+      max-height: 92vh;
+      overflow-y: auto;
+      position: relative;
+      animation: bvSlideUp .32s ease;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, .5);
+      border: 1px solid rgba(149,187,48,.1);
+    }
+
+    @keyframes bvSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .bv-modal::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    .bv-modal::-webkit-scrollbar-thumb {
+      background: var(--bv-green);
+    }
+
+    .bv-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 10;
+      background: rgba(0, 0, 0, .5);
+      color: #fff;
+      border: none;
+      width: 36px;
+      height: 36px;
+      font-size: .95rem;
+      cursor: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .25s;
+    }
+
+    .bv-modal-close:hover {
+      background: var(--bv-green);
+    }
+
+    /* Galería modal */
+    .bv-modal-gallery {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .bv-gallery-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity .45s ease;
+    }
+
+    .bv-gallery-img.active {
+      opacity: 1;
+    }
+
+    .bv-gallery-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      background: rgba(0, 0, 0, .4);
+      color: #fff;
+      border: none;
+      width: 40px;
+      height: 40px;
+      font-size: 1.1rem;
+      cursor: none;
+      transition: background .25s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bv-gallery-nav:hover {
+      background: var(--bv-green);
+    }
+
+    .bv-gallery-prev {
+      left: 12px;
+    }
+
+    .bv-gallery-next {
+      right: 12px;
+    }
+
+    .bv-gallery-count {
+      position: absolute;
+      bottom: 14px;
+      right: 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      color: rgba(255, 255, 255, .7);
+      background: rgba(0, 0, 0, .4);
+      padding: 4px 10px;
+      backdrop-filter: blur(6px);
+    }
+
+    /* Thumbnails */
+    .bv-thumbs {
+      display: flex;
+      gap: 6px;
+      padding: 10px 16px;
+      background: #0a0a0a;
+      overflow-x: auto;
+    }
+
+    .bv-thumb {
+      width: 56px;
+      height: 42px;
+      flex-shrink: 0;
+      object-fit: cover;
+      cursor: none;
+      opacity: .5;
+      transition: opacity .25s;
+      border: 2px solid transparent;
+    }
+
+    .bv-thumb.active {
+      opacity: 1;
+      border-color: var(--bv-green);
+    }
+
+    /* Body modal */
+    .bv-modal-body {
+      padding: 28px 32px 32px;
+    }
+
+    .bv-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      gap: 16px;
+    }
+
+    .bv-modal-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 400;
+      letter-spacing: -.02em;
+      color: var(--bv-black);
+    }
+
+    .bv-modal-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: .78rem;
+      font-weight: 400;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    .bv-status-badge {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .bv-status-badge.disponible {
+      background: #e8f5d0;
+      color: var(--bv-green-dk);
+    }
+
+    .bv-status-badge.reservado {
+      background: #fff8d6;
+      color: #7a6000;
+    }
+
+    .bv-status-badge.vendido {
+      background: #fde8e8;
+      color: #9a1e1e;
+    }
+
+    /* Specs grid */
+    .bv-specs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .bv-spec-item {
+      background: var(--bv-dark-3);
+      padding: 16px 14px;
+    }
+
+    .bv-spec-icon {
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .bv-spec-label {
+      font-family: 'Inter', sans-serif;
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #888;
+      display: block;
+    }
+
+    .bv-spec-val {
+      font-family: 'Inter', sans-serif;
+      font-size: .92rem;
+      font-weight: 600;
+      color: var(--bv-black);
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* Detalles */
+    .bv-modal-section-title {
+      font-family: 'Inter', sans-serif;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--bv-green-dk);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(149,187,48,.1);
+    }
+
+    .bv-details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .bv-detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 14px;
+      background: var(--bv-gray-7);
+      font-family: 'Inter', sans-serif;
+      font-size: .82rem;
+    }
+
+    .bv-detail-row span:first-child {
+      color: #888;
+      font-weight: 300;
+    }
+
+    .bv-detail-row span:last-child {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* Acabados */
+    .bv-acabados-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .bv-acabados-list li {
+      font-family: 'Inter', sans-serif;
+      font-size: .85rem;
+      font-weight: 300;
+      color: rgba(245,242,236,.6);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bv-acabados-list li::before {
+      content: '✓';
+      color: var(--bv-green);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Acciones */
+    .bv-modal-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 24px;
+      border-top: 1px solid rgba(149,187,48,.1);
+    }
+
+    .bv-btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      padding: 13px 24px;
+      border: none;
+      cursor: none;
+      font-family: 'Inter', sans-serif;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      transition: background .25s;
+    }
+
+    .bv-btn-wa:hover {
+      background: #1aab56;
+    }
+
+    .bv-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bv-green);
+      color: #fff;
+      padding: 13px 28px;
+      border: none;
+      cursor: none;
+      font-family: 'Inter', sans-serif;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: background .25s;
+    }
+
+    .bv-btn-primary:hover {
+      background: var(--bv-black);
+    }
+
+    /* ── ÁREAS COMUNES ── */
+    .bv-areas-section {
+      background: #0a0a0a;
+      padding: 112px 0;
+    }
+
+    .bv-areas-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255, 255, 255, .06);
+      margin-top: 64px;
+    }
+
+    .bv-area-card {
+      position: relative;
+      overflow: hidden;
+      border: none;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      cursor: pointer;
+      transition: transform var(--bv-transition), box-shadow var(--bv-transition);
+    }
+
+    /* Imagen de fondo */
+    .bv-area-card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(100%) brightness(.55);
+      transition: filter .5s ease, transform .5s ease;
+      z-index: 0;
+    }
+
+    /* Overlay oscuro siempre */
+    .bv-area-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, .75) 0%, rgba(0, 0, 0, .2) 60%, transparent 100%);
+      z-index: 1;
+      transition: background .5s ease;
+    }
+
+    /* Al hover: color real */
+    .bv-area-card:hover .bv-area-card-bg {
+      filter: grayscale(0%) brightness(.75);
+      transform: scale(1.06);
+    }
+
+    .bv-area-card:hover::before {
+      background: linear-gradient(to top, rgba(0, 0, 0, .6) 0%, rgba(0, 0, 0, .1) 60%, transparent 100%);
+    }
+
+    .bv-area-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, .3);
+    }
+
+    /* Contenido sobre la imagen */
+    .bv-area-content {
+      position: relative;
+      z-index: 2;
+      padding: 24px 22px;
+    }
+
+    .bv-area-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 10px;
+      color: #fff;
+      opacity: .7;
+      transition: opacity .3s, color .3s;
+    }
+
+    .bv-area-card:hover .bv-area-icon {
+      opacity: 1;
+      color: #B8D84A;
+    }
+
+    .bv-area-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 6px;
+      letter-spacing: -.01em;
+    }
+
+    .bv-area-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: .78rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, .65);
+      line-height: 1.65;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease, opacity .4s ease;
+      opacity: 0;
+    }
+
+    .bv-area-card:hover .bv-area-desc {
+      max-height: 80px;
+      opacity: 1;
+    }
+
+    /* ── GALERÍA GENERAL ── */
+    .bv-gallery-section {
+      padding: 112px 0;
+      background: #050505;
+    }
+
+    .bv-masonry {
+      columns: 3;
+      column-gap: 12px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .bv-masonry-item {
+      break-inside: avoid;
+      margin-bottom: 12px;
+      overflow: hidden;
+      position: relative;
+      cursor: none;
+    }
+
+    .bv-masonry-item img {
+      width: 100%;
+      display: block;
+      transition: transform .6s cubic-bezier(.25, .1, .25, 1);
+      filter: brightness(.95);
+    }
+
+    .bv-masonry-item:hover img {
+      transform: scale(1.05);
+      filter: brightness(.8);
+    }
+
+    .bv-masonry-item-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(17, 17, 17, .0);
+      transition: background .4s;
+    }
+
+    .bv-masonry-item:hover .bv-masonry-item-overlay {
+      background: rgba(17, 17, 17, .25);
+    }
+
+    .bv-masonry-zoom {
+      width: 40px;
+      height: 40px;
+      background: var(--bv-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(.7);
+      transition: all .3s;
+      color: var(--bv-black);
+    }
+
+    .bv-masonry-item:hover .bv-masonry-zoom {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ── CTA FINAL ── */
+    .bv-cta-section {
+      padding: 120px 0;
+      background: #0a0a0a;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bv-cta-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(149, 187, 48, .06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .bv-cta-line {
+      width: 64px;
+      height: 1px;
+      background: var(--bv-green);
+      margin: 0 auto 28px;
+    }
+
+    .bv-cta-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      letter-spacing: -.02em;
+      color: var(--bv-black);
+      margin-bottom: 18px;
+      line-height: 1.1;
+    }
+
+    .bv-cta-title em {
+      font-style: italic;
+      color: var(--bv-green);
+    }
+
+    .bv-cta-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: .92rem;
+      font-weight: 300;
+      color: rgba(245,242,236,.5);
+      line-height: 1.8;
+      max-width: 420px;
+      margin: 0 auto 48px;
+    }
+
+    .bv-cta-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .bv-cta-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--bv-black);
+      padding: 13px 28px;
+      border: 1.5px solid var(--bv-gray-6);
+      cursor: none;
+      font-family: 'Inter', sans-serif;
+      font-size: .82rem;
+      font-weight: 500;
+      transition: all .25s;
+    }
+
+    .bv-cta-phone:hover {
+      border-color: var(--bv-black);
+    }
+
+    /* ── Sección fondo blanco eyebrow override ── */
+    .bv-gallery-section .bv-eyebrow,
+    .bv-gallery-section .bv-title {
+      color: var(--bv-black);
+    }
+
+    .bv-areas-section .bv-eyebrow {
+      color: #6a8f1a;
+    }
+
+    .bv-areas-section .bv-eyebrow::before,
+    .bv-areas-section .bv-eyebrow::after {
+      background: #95BB30;
+    }
+
+    .bv-areas-section .bv-title {
+      color: #f5f2ec !important;
+    }
+
+    .bv-areas-section .bv-eyebrow {
+      color: #6a8f1a !important;
+    }
+
+    .bv-areas-section .bv-sub {
+      color: rgba(245,242,236,.6);
+    }
+
+    /* ── Scroll reveal ── */
+    .bv-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .bv-reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .bv-reveal-delay-1 {
+      transition-delay: .1s;
+    }
+
+    .bv-reveal-delay-2 {
+      transition-delay: .2s;
+    }
+
+    .bv-reveal-delay-3 {
+      transition-delay: .3s;
+    }
+
+    /* ── Responsive ── */
+    @media(max-width:960px) {
+      .bv-building-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .bv-panel {
+        position: static;
+      }
+
+      .bv-areas-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .bv-masonry {
+        columns: 2;
+      }
+
+      .bv-specs-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .bv-details-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bv-floor-badge {
+        display: none;
+      }
+    }
+
+    @media(max-width:640px) {
+      .bv-hero-content {
+        padding: 0 24px 72px;
+      }
+
+      .bv-hero-title {
+        font-size: clamp(2.5rem, 10vw, 3.5rem);
+      }
+
+      .bv-hero-stats {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .bv-hero-stat {
+        border-right: none;
+        padding-right: 0;
+        margin-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, .1);
+        padding-bottom: 16px;
+      }
+
+      .bv-hero-stat:last-child {
+        border-bottom: none;
+      }
+
+      .bv-section {
+        padding: 72px 0;
+      }
+
+      .bv-areas-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .bv-masonry {
+        columns: 1;
+      }
+
+      .bv-modal-body {
+        padding: 20px;
+      }
+
+      .bv-specs-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .bv-modal-actions {
+        flex-direction: column;
+      }
+
+      .bv-btn-wa,
+      .bv-btn-primary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .bv-acabados-list {
+        grid-template-columns: 1fr;
+      }
+
+      .bv-hotspot-tip {
+        display: none;
+      }
+    }
+
+    .bv-lb-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .92);
+      backdrop-filter: blur(10px);
+      z-index: 800;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bv-lb-overlay.open {
+      display: flex;
+      animation: bvFadeIn .25s ease;
+    }
+
+    .bv-lb-box {
+      position: relative;
+      width: 90vw;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .bv-lb-img-wrap {
+      width: 100%;
+      position: relative;
+      background: #111;
+      max-height: 70vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bv-lb-img-wrap img {
+      width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      transition: opacity .3s ease;
+    }
+
+    .bv-lb-prev,
+    .bv-lb-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, .5);
+      color: #fff;
+      border: none;
+      width: 48px;
+      height: 48px;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .25s;
+      z-index: 5;
+    }
+
+    .bv-lb-prev {
+      left: 12px;
+    }
+
+    .bv-lb-next {
+      right: 12px;
+    }
+
+    .bv-lb-prev:hover,
+    .bv-lb-next:hover {
+      background: #95BB30;
+    }
+
+    .bv-lb-count {
+      position: absolute;
+      bottom: 12px;
+      right: 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: .68rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, .7);
+      background: rgba(0, 0, 0, .4);
+      padding: 3px 10px;
+    }
+
+    .bv-lb-thumbs {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+      overflow-x: auto;
+      max-width: 100%;
+    }
+
+    .bv-lb-thumb {
+      width: 64px;
+      height: 48px;
+      flex-shrink: 0;
+      object-fit: cover;
+      cursor: pointer;
+      opacity: .45;
+      border: 2px solid transparent;
+      transition: opacity .25s, border-color .25s;
+    }
+
+    .bv-lb-thumb.active {
+      opacity: 1;
+      border-color: #95BB30;
+    }
+
+    .bv-lb-close {
+      position: absolute;
+      top: -44px;
+      right: 0;
+      background: rgba(255, 255, 255, .1);
+      color: #fff;
+      border: none;
+      width: 36px;
+      height: 36px;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .25s;
+    }
+
+    .bv-lb-close:hover {
+      background: #95BB30;
+    }
+
+    /* ── AVANCE DEL PROYECTO ── */
+    .bv-avance-timeline {
+      max-width: 760px;
+      margin: 0 auto 56px;
+      padding: 0 24px;
+    }
+
+    .bv-avance-track {
+      position: relative;
+      height: 4px;
+      background: #222;
+      border-radius: 2px;
+      margin: 20px 0 40px;
+    }
+
+    .bv-avance-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: #95BB30;
+      border-radius: 2px;
+    }
+
+    .bv-avance-dot {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #c8c8c8;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px #c8c8c8;
+    }
+
+    .bv-avance-dot.active {
+      background: #95BB30;
+      box-shadow: 0 0 0 2px #95BB30;
+    }
+
+    .bv-avance-dot.current {
+      background: #95BB30;
+      width: 18px;
+      height: 18px;
+      box-shadow: 0 0 0 3px #95BB30, 0 0 0 6px rgba(149, 187, 48, .2);
+    }
+
+    .bv-avance-cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 0 auto 40px;
+    }
+
+    .bv-avance-card {
+      position: relative;
+      background: #111;
+      border-radius: 20px;
+      padding: 32px 20px 24px;
+      width: 160px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .3);
+      border: 1px solid rgba(149,187,48,.1);
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .bv-avance-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, .1);
+    }
+
+    .bv-avance-card .bv-avance-icon {
+      margin-bottom: 16px;
+      color: #c8c8c8;
+    }
+
+    .bv-avance-card.done .bv-avance-icon {
+      color: #95BB30;
+    }
+
+    .bv-avance-card.current .bv-avance-icon {
+      color: #95BB30;
+    }
+
+    .bv-avance-label {
+      font-family: 'Inter', sans-serif;
+      font-size: .82rem;
+      font-weight: 500;
+      color: #555;
+    }
+
+    .bv-avance-card.done .bv-avance-label,
+    .bv-avance-card.current .bv-avance-label {
+      color: #fff;
+    }
+
+    .bv-avance-check {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      font-size: .7rem;
+      color: #95BB30;
+      font-weight: 700;
+    }
+
+    .bv-avance-badge-current {
+      display: inline-block;
+      margin-top: 8px;
+      background: #95BB30;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .bv-avance-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: .95rem;
+      font-weight: 300;
+      color: rgba(245,242,236,.5);
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+  </style>
+
+  <style>
+    /* ── SELECTOR DE PROYECTOS ── */
+    .dep-selector {
+      background: #0e0e0c;
+      padding: 100px 0 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .dep-selector::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(149, 187, 48, .3), transparent);
+    }
+
+    .dep-selector-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: #95BB30;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .dep-selector-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 48px;
+    }
+
+    .dep-selector-title em {
+      font-style: italic;
+      color: #B8D84A;
+    }
+
+    .dep-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      justify-content: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .dep-card {
+      position: relative;
+      height: 460px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+
+    .dep-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 64px rgba(0, 0, 0, .5);
+    }
+
+    .dep-card.active {
+      box-shadow: 0 0 0 2px #95BB30, 0 24px 64px rgba(149, 187, 48, .2);
+    }
+
+    .dep-card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform .6s ease, filter .5s ease;
+      filter: brightness(.4) grayscale(.5);
+    }
+
+    .dep-card.active .dep-card-bg {
+      filter: brightness(.55) grayscale(0);
+      transform: scale(1.04);
+    }
+
+    .dep-card:hover .dep-card-bg {
+      filter: brightness(.5) grayscale(.1);
+      transform: scale(1.03);
+    }
+
+    .dep-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, .85) 0%, rgba(0, 0, 0, .1) 60%, transparent 100%);
+      z-index: 1;
+    }
+
+    .dep-card-body {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      padding: 32px 28px;
+      text-align: left;
+    }
+
+    .dep-card-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      line-height: 1;
+      color: rgba(149, 187, 48, .3);
+      display: block;
+      margin-bottom: 8px;
+      transition: color .4s;
+    }
+
+    .dep-card.active .dep-card-num {
+      color: rgba(149, 187, 48, .6);
+    }
+
+    .dep-card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 6px;
+      line-height: 1.1;
+    }
+
+    .dep-card-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: .78rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, .5);
+      margin-bottom: 16px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease, opacity .4s;
+      opacity: 0;
+    }
+
+    .dep-card.active .dep-card-sub {
+      max-height: 60px;
+      opacity: 1;
+    }
+
+    .dep-card-badge {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      transition: all .3s;
+    }
+
+    .dep-card-badge.disponible {
+      background: #95BB30;
+      color: #fff;
+    }
+
+    .dep-card-badge.proximamente {
+      background: rgba(255, 255, 255, .1);
+      color: rgba(255, 255, 255, .6);
+      border: 1px solid rgba(255, 255, 255, .15);
+    }
+
+    /* Línea indicadora abajo */
+    .dep-tab-line {
+      height: 3px;
+      background: transparent;
+      transition: background .4s;
+    }
+
+    .dep-card.active .dep-tab-line {
+      background: #95BB30;
+    }
+
+    /* Contenedor de contenido del proyecto */
+    #depContent {
+      display: block;
+    }
+
+    #depBV2Content {
+      display: none;
+    }
+
+    /* Placeholder BV2 */
+    .dep-coming {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #050505;
+      padding: 80px 32px;
+      text-align: center;
+    }
+
+    .dep-coming-icon {
+      font-size: 4rem;
+      margin-bottom: 24px;
+      opacity: .4;
+    }
+
+    .dep-coming-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .dep-coming-title em {
+      font-style: italic;
+      color: #B8D84A;
+    }
+
+    .dep-coming-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: .95rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, .4);
+      max-width: 480px;
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+
+    .dep-coming-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #95BB30;
+      color: #fff;
+      padding: 14px 32px;
+      font-family: 'Inter', sans-serif;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .25s;
+    }
+
+    .dep-coming-cta:hover {
+      background: #6a8f1a;
+    }
+
+    /* ── FIX WhatsApp float circular ── */
+    .whatsapp-float {
+      border-radius: 50% !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <!-- ══════════════════════ NAV ══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <a href="index.html"><img src="fotos/logos/4.png" alt="Oyague y Mendoza Inmobiliaria" class="nav-logo-img" /></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html#inicio">Inicio</a></li>
+      <li class="has-dropdown">
+        <a href="index.html#productos" class="dropdown-trigger">
+          Productos
+          <svg class="chevron" viewBox="0 0 10 6" width="10">
+            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" />
+          </svg>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="bosque-vertical.html">Departamentos</a></li>
+          <li><a href="terrenos.html">Terrenos</a></li>
+          <li><a href="casas.html">Casas</a></li>
+          <li><a href="diseno.html">Diseño</a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown">
+        <a href="esg.html" class="dropdown-trigger">
+          ESG
+          <svg class="chevron" viewBox="0 0 10 6" width="10">
+            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" />
+          </svg>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="esg.html#ambiental">Ambiental</a></li>
+          <li><a href="esg.html#social">Social</a></li>
+          <li><a href="esg.html#gobernanza">Gobernanza</a></li>
+        </ul>
+      </li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="noticias.html">Noticias</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+    </ul>
+    <div class="nav-social">
+      <a href="https://www.instagram.com/oyagueymendozaoficial/?hl=es" target="_blank" class="nav-social-link"
+        aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+          <path
+            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        </svg>
+      </a>
+      <a href="https://web.facebook.com/profile.php?id=61572488620640&locale=es_LA" target="_blank"
+        class="nav-social-link" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+          <path
+            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+        </svg>
+      </a>
+      <a href="https://www.tiktok.com/@oyagueymendoza" target="_blank" class="nav-social-link" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+          <path
+            d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z" />
+        </svg>
+      </a>
+    </div>
+    <a href="index.html#contacto" class="nav-cta">Consultar ahora</a>
+    <button class="hamburger" id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- ══════════════════════ MOBILE MENU ══════════════════════ -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" onclick="closeMobile()">✕</button>
+    <ul>
+      <li><a href="index.html#inicio" onclick="closeMobile()">Inicio</a></li>
+      <li class="mob-group">
+        <span class="mob-label">Productos</span>
+        <ul>
+          <li><a href="bosque-vertical.html" onclick="closeMobile()">Departamentos</a></li>
+          <li><a href="terrenos.html" onclick="closeMobile()">Terrenos</a></li>
+          <li><a href="casas.html" onclick="closeMobile()">Casas</a></li>
+          <li><a href="diseno.html" onclick="closeMobile()">Diseño</a></li>
+        </ul>
+      </li>
+      <li class="mob-group">
+        <span class="mob-label">ESG</span>
+        <ul>
+          <li><a href="esg.html#ambiental" onclick="closeMobile()">Ambiental</a></li>
+          <li><a href="esg.html#social" onclick="closeMobile()">Social</a></li>
+          <li><a href="esg.html#gobernanza" onclick="closeMobile()">Gobernanza</a></li>
+        </ul>
+      </li>
+      <li><a href="nosotros.html" onclick="closeMobile()">Nosotros</a></li>
+      <li><a href="noticias.html" onclick="closeMobile()">Noticias</a></li>
+      <li><a href="index.html#contacto" onclick="closeMobile()">Contacto</a></li>
+      <li class="mob-social-row">
+        <a href="https://www.instagram.com/oyagueymendozaoficial/?hl=es" target="_blank" class="mob-social-link">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+        </a>
+        <a href="https://web.facebook.com/profile.php?id=61572488620640&locale=es_LA" target="_blank"
+          class="mob-social-link">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+            <path
+              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@oyagueymendoza" target="_blank" class="mob-social-link">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+            <path
+              d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z" />
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- ══════════ SELECTOR DE PROYECTOS ══════════ -->
+  <div class="dep-selector">
+    <span class="dep-selector-eyebrow">Oyague & Mendoza · Departamentos</span>
+    <h1 class="dep-selector-title">Nuestros <em>proyectos</em></h1>
+
+    <div class="dep-cards">
+      <!-- Bosque Vertical 1 -->
+      <div class="dep-card active" id="cardBV1" onclick="selectProyecto(1)">
+        <div class="dep-card-bg" style="background-image:url('fotos/edificio.jpeg');"></div>
+        <div class="dep-card-overlay"></div>
+        <div class="dep-card-body">
+          <span class="dep-card-num">01</span>
+          <p class="dep-card-name">Bosque Vertical 1</p>
+          <p class="dep-card-sub">9 pisos residenciales · 27 departamentos · 65–95 m²</p>
+          <span class="dep-card-badge disponible">En venta</span>
+        </div>
+        <div class="dep-tab-line"></div>
+      </div>
+
+      <!-- Bosque Vertical 2 -->
+      <div class="dep-card" id="cardBV2" onclick="selectProyecto(2)">
+        <div class="dep-card-bg"
+          style="background-image:url('fotos/edificio.jpeg'); filter:brightness(.3) grayscale(.8);"></div>
+        <div class="dep-card-overlay"></div>
+        <div class="dep-card-body">
+          <span class="dep-card-num">02</span>
+          <p class="dep-card-name">Bosque Vertical 2</p>
+          <p class="dep-card-sub">Próximamente · Huancayo, Perú</p>
+          <span class="dep-card-badge proximamente">Próximamente</span>
+        </div>
+        <div class="dep-tab-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ CONTENIDO BV1 ══════════ -->
+  <div id="depContent">
+    <!-- ══════════ SECCIÓN 1: HERO ══════════ -->
+    <section class="bv-hero" id="inicio">
+      <div class="bv-hero-bg"></div>
+      <div class="bv-hero-overlay"></div>
+      <div class="bv-hero-grain"></div>
+      <div class="bv-hero-content">
+        <span class="bv-hero-badge">Oyague &amp; Mendoza · Proyecto exclusivo</span>
+        <h1 class="bv-hero-title">Bosque<br><em>Vertical 1</em></h1>
+        <p class="bv-hero-sub">Un edificio pensado para quienes eligen vivir en armonía con el entorno. Diez pisos de
+          arquitectura contemporánea en el corazón de Huancayo, con espacios diseñados para conectar el interior con la
+          naturaleza.</p>
+        <div class="bv-hero-stats">
+          <div class="bv-hero-stat">
+            <span class="bv-stat-n">9</span>
+            <span class="bv-stat-l">Pisos residenciales</span>
+          </div>
+          <div class="bv-hero-stat">
+            <span class="bv-stat-n">27</span>
+            <span class="bv-stat-l">Departamentos</span>
+          </div>
+          <div class="bv-hero-stat">
+            <span class="bv-stat-n">65–95</span>
+            <span class="bv-stat-l">m² por unidad</span>
+          </div>
+          <div class="bv-hero-stat">
+            <span class="bv-stat-n">11</span>
+            <span class="bv-stat-l">Áreas comunes</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ SECCIÓN: AVANCE DEL PROYECTO ══════════ -->
+    <section class="bv-section bv-avance-section" style="background:#0a0a0a; padding: 80px 0;">
+      <div class="container">
+        <div class="bv-section-header bv-reveal">
+          <p class="bv-eyebrow">Estado actual</p>
+          <h2 class="bv-title">Avance del <em>Proyecto</em></h2>
+        </div>
+
+        <!-- Timeline line -->
+        <div class="bv-avance-timeline">
+          <div class="bv-avance-track">
+            <div class="bv-avance-progress" style="width: 40%;"></div>
+            <div class="bv-avance-dot active" style="left:0%"></div>
+            <div class="bv-avance-dot active" style="left:25%"></div>
+            <div class="bv-avance-dot current" style="left:40%"></div>
+            <div class="bv-avance-dot" style="left:70%"></div>
+            <div class="bv-avance-dot" style="left:100%"></div>
+          </div>
+        </div>
+
+        <!-- Cards de etapas -->
+        <div class="bv-avance-cards">
+
+          <div class="bv-avance-card done">
+            <div class="bv-avance-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" width="52" height="52">
+                <path d="M32 8 L38 20 L52 22 L42 32 L44 46 L32 40 L20 46 L22 32 L12 22 L26 20 Z" />
+                <path d="M20 52 L44 52" stroke-width="2" />
+                <circle cx="32" cy="28" r="4" fill="currentColor" stroke="none" />
+              </svg>
+            </div>
+            <p class="bv-avance-label">Lanzamiento</p>
+            <span class="bv-avance-check">✓</span>
+          </div>
+
+          <div class="bv-avance-card done">
+            <div class="bv-avance-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" width="52" height="52">
+                <rect x="14" y="20" width="14" height="32" />
+                <rect x="36" y="12" width="14" height="40" />
+                <path d="M8 52 L56 52" />
+                <text x="16" y="38" font-size="7" fill="currentColor" stroke="none" font-family="Inter">S/.</text>
+              </svg>
+            </div>
+            <p class="bv-avance-label">Pre Venta</p>
+            <span class="bv-avance-check">✓</span>
+          </div>
+
+          <div class="bv-avance-card current">
+            <div class="bv-avance-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" width="52" height="52">
+                <line x1="32" y1="8" x2="32" y2="56" />
+                <line x1="20" y1="8" x2="44" y2="8" />
+                <rect x="16" y="28" width="32" height="28" />
+                <line x1="24" y1="8" x2="24" y2="28" />
+                <line x1="40" y1="8" x2="40" y2="28" />
+                <rect x="26" y="36" width="12" height="20" />
+              </svg>
+            </div>
+            <p class="bv-avance-label">En Construcción</p>
+            <span class="bv-avance-badge-current">Actual</span>
+          </div>
+
+          <div class="bv-avance-card">
+            <div class="bv-avance-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" width="52" height="52">
+                <rect x="12" y="12" width="40" height="40" />
+                <rect x="20" y="20" width="24" height="24" />
+                <line x1="12" y1="12" x2="52" y2="52" />
+                <line x1="52" y1="12" x2="12" y2="52" />
+              </svg>
+            </div>
+            <p class="bv-avance-label">Acabados</p>
+          </div>
+
+          <div class="bv-avance-card">
+            <div class="bv-avance-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" width="52" height="52">
+                <path d="M20 52 Q32 44 44 52" />
+                <path d="M32 16 L36 26 L48 26 L38 34 L42 46 L32 38 L22 46 L26 34 L16 26 L28 26 Z" />
+              </svg>
+            </div>
+            <p class="bv-avance-label">Entrega</p>
+          </div>
+
+        </div>
+
+        <p class="bv-avance-desc bv-reveal">
+          Iniciamos la construcción de Bosque Vertical 1, un proyecto pensado para quienes buscan elegancia, serenidad y
+          distinción en cada detalle.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════ SECCIÓN 2: EDIFICIO INTERACTIVO ══════════ -->
+    <section class="bv-section" id="edificio" style="background:#050505;">
+      <div class="container">
+        <div class="bv-section-header bv-reveal">
+          <p class="bv-eyebrow">Selecciona tu unidad</p>
+          <h2 class="bv-title">El <em>edificio</em></h2>
+          <p class="bv-sub">Haz clic en cualquier departamento para ver su información detallada, galería de fotos y
+            disponibilidad.</p>
+        </div>
+      </div>
+      <div class="bv-building-wrap">
+        <!-- RENDER CON HOTSPOTS -->
+        <div class="bv-building-render">
+          <img src="fotos/edificio.jpeg" alt="Bosque Vertical 1 — Fachada del edificio" draggable="false" />
+
+          <!-- Badges de piso (decorativos) generados por JS -->
+
+        </div>
+
+        <!-- Panel lateral -->
+
+      </div>
+    </section>
+
+    <!-- ══════════ MODAL UNIDAD ══════════ -->
+    <div class="bv-modal-overlay" id="unitModal">
+      <div class="bv-modal" id="unitModalBox">
+        <button class="bv-modal-close" onclick="closeUnitModal()">✕</button>
+
+        <!-- Galería -->
+        <div class="bv-modal-gallery" id="modalGallery">
+          <!-- Imágenes insertadas por JS -->
+          <button class="bv-gallery-nav bv-gallery-prev" onclick="galleryNav(-1)">&#8592;</button>
+          <button class="bv-gallery-nav bv-gallery-next" onclick="galleryNav(1)">&#8594;</button>
+          <div class="bv-gallery-count" id="galleryCount">1 / 5</div>
+        </div>
+        <!-- Thumbnails -->
+        <div class="bv-thumbs" id="modalThumbs"></div>
+
+        <div class="bv-modal-body">
+          <div class="bv-modal-header">
+            <div>
+              <h2 class="bv-modal-name" id="modalName">Piso 1 — Izquierda</h2>
+              <p class="bv-modal-sub" id="modalSub">Bosque Vertical 1 · Huancayo, Perú</p>
+            </div>
+            <span class="bv-status-badge" id="modalStatus">Disponible</span>
+          </div>
+
+          <!-- Specs -->
+          <div class="bv-specs-grid">
+            <div class="bv-spec-item">
+              <span class="bv-spec-icon">📐</span>
+              <span class="bv-spec-label">Área total</span>
+              <span class="bv-spec-val" id="modalArea">—</span>
+            </div>
+            <div class="bv-spec-item">
+              <span class="bv-spec-icon">🌿</span>
+              <span class="bv-spec-label">Balcón</span>
+              <span class="bv-spec-val" id="modalBalcon">—</span>
+            </div>
+            <div class="bv-spec-item">
+              <span class="bv-spec-icon">🛏</span>
+              <span class="bv-spec-label">Dormitorios</span>
+              <span class="bv-spec-val" id="modalDorms">3</span>
+            </div>
+            <div class="bv-spec-item">
+              <span class="bv-spec-icon">🚿</span>
+              <span class="bv-spec-label">Baños</span>
+              <span class="bv-spec-val" id="modalBanos">2</span>
+            </div>
+          </div>
+
+          <!-- Detalles interiores -->
+          <p class="bv-modal-section-title">Distribución de ambientes</p>
+          <div class="bv-details-grid" id="modalDetails">
+            <div class="bv-detail-row"><span>Sala — Comedor</span><span>28 m²</span></div>
+            <div class="bv-detail-row"><span>Cocina</span><span>12 m²</span></div>
+            <div class="bv-detail-row"><span>Dormitorio principal</span><span>14 m²</span></div>
+            <div class="bv-detail-row"><span>Dormitorio 2</span><span>11 m²</span></div>
+            <div class="bv-detail-row"><span>Dormitorio 3</span><span>10 m²</span></div>
+            <div class="bv-detail-row"><span>Baño principal</span><span>5 m²</span></div>
+          </div>
+
+          <!-- Acabados -->
+          <p class="bv-modal-section-title">Acabados y materiales</p>
+          <ul class="bv-acabados-list">
+            <li>Pisos de porcelanato 60×60</li>
+            <li>Cocina equipada con muebles</li>
+            <li>Ventanas doble vidrio</li>
+            <li>Puertas de madera maciza</li>
+            <li>Sistema eléctrico empotrado</li>
+            <li>Pintura látex premium</li>
+            <li>Baños con griferías Italgrif</li>
+            <li>Closets en dormitorios</li>
+          </ul>
+
+          <!-- Acciones -->
+          <div class="bv-modal-actions">
+            <a id="modalWABtn" href="#" target="_blank" class="bv-btn-wa">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+              Consultar por WhatsApp
+            </a>
+            <a href="index.html#contacto" class="bv-btn-primary">Solicitar información</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- TIPOLOGÍAS -->
+    <section id="tipologias" style="background:#0a0a0a;padding:40px 0 80px;">
+      <div style="padding:0 100px;">
+
+        <!-- Título pequeño -->
+        <div style="text-align:center;margin-bottom:28px;">
+          <h2
+            style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:400;color:#fff;letter-spacing:-.02em;">
+            Tipologías <em style="font-style:italic;color:#95BB30;">Bosque Vertical 1</em></h2>
+        </div>
+
+        <!-- Grid 3 columnas compacto -->
+        <div
+          style="display:grid;grid-template-columns:160px 1fr 1fr;border:1px solid rgba(149,187,48,.1);overflow:hidden;width:100%;">
+
+          <!-- Botones -->
+          <div style="border-right:1px solid rgba(149,187,48,.15);">
+            <button onclick="switchBVTipo(1,this)" class="bv-tipo-tab"
+              style="width:100%;padding:16px 18px;border:none;background:rgba(149,187,48,.08);cursor:pointer;border-right:3px solid #95BB30;border-bottom:1px solid rgba(149,187,48,.08);display:flex;align-items:center;gap:10px;text-align:left;transition:all .25s;">
+              <span
+                style="font-family:'Playfair Display',serif;font-size:1.2rem;color:#95BB30;flex-shrink:0;line-height:1;">01</span>
+              <span style="font-family:'Playfair Display',serif;font-size:.88rem;color:#fff;">Tipo 1</span>
+            </button>
+            <button onclick="switchBVTipo(2,this)" class="bv-tipo-tab"
+              style="width:100%;padding:16px 18px;border:none;background:none;cursor:pointer;border-right:3px solid transparent;border-bottom:1px solid rgba(149,187,48,.08);display:flex;align-items:center;gap:10px;text-align:left;transition:all .25s;">
+              <span
+                style="font-family:'Playfair Display',serif;font-size:1.2rem;color:rgba(149,187,48,.25);flex-shrink:0;line-height:1;">02</span>
+              <span style="font-family:'Playfair Display',serif;font-size:.88rem;color:#999;">Tipo 2</span>
+            </button>
+            <button onclick="switchBVTipo(3,this)" class="bv-tipo-tab"
+              style="width:100%;padding:16px 18px;border:none;background:none;cursor:pointer;border-right:3px solid transparent;display:flex;align-items:center;gap:10px;text-align:left;transition:all .25s;">
+              <span
+                style="font-family:'Playfair Display',serif;font-size:1.2rem;color:rgba(149,187,48,.25);flex-shrink:0;line-height:1;">03</span>
+              <span style="font-family:'Playfair Display',serif;font-size:.88rem;color:#999;">Tipo 3</span>
+            </button>
+          </div>
+
+          <!-- Plano -->
+          <div
+            style="background:#050505;display:flex;align-items:center;justify-content:center;position:relative;border-right:1px solid rgba(149,187,48,.15);min-height:320px;">
+            <img id="bv-tipo-img" src="fotos/tipo1.jpeg" alt="Plano"
+              style="width:100%;height:100%;object-fit:contain;padding:16px;max-height:320px;" />
+            <span id="bv-tipo-img-label"
+              style="position:absolute;bottom:10px;left:10px;font-size:.56rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:#95BB30;color:#fff;padding:2px 8px;">Tipología
+              1 — Plano</span>
+          </div>
+
+          <!-- Datos -->
+          <div style="padding:24px 22px;">
+            <div id="bv-tipo-info-1">
+              <h3
+                style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;color:#fff;margin:0 0 2px;">
+                Tipología 1</h3>
+              <p style="font-size:.74rem;color:#999;font-weight:300;margin:0 0 14px;">Unidad izquierda · Piso 2 al 10
+              </p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:14px;">
+                <div style="background:#111;border:1px solid rgba(149,187,48,.12);padding:9px 10px;"><span
+                    style="font-size:.56rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#888;display:block;margin-bottom:1px;">Área</span><span
+                    style="font-family:'Playfair Display',serif;font-size:.95rem;color:#f5f2ec;">72–85 m²</span></div>
+                <div style="background:#111;border:1px solid rgba(149,187,48,.12);padding:9px 10px;"><span
+                    style="font-size:.56rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#888;display:block;margin-bottom:1px;">Balcón</span><span
+                    style="font-family:'Playfair Display',serif;font-size:.95rem;color:#f5f2ec;">10–18 m²</span></div>
+                <div style="background:#111;border:1px solid rgba(149,187,48,.12);padding:9px 10px;"><span
+                    style="font-size:.56rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#888;display:block;margin-bottom:1px;">Dorms.</span><span
+                    style="font-family:'Playfair Display',serif;font-size:.95rem;color:#f5f2ec;">3</span></div>
+                <div style="background:#111;border:1px solid rgba(149,187,48,.12);padding:9px 10px;"><span
+                    style="font-size:.56rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#888;display:block;margin-bottom:1px;">Baños</span><span
+                    style="font-family:'Playfair Display',serif;font-size:.95rem;color:#f5f2ec;">2</span></div>
+              </div>
+              <p style="font-size:.82rem;font-weight:300;color:rgba(245,242,236,.6);line-height:1.7;margin-bottom:14px;">Distribución
+                optimizada para familias. Sala-comedor con luz natural y balcón ajardinado.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px;">
+                <span
+                  style="font-size:.64rem;font-weight:600;padding:3px 8px;background:#f0f9e0;color:#3a7a15;border:1px solid rgba(149,187,48,.2);">Sala-Comedor</span>
+                <span
+                  style="font-size:.64rem;font-weight:600;padding:3px 8px;background:#f0f9e0;color:#3a7a15;border:1px solid rgba(149,187,48,.2);">Cocina</span>
+                <span
+                  style="font-size:.64rem;font-weight:600;padding:3px 8px;background:#f0f9e0;color:#3a7a15;border:1px solid rgba(149,187,48,.2);">3
+                  Dorms.</span>
+                <span
+                  style="font-size:.64rem;font-weight:600;padding:3px 8px;background:#f0f9e0;color:#3a7a15;border:1px solid rgba(149,187,48,.2);">2
+                  Baños</span>
+                <span
+                  style="font-size:.64rem;font-weight:600;padding:3px 8px;background:rgba(149,187,48,.1);color:#CEE632;border:1px solid rgba(149,187,48,.2);">Balcón
+                  verde</span>
+              </div>
+              <a href="https://wa.me/51941914867?text=Hola,%20me%20interesa%20Tipología%201%20de%20Bosque%20Vertical%201"
+                target="_blank"
+                style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:9px 16px;font-size:.72rem;font-weight:700;text-decoration:none;">📲
+                Consultar</a>
+            </div>
+
+            <div id="bv-tipo-info-2" style="display:none;">
+              <h3
+                style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;color:#111;margin:0 0 2px;">
+                Tipología 2</h3>
+              <p style="font-size:.74rem;color:#999;font-weight:300;margin:0 0 14px;">Unidad central · Piso 2 al 10</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:14px;">
+                <div style="background:#111;border:1px solid rgba(149,187,48,.12);padding:9px 10px;"><span
+                    style="font-size:.56rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#888;display:block;margin-bottom:1px;">Área</span><span
+                    style="font-family:'Playfair Display',serif;font-size:.95rem;color:#f5f2ec;">88–95 m²</span></div>
+                <div style="background:#111;border:1px solid rgba(149,187,48,.12);padding:9px 10px;"><span
+                    style="font-size:.56rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#888;display:block;margin-bottom:1px;">Balcón</span><span
+                    style="font-family:'Playfair Display',serif;font-size:.95rem;color:#f5f2ec;">15–20 m²</span></div>
+                <div style="background:#111;border:1px solid rgba(149,187,48,.12);padding:9px 10px;"><span
+                    style="font-size:.56rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#888;display:block;margin-bottom:1px;">Dorms.</span><span
+                    style="font-family:'Playfair Display',serif;font-size:.95rem;color:#f5f2ec;">3</span></div>
+                <div style="background:#111;border:1px solid rgba(149,187,48,.12);padding:9px 10px;"><span
+                    style="font-size:.56rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#888;display:block;margin-bottom:1px;">Baños</span><span
+                    style="font-family:'Playfair Display',serif;font-size:.95rem;color:#f5f2ec;">2</span></div>
+              </div>
+              <p style="font-size:.82rem;font-weight:300;color:rgba(245,242,236,.6);line-height:1.7;margin-bottom:14px;">La unidad más
+                amplia. Sala independiente, cocina abierta y balcón panorámico con vista a la ciudad.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px;">
+                <span
+                  style="font-size:.64rem;font-weight:600;padding:3px 8px;background:#f0f9e0;color:#3a7a15;border:1px solid rgba(149,187,48,.2);">Sala
+                  de estar</span>
+                <span
+                  style="font-size:.64rem;font-weight:600;padding:3px 8px;background:#f0f9e0;color:#3a7a15;border:1px solid rgba(149,187,48,.2);">Cocina
+                  abierta</span>
+                <span
+                  style="font-size:.64rem;font-weight:600;padding:3px 8px;background:#f0f9e0;color:#3a7a15;border:1px solid rgba(149,187,48,.2);">3
+                  Dorms.</span>
+                <span
+                  style="font-size:.64rem;font-weight:600;padding:3px 8px;background:#f0f9e0;color:#3a7a15;border:1px solid rgba(149,187,48,.2);">2
+                  Baños</span>
+                <span
+                  style="font-size:.64rem;font-weight:600;padding:3px 8px;background:rgba(149,187,48,.1);color:#CEE632;border:1px solid rgba(149,187,48,.2);">Balcón
+                  panorámico</span>
+              </div>
+              <a href="https://wa.me/51941914867?text=Hola,%20me%20interesa%20Tipología%202%20de%20Bosque%20Vertical%201"
+                target="_blank"
+                style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:9px 16px;font-size:.72rem;font-weight:700;text-decoration:none;">📲
+                Consultar</a>
+            </div>
+
+            <div id="bv-tipo-info-3" style="display:none;">
+              <h3
+                style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;color:#fff;margin:0 0 2px;">
+                Tipología 3</h3>
+              <p style="font-size:.74rem;color:#999;font-weight:300;margin:0 0 14px;">Unidad derecha · Piso 2 al 10</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:14px;">
+                <div style="background:#111;border:1px solid rgba(149,187,48,.12);padding:9px 10px;"><span
+                    style="font-size:.56rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#888;display:block;margin-bottom:1px;">Área</span><span
+                    style="font-family:'Playfair Display',serif;font-size:.95rem;color:#f5f2ec;">65–78 m²</span></div>
+                <div style="background:#111;border:1px solid rgba(149,187,48,.12);padding:9px 10px;"><span
+                    style="font-size:.56rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#888;display:block;margin-bottom:1px;">Balcón</span><span
+                    style="font-family:'Playfair Display',serif;font-size:.95rem;color:#f5f2ec;">8–14 m²</span></div>
+                <div style="background:#111;border:1px solid rgba(149,187,48,.12);padding:9px 10px;"><span
+                    style="font-size:.56rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#888;display:block;margin-bottom:1px;">Dorms.</span><span
+                    style="font-family:'Playfair Display',serif;font-size:.95rem;color:#f5f2ec;">3</span></div>
+                <div style="background:#111;border:1px solid rgba(149,187,48,.12);padding:9px 10px;"><span
+                    style="font-size:.56rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#888;display:block;margin-bottom:1px;">Baños</span><span
+                    style="font-family:'Playfair Display',serif;font-size:.95rem;color:#f5f2ec;">2</span></div>
+              </div>
+              <p style="font-size:.82rem;font-weight:300;color:rgba(245,242,236,.6);line-height:1.7;margin-bottom:14px;">Unidad compacta
+                sin renunciar a la calidad. Diseño inteligente que maximiza cada metro cuadrado.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px;">
+                <span
+                  style="font-size:.64rem;font-weight:600;padding:3px 8px;background:#f0f9e0;color:#3a7a15;border:1px solid rgba(149,187,48,.2);">Sala-Comedor</span>
+                <span
+                  style="font-size:.64rem;font-weight:600;padding:3px 8px;background:#f0f9e0;color:#3a7a15;border:1px solid rgba(149,187,48,.2);">Cocina</span>
+                <span
+                  style="font-size:.64rem;font-weight:600;padding:3px 8px;background:#f0f9e0;color:#3a7a15;border:1px solid rgba(149,187,48,.2);">3
+                  Dorms.</span>
+                <span
+                  style="font-size:.64rem;font-weight:600;padding:3px 8px;background:#f0f9e0;color:#3a7a15;border:1px solid rgba(149,187,48,.2);">2
+                  Baños</span>
+                <span
+                  style="font-size:.64rem;font-weight:600;padding:3px 8px;background:#f0f9e0;color:#3a7a15;border:1px solid rgba(149,187,48,.2);">Balcón</span>
+              </div>
+              <a href="https://wa.me/51941914867?text=Hola,%20me%20interesa%20Tipología%203%20de%20Bosque%20Vertical%201"
+                target="_blank"
+                style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:9px 16px;font-size:.72rem;font-weight:700;text-decoration:none;">📲
+                Consultar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function switchBVTipo(num, btn) {
+        document.querySelectorAll('.bv-tipo-tab').forEach(b => {
+          b.style.borderRightColor = 'transparent';
+          b.style.background = 'none';
+          b.querySelectorAll('span')[0].style.color = 'rgba(149,187,48,.25)';
+          b.querySelectorAll('span')[1].style.color = '#999';
+        });
+        btn.style.borderRightColor = '#95BB30';
+        btn.style.background = 'rgba(149,187,48,.08)';
+        btn.querySelectorAll('span')[0].style.color = '#95BB30';
+        btn.querySelectorAll('span')[1].style.color = '#fff';
+        const imgs = ['fotos/tipo1.jpeg', 'fotos/tipo2.jpeg', 'fotos/tipo3.jpeg'];
+        const labels = ['Tipología 1 — Plano', 'Tipología 2 — Plano', 'Tipología 3 — Plano'];
+        document.getElementById('bv-tipo-img').src = imgs[num - 1];
+        document.getElementById('bv-tipo-img-label').textContent = labels[num - 1];
+        document.querySelectorAll('[id^="bv-tipo-info-"]').forEach(p => p.style.display = 'none');
+        document.getElementById('bv-tipo-info-' + num).style.display = 'block';
+      }
+    </script>
+
+    <!-- ══════════ SECCIÓN 3: ÁREAS COMUNES ══════════ -->
+    <section class="bv-areas-section" id="areas">
+      <div style="width:100%;max-width:100%;padding:0 32px;margin:0 auto;">
+        <div class="bv-section-header bv-reveal">
+          <p class="bv-eyebrow">Vida en comunidad</p>
+          <h2 class="bv-title" style="color:#fff;">Áreas <em>comunes</em></h2>
+          <p class="bv-sub">Espacios pensados para que la vida fuera del departamento sea tan placentera como la vida
+            dentro.</p>
+        </div>
+        <div class="bv-areas-grid">
+
+          <div class="bv-area-card bv-reveal">
+            <div class="bv-area-card-bg" style="background-image:url('fotos/depa1/dep1-1.jpeg');"></div>
+            <div class="bv-area-content">
+              <svg class="bv-area-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="24" cy="24" r="18" />
+                <path d="M17 24c0-3.87 3.13-7 7-7s7 3.13 7 7" />
+                <path d="M12 24h4M32 24h4" />
+                <path d="M24 12v4M24 32v4" />
+              </svg>
+              <p class="bv-area-name">Área de conexión social</p>
+              <p class="bv-area-desc">Zona de encuentro y convivencia diseñada para fortalecer los lazos entre vecinos.
+              </p>
+            </div>
+          </div>
+
+          <div class="bv-area-card bv-reveal bv-reveal-delay-1">
+            <div class="bv-area-card-bg" style="background-image:url('fotos/depa2/dep2-1.jpeg');"></div>
+            <div class="bv-area-content">
+              <svg class="bv-area-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 36c0-8 4-14 12-20 8 6 12 12 12 20" />
+                <path d="M8 36h32" />
+                <path d="M24 16v4" />
+              </svg>
+              <p class="bv-area-name">Conexión con ambiente</p>
+              <p class="bv-area-desc">Jardines y áreas verdes que integran la naturaleza con los espacios de transición.
+              </p>
+            </div>
+          </div>
+
+          <div class="bv-area-card bv-reveal bv-reveal-delay-2">
+            <div class="bv-area-card-bg" style="background-image:url('fotos/depa3/dep3-1.jpeg');"></div>
+            <div class="bv-area-content">
+              <svg class="bv-area-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="24" cy="28" rx="16" ry="8" />
+                <path d="M8 28v6c0 4.4 7.2 8 16 8s16-3.6 16-8v-6" />
+                <path d="M24 10c-4.4 0-8 1.8-8 4s3.6 4 8 4 8-1.8 8-4-3.6-4-8-4z" />
+              </svg>
+              <p class="bv-area-name">Piscina</p>
+              <p class="bv-area-desc">Piscina temperada con área de descanso y solarium para toda la familia.</p>
+            </div>
+          </div>
+
+          <div class="bv-area-card bv-reveal bv-reveal-delay-3">
+            <div class="bv-area-card-bg" style="background-image:url('fotos/depa1/dep1-2.jpeg');"></div>
+            <div class="bv-area-content">
+              <svg class="bv-area-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M24 8c-8 0-14 6-14 14 0 5.5 3 10 8 12.5V38h12v-3.5c5-2.5 8-7 8-12.5 0-8-6-14-14-14z" />
+                <path d="M20 38v4h8v-4" />
+              </svg>
+              <p class="bv-area-name">Oasis privado</p>
+              <p class="bv-area-desc">Espacio íntimo de relajación y meditación con paisajismo cuidado.</p>
+            </div>
+          </div>
+
+          <div class="bv-area-card bv-reveal">
+            <div class="bv-area-card-bg" style="background-image:url('fotos/depa2/dep2-2.jpeg');"></div>
+            <div class="bv-area-content">
+              <svg class="bv-area-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="20" r="6" />
+                <circle cx="30" cy="20" r="6" />
+                <path d="M12 38c0-6 12-8 12-8s12 2 12 8" />
+              </svg>
+              <p class="bv-area-name">Diversión familiar</p>
+              <p class="bv-area-desc">Área de juegos y recreación para los más pequeños con materiales seguros.</p>
+            </div>
+          </div>
+
+          <div class="bv-area-card bv-reveal bv-reveal-delay-1">
+            <div class="bv-area-card-bg" style="background-image:url('fotos/depa3/dep3-2.jpeg');"></div>
+            <div class="bv-area-content">
+              <svg class="bv-area-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 36V20M32 36V20" />
+                <path d="M10 20h28" />
+                <path d="M16 20c0-4 8-12 8-12s8 8 8 12" />
+                <rect x="12" y="36" width="24" height="4" rx="0" />
+              </svg>
+              <p class="bv-area-name">Zona de parrillas</p>
+              <p class="bv-area-desc">Equipadas con mesas y todo lo necesario para reuniones y asados al aire libre.</p>
+            </div>
+          </div>
+
+          <div class="bv-area-card bv-reveal bv-reveal-delay-2">
+            <div class="bv-area-card-bg" style="background-image:url('fotos/depa1/dep1-3.jpeg');"></div>
+            <div class="bv-area-content">
+              <svg class="bv-area-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 22h20v12H14z" />
+                <path d="M10 22h4M34 22h4" />
+                <path d="M24 10v6M20 14h8" />
+                <circle cx="24" cy="10" r="3" />
+              </svg>
+              <p class="bv-area-name">Café bar</p>
+              <p class="bv-area-desc">Espacio lounge con servicio de café y bar para residentes y sus invitados.</p>
+            </div>
+          </div>
+
+          <div class="bv-area-card bv-reveal bv-reveal-delay-3">
+            <div class="bv-area-card-bg" style="background-image:url('fotos/depa2/dep2-3.jpeg');"></div>
+            <div class="bv-area-content">
+              <svg class="bv-area-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 32c0-4.4 3.6-8 8-8s8 3.6 8 8" />
+                <path d="M24 24v-6" />
+                <circle cx="24" cy="15" r="3" />
+                <path d="M12 36h24" />
+              </svg>
+              <p class="bv-area-name">Gym</p>
+              <p class="bv-area-desc">Gimnasio completamente equipado con máquinas de última generación y zona libre.
+              </p>
+            </div>
+          </div>
+
+          <div class="bv-area-card bv-reveal">
+            <div class="bv-area-card-bg" style="background-image:url('fotos/depa3/dep3-3.jpeg');"></div>
+            <div class="bv-area-content">
+              <svg class="bv-area-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M24 10c-8 0-14 4-14 10 0 4 3 7.5 8 9.5V36h12v-6.5c5-2 8-5.5 8-9.5 0-6-6-10-14-10z" />
+                <circle cx="24" cy="24" r="4" />
+              </svg>
+              <p class="bv-area-name">Zona spa</p>
+              <p class="bv-area-desc">Sauna, jacuzzi y zona de masajes para el bienestar y recuperación física.</p>
+            </div>
+          </div>
+
+          <div class="bv-area-card bv-reveal bv-reveal-delay-1">
+            <div class="bv-area-card-bg" style="background-image:url('fotos/depa1/dep1-4.jpeg');"></div>
+            <div class="bv-area-content">
+              <svg class="bv-area-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M24 10c0 0-10 8-10 18a10 10 0 0020 0c0-10-10-18-10-18z" />
+                <path d="M20 28c0-4 2-8 4-10M28 28c0-4-2-8-4-10" />
+              </svg>
+              <p class="bv-area-name">Bio huerto</p>
+              <p class="bv-area-desc">Huerto orgánico comunitario donde los residentes pueden cultivar sus propios
+                alimentos.</p>
+            </div>
+          </div>
+
+          <div class="bv-area-card bv-reveal bv-reveal-delay-2" style="grid-column:span 2;">
+            <div class="bv-area-card-bg" style="background-image:url('fotos/depa2/dep2-4.jpeg');"></div>
+            <div class="bv-area-content">
+              <svg class="bv-area-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="8" y="32" width="32" height="10" rx="0" />
+                <path d="M12 32V20h8v12M28 32V20h8v12" />
+                <path d="M8 20h32" />
+                <path d="M18 20v-8h12v8" />
+              </svg>
+              <p class="bv-area-name">Sótanos de estacionamiento</p>
+              <p class="bv-area-desc">Dos niveles de sótano con estacionamiento privado asignado a cada unidad, con
+                acceso controlado y cámaras de seguridad 24/7.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ SECCIÓN 4: GALERÍA GENERAL ══════════ -->
+    <section class="bv-gallery-section" id="galeria">
+      <div class="container">
+        <div class="bv-section-header bv-reveal">
+          <p class="bv-eyebrow">Interiores</p>
+          <h2 class="bv-title">Cada espacio, <em>un detalle</em></h2>
+          <p class="bv-sub">Mira de cerca la calidad de materiales y acabados que definen Bosque Vertical 1.</p>
+        </div>
+      </div>
+      <div class="bv-masonry" id="mainGallery">
+        <!-- Galería generada por JS -->
+      </div>
+    </section>
+
+    <!-- ══════════ SECCIÓN 5: CTA FINAL ══════════ -->
+    <section class="bv-cta-section" id="contacto-bv">
+      <div class="bv-cta-line"></div>
+      <p class="bv-eyebrow" style="justify-content:center;">¿Listo para dar el siguiente paso?</p>
+      <h2 class="bv-cta-title">Tu <em>departamento</em><br>te está esperando</h2>
+      <p class="bv-cta-sub">Contáctanos hoy y uno de nuestros asesores te guiará en cada etapa del proceso de compra.
+      </p>
+      <div class="bv-cta-btns">
+        <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20un%20departamento%20en%20Bosque%20Vertical%201"
+          target="_blank" class="bv-btn-wa" style="font-size:.85rem;padding:16px 32px;">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+          Escribir al WhatsApp
+        </a>
+        <a href="tel:+51999999999" class="bv-cta-phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18">
+            <path
+              d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .92h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+          </svg>
+          +51 999 999 999
+        </a>
+      </div>
+    </section>
+
+    <div class="bv-lb-overlay" id="areasLightbox">
+      <div class="bv-lb-box">
+        <button class="bv-lb-close" onclick="closeLB()">✕</button>
+        <div class="bv-lb-img-wrap">
+          <img id="lbMainImg" src="" alt="" />
+          <button class="bv-lb-prev" onclick="lbNav(-1)">&#8592;</button>
+          <button class="bv-lb-next" onclick="lbNav(1)">&#8594;</button>
+          <div class="bv-lb-count" id="lbCount">1 / 5</div>
+        </div>
+        <div class="bv-lb-thumbs" id="lbThumbs"></div>
+      </div>
+    </div>
+
+
+    <!-- WHATSAPP FLOTANTE -->
+  </div>
+
+  <!-- ══════════ CONTENIDO BV2 ══════════ -->
+  <div id="depBV2Content">
+    <div class="dep-coming" style="background:#050505;">
+      <div class="dep-coming-icon">🏗</div>
+      <h2 class="dep-coming-title">Bosque <em>Vertical 2</em></h2>
+      <p class="dep-coming-sub">Nuestro próximo proyecto está en desarrollo. Regístrate para ser el primero en conocer
+        los detalles, precios y disponibilidad de Bosque Vertical 2.</p>
+      <a href="https://wa.me/51941914867?text=Hola,%20me%20interesa%20recibir%20información%20sobre%20Bosque%20Vertical%202"
+        target="_blank" class="dep-coming-cta">
+        📲 Quiero más información
+      </a>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX ÁREAS -->
+  <div class="bv-lb-overlay" id="areasLightbox">
+    <div class="bv-lb-box">
+      <button class="bv-lb-close" onclick="closeLB()">✕</button>
+      <div class="bv-lb-img-wrap">
+        <img id="lbMainImg" src="" alt="" />
+        <button class="bv-lb-prev" onclick="lbNav(-1)">&#8592;</button>
+        <button class="bv-lb-next" onclick="lbNav(1)">&#8594;</button>
+        <div class="bv-lb-count" id="lbCount">1 / 5</div>
+      </div>
+      <div class="bv-lb-thumbs" id="lbThumbs"></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════ FOOTER ════════════════════ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="fotos/logos/4.png" alt="Oyague y Mendoza" class="footer-logo-img" style="filter: brightness(0) invert(1);" />
+        <p class="footer-tagline">Tu propiedad, nuestra prioridad.</p>
+        <div class="footer-partnership">
+          <p class="partner-label">Empresa del grupo</p>
+          <a href="https://rino.pe" target="_blank" class="partner-container">
+            <img src="fotos/logos/rinu.png" alt="Rinosirunti" class="partner-logo-img" />
+            <div class="partner-info">
+              <a> </a>
+              <p class="footer-tagline">Ingeniería de Vanguardia</p>
+            </div>
+          </a>
+        </div>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/oyagueymendozaoficial/?hl=es" target="_blank" class="footer-soc"
+            aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+          <a href="https://web.facebook.com/profile.php?id=61572488620640&locale=es_LA" target="_blank"
+            class="footer-soc" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
+          </a>
+          <a href="https://www.tiktok.com/@oyagueymendoza" target="_blank" class="footer-soc" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+              <path
+                d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Productos</h4>
+        <ul>
+          <li><a href="bosque-vertical.html">Departamentos</a></li>
+          <li><a href="terrenos.html">Terrenos</a></li>
+          <li><a href="casas.html">Casas</a></li>
+          <li><a href="diseno.html">Diseño</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="esg.html">ESG</a></li>
+          <li><a href="nosotros.html">Sobre Nosotros</a></li>
+          <li><a href="noticias.html">Noticias</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="#">Términos y condiciones</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Oyague & Mendoza Inmobiliaria. Todos los derechos reservados.</p>
+      <p>Huancayo, Perú</p>
+    </div>
+  </footer>
+
+
+  <a href="https://wa.me/51941914867?text=Hola,%20me%20interesa%20un%20departamento" class="whatsapp-float"
+    target="_blank" title="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  </a>
+
+  <script>
+    // ── CURSOR ──────────────────────────────────────
+    (function () {
+      const c = document.getElementById('cursor');
+      const r = document.getElementById('cursorRing');
+      if (!c || !r) return;
+      let mx = 0, my = 0, rx = 0, ry = 0;
+      document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+      const loop = () => {
+        rx += (mx - rx) * .14; ry += (my - ry) * .14;
+        c.style.left = mx + 'px'; c.style.top = my + 'px';
+        r.style.left = rx + 'px'; r.style.top = ry + 'px';
+        requestAnimationFrame(loop);
+      };
+      loop();
+      document.querySelectorAll('a,button,[class*="bv-unit"],[class*="gal-card"]').forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+      });
+    })();
+
+    // ── NAVBAR SCROLL ────────────────────────────────
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ── HAMBURGER ───────────────────────────────────
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.add('open');
+    });
+    function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+    // ── SCROLL REVEAL ────────────────────────────────
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+    }, { threshold: .12 });
+    document.querySelectorAll('.bv-reveal,.reveal').forEach(el => revealObserver.observe(el));
+
+    // ══════════════════════════════════════════════════
+    // DATOS DE LAS 27 UNIDADES (Pisos 2–10, 3 por piso)
+    // ══════════════════════════════════════════════════
+    // Galería: Izq→depa1, Centro→depa2, Derecha→depa3
+    const GALLERY_FOLDERS = {
+      'Izquierda': { folder: 'depa1', count: 5 },
+      'Centro': { folder: 'depa2', count: 6 },
+      'Derecha': { folder: 'depa3', count: 7 },
+    };
+
+    const AREAS = {
+      'Izquierda': [72, 75, 75, 78, 78, 80, 80, 82, 85],   // pisos 2–10
+      'Centro': [88, 90, 90, 92, 92, 93, 93, 94, 95],
+      'Derecha': [65, 65, 68, 68, 70, 72, 72, 74, 78],
+    };
+    const BALCONES = {
+      'Izquierda': [10, 10, 12, 12, 14, 14, 15, 15, 18],
+      'Centro': [15, 16, 16, 17, 17, 18, 18, 19, 20],
+      'Derecha': [8, 8, 9, 9, 10, 10, 11, 12, 14],
+    };
+    const STATUSES_TEMPLATE = ['disponible', 'disponible', 'disponible', 'reservado', 'disponible', 'disponible', 'disponible', 'vendido', 'disponible'];
+
+    const UNITS = [];
+    const positions = ['Izquierda', 'Centro', 'Derecha'];
+    // Orden: piso 10 primero (índice 0) → piso 2 último (índice 8)
+    for (let piso = 10; piso >= 2; piso--) {
+      for (let pi = 0; pi < 3; pi++) {
+        const pos = positions[pi];
+        const idx = 10 - piso; // 0 = piso10, 8 = piso2
+        const statusIdx = (idx + pi) % 9;
+        UNITS.push({
+          piso, pos,
+          area: AREAS[pos][idx],
+          balcon: BALCONES[pos][idx],
+          status: STATUSES_TEMPLATE[statusIdx],
+          folder: GALLERY_FOLDERS[pos].folder,
+          count: GALLERY_FOLDERS[pos].count,
+        });
+      }
+    }
+
+    // Resumen
+    const countDisp = UNITS.filter(u => u.status === 'disponible').length;
+    const countRes = UNITS.filter(u => u.status === 'reservado').length;
+    const countVend = UNITS.filter(u => u.status === 'vendido').length;
+
+
+    // ══════════════════════════════════════════════════
+    // GENERAR HOTSPOTS — posiciones calibradas sobre el render real
+    // Pisos 2–10 (departamentos), piso 1 = lobby (sin hotspot)
+    // Zona superior = áreas de relajación (sin hotspot)
+    // ══════════════════════════════════════════════════
+
+    // Posiciones Y (% desde arriba) de cada piso según imagen anotada
+    // Cada fila: [piso, y1%, y2%]
+
+
+    // ══════════════════════════════════════════════════
+    // MODAL DE UNIDAD
+    // ══════════════════════════════════════════════════
+    let currentGalleryIdx = 0;
+    let currentGalleryImages = [];
+
+    function openUnitModal(unitIdx) {
+      const unit = UNITS[unitIdx];
+      const modal = document.getElementById('unitModal');
+      const gallery = document.getElementById('modalGallery');
+      const thumbs = document.getElementById('modalThumbs');
+
+      // Nombre y subtítulo
+      document.getElementById('modalName').textContent = `Piso ${unit.piso} — ${unit.pos}`;
+      document.getElementById('modalSub').textContent = `Bosque Vertical 1 · ${unit.area} m² · Huancayo, Perú`;
+
+      // Badge estado
+      const badge = document.getElementById('modalStatus');
+      badge.className = `bv-status-badge ${unit.status}`;
+      const labelMap = { disponible: 'Disponible', reservado: 'Reservado', vendido: 'Vendido' };
+      badge.textContent = labelMap[unit.status];
+
+      // Specs
+      document.getElementById('modalArea').textContent = `${unit.area} m²`;
+      document.getElementById('modalBalcon').textContent = `${unit.balcon} m²`;
+
+      // Construir imágenes de la galería
+      const imgs = [];
+      for (let i = 1; i <= unit.count; i++) {
+        const n = unit.folder.replace('depa', '');
+        imgs.push(`fotos/${unit.folder}/dep${n}-${i}.jpeg`);
+      }
+      currentGalleryImages = imgs;
+      currentGalleryIdx = 0;
+
+      // Limpiar galería anterior
+      gallery.querySelectorAll('.bv-gallery-img').forEach(el => el.remove());
+      thumbs.innerHTML = '';
+
+      imgs.forEach((src, i) => {
+        const img = document.createElement('img');
+        img.src = src; img.alt = `Interior ${i + 1}`;
+        img.className = 'bv-gallery-img' + (i === 0 ? ' active' : '');
+        gallery.appendChild(img);
+
+        const th = document.createElement('img');
+        th.src = src; th.alt = ''; th.className = 'bv-thumb' + (i === 0 ? ' active' : '');
+        th.addEventListener('click', () => setGalleryImg(i));
+        thumbs.appendChild(th);
+      });
+      updateGalleryCount();
+
+      // Botón WhatsApp
+      const posLabel = encodeURIComponent(`Hola, quiero información del departamento Piso ${unit.piso} - ${unit.pos} en Bosque Vertical 1`);
+      document.getElementById('modalWABtn').href = `https://wa.me/51999999999?text=${posLabel}`;
+
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeUnitModal() {
+      document.getElementById('unitModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('unitModal').addEventListener('click', e => {
+      if (e.target === document.getElementById('unitModal')) closeUnitModal();
+    });
+
+    function setGalleryImg(idx) {
+      const imgs = document.querySelectorAll('#modalGallery .bv-gallery-img');
+      const thumbs = document.querySelectorAll('#modalThumbs .bv-thumb');
+      imgs.forEach((el, i) => el.classList.toggle('active', i === idx));
+      thumbs.forEach((el, i) => el.classList.toggle('active', i === idx));
+      currentGalleryIdx = idx;
+      updateGalleryCount();
+    }
+
+    function galleryNav(dir) {
+      const total = currentGalleryImages.length;
+      const next = (currentGalleryIdx + dir + total) % total;
+      setGalleryImg(next);
+    }
+
+    function updateGalleryCount() {
+      document.getElementById('galleryCount').textContent =
+        `${currentGalleryIdx + 1} / ${currentGalleryImages.length}`;
+    }
+
+    // Teclas ← → para navegar en modal
+    document.addEventListener('keydown', e => {
+      if (!document.getElementById('unitModal').classList.contains('open')) return;
+      if (e.key === 'ArrowLeft') galleryNav(-1);
+      if (e.key === 'ArrowRight') galleryNav(1);
+      if (e.key === 'Escape') closeUnitModal();
+    });
+
+    // ══════════════════════════════════════════════════
+    // GALERÍA MASONRY
+    // ══════════════════════════════════════════════════
+    (function buildGallery() {
+      const container = document.getElementById('mainGallery');
+      // Mezcla de imágenes de las 3 carpetas
+      const allPhotos = [
+        { src: 'fotos/depa1/dep1-1.jpeg' }, { src: 'fotos/depa2/dep2-1.jpeg' }, { src: 'fotos/depa3/dep3-1.jpeg' },
+        { src: 'fotos/depa1/dep1-2.jpeg' }, { src: 'fotos/depa2/dep2-2.jpeg' }, { src: 'fotos/depa3/dep3-2.jpeg' },
+        { src: 'fotos/depa1/dep1-3.jpeg' }, { src: 'fotos/depa2/dep2-3.jpeg' }, { src: 'fotos/depa3/dep3-3.jpeg' },
+        { src: 'fotos/depa1/dep1-4.jpeg' }, { src: 'fotos/depa2/dep2-4.jpeg' }, { src: 'fotos/depa3/dep3-4.jpeg' },
+        { src: 'fotos/depa1/dep1-5.jpeg' }, { src: 'fotos/depa2/dep2-5.jpeg' }, { src: 'fotos/depa3/dep3-5.jpeg' },
+        { src: 'fotos/depa2/dep2-6.jpeg' }, { src: 'fotos/depa3/dep3-6.jpeg' },
+        { src: 'fotos/depa3/dep3-7.jpeg' },
+      ];
+
+      allPhotos.forEach((photo, i) => {
+        const item = document.createElement('div');
+        item.className = 'bv-masonry-item bv-reveal';
+        if (i % 3 === 0) item.classList.add('bv-reveal-delay-1');
+        if (i % 3 === 1) item.classList.add('bv-reveal-delay-2');
+
+        item.innerHTML = `
+      <img src="${photo.src}" alt="Interior Bosque Vertical ${i + 1}" loading="lazy" />
+      <div class="bv-masonry-item-overlay">
+        <div class="bv-masonry-zoom">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/>
+          </svg>
+        </div>
+      </div>
+    `;
+
+        // Click para ampliar
+        item.addEventListener('click', () => {
+          const bigImg = item.querySelector('img');
+          const overlay = document.createElement('div');
+          overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:700;display:flex;align-items:center;justify-content:center;cursor:pointer;';
+          overlay.innerHTML = `<img src="${bigImg.src}" style="max-width:90vw;max-height:90vh;object-fit:contain;" />`;
+          overlay.addEventListener('click', () => { document.body.removeChild(overlay); document.body.style.overflow = ''; });
+          document.body.appendChild(overlay);
+          document.body.style.overflow = 'hidden';
+        });
+
+        container.appendChild(item);
+        revealObserver.observe(item);
+      });
+    })();
+
+    const LB_SETS = [
+      ['fotos/depa1/dep1-1.jpeg', 'fotos/depa1/dep1-2.jpeg', 'fotos/depa1/dep1-3.jpeg', 'fotos/depa1/dep1-4.jpeg', 'fotos/depa1/dep1-5.jpeg'],
+      ['fotos/depa2/dep2-1.jpeg', 'fotos/depa2/dep2-2.jpeg', 'fotos/depa2/dep2-3.jpeg', 'fotos/depa2/dep2-4.jpeg', 'fotos/depa2/dep2-5.jpeg', 'fotos/depa2/dep2-6.jpeg'],
+      ['fotos/depa3/dep3-1.jpeg', 'fotos/depa3/dep3-2.jpeg', 'fotos/depa3/dep3-3.jpeg', 'fotos/depa3/dep3-4.jpeg', 'fotos/depa3/dep3-5.jpeg', 'fotos/depa3/dep3-6.jpeg', 'fotos/depa3/dep3-7.jpeg'],
+      ['fotos/depa1/dep1-1.jpeg', 'fotos/depa1/dep1-2.jpeg', 'fotos/depa1/dep1-3.jpeg', 'fotos/depa1/dep1-4.jpeg', 'fotos/depa1/dep1-5.jpeg'],
+      ['fotos/depa2/dep2-1.jpeg', 'fotos/depa2/dep2-2.jpeg', 'fotos/depa2/dep2-3.jpeg', 'fotos/depa2/dep2-4.jpeg', 'fotos/depa2/dep2-5.jpeg'],
+      ['fotos/depa3/dep3-1.jpeg', 'fotos/depa3/dep3-2.jpeg', 'fotos/depa3/dep3-3.jpeg', 'fotos/depa3/dep3-4.jpeg', 'fotos/depa3/dep3-5.jpeg'],
+      ['fotos/depa1/dep1-1.jpeg', 'fotos/depa1/dep1-2.jpeg', 'fotos/depa1/dep1-3.jpeg', 'fotos/depa1/dep1-4.jpeg', 'fotos/depa1/dep1-5.jpeg'],
+      ['fotos/depa2/dep2-1.jpeg', 'fotos/depa2/dep2-2.jpeg', 'fotos/depa2/dep2-3.jpeg', 'fotos/depa2/dep2-4.jpeg', 'fotos/depa2/dep2-5.jpeg'],
+      ['fotos/depa3/dep3-1.jpeg', 'fotos/depa3/dep3-2.jpeg', 'fotos/depa3/dep3-3.jpeg', 'fotos/depa3/dep3-4.jpeg', 'fotos/depa3/dep3-5.jpeg'],
+      ['fotos/depa1/dep1-1.jpeg', 'fotos/depa1/dep1-2.jpeg', 'fotos/depa1/dep1-3.jpeg', 'fotos/depa1/dep1-4.jpeg', 'fotos/depa1/dep1-5.jpeg'],
+      ['fotos/depa2/dep2-1.jpeg', 'fotos/depa2/dep2-2.jpeg', 'fotos/depa2/dep2-3.jpeg', 'fotos/depa2/dep2-4.jpeg', 'fotos/depa2/dep2-5.jpeg'],
+    ];
+    let lbIdx = 0, lbImgs = [];
+    function openLB(i) {
+      lbImgs = LB_SETS[i] || LB_SETS[0];
+      document.getElementById('lbThumbs').innerHTML = lbImgs.map((s, j) => `<img src="${s}" class="bv-lb-thumb${j === 0 ? ' active' : ''}" onclick="lbSet(${j})" />`).join('');
+      lbSet(0);
+      document.getElementById('areasLightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLB() { document.getElementById('areasLightbox').classList.remove('open'); document.body.style.overflow = ''; }
+    function lbSet(i) {
+      lbIdx = i;
+      const img = document.getElementById('lbMainImg');
+      img.style.opacity = '0';
+      setTimeout(() => { img.src = lbImgs[i]; img.style.opacity = '1'; }, 150);
+      document.querySelectorAll('.bv-lb-thumb').forEach((t, j) => t.classList.toggle('active', j === i));
+      document.getElementById('lbCount').textContent = (i + 1) + ' / ' + lbImgs.length;
+    }
+    function lbNav(d) { lbSet((lbIdx + d + lbImgs.length) % lbImgs.length); }
+    document.getElementById('areasLightbox').addEventListener('click', function (e) { if (e.target === this) closeLB(); });
+    document.addEventListener('keydown', e => {
+      if (!document.getElementById('areasLightbox').classList.contains('open')) return;
+      if (e.key === 'ArrowLeft') lbNav(-1);
+      if (e.key === 'ArrowRight') lbNav(1);
+      if (e.key === 'Escape') closeLB();
+    });
+    document.querySelectorAll('.bv-area-card').forEach((card, i) => {
+      card.addEventListener('click', () => openLB(i));
+    });
+  </script>
+
+  <script>
+    // ── SELECTOR DE PROYECTOS ────────────────────────
+    function selectProyecto(num) {
+      document.getElementById('cardBV1').classList.toggle('active', num === 1);
+      document.getElementById('cardBV2').classList.toggle('active', num === 2);
+      document.getElementById('depContent').style.display = num === 1 ? 'block' : 'none';
+      document.getElementById('depBV2Content').style.display = num === 2 ? 'block' : 'none';
+      // Scroll suave al contenido
+      setTimeout(() => {
+        const target = num === 1
+          ? document.getElementById('depContent')
+          : document.getElementById('depBV2Content');
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    }
+  </script>
+</body>
+
+</html>

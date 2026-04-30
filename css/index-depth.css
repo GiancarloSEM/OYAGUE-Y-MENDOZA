@@ -1,0 +1,482 @@
+/* ═══════════════════════════════════════════════════════
+   OYAGUE & MENDOZA — index-depth.css
+   Profundidad y texturas para tema negro elegante.
+   Cargar después de index-verde-blanco.css (ahora negro)
+═══════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════════
+   HERO — profundidad con capas negras
+══════════════════════════════════════════════════ */
+.hero-overlay {
+  background: linear-gradient(160deg,
+      rgba(5, 5, 5, .15) 0%,
+      rgba(5, 5, 5, .6) 40%,
+      rgba(5, 5, 5, .97) 100%) !important;
+}
+
+/* Círculo decorativo dorado sutil en el hero */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(149, 187, 48, .06) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ══════════════════════════════════════════════════
+   SEPARADORES entre secciones — dorados sutiles
+══════════════════════════════════════════════════ */
+
+/* Onda debajo del hero */
+.hero {
+  padding-bottom: 0 !important;
+}
+
+.hero-wave {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  line-height: 0;
+}
+
+.hero-wave svg {
+  display: block;
+  width: 100%;
+}
+
+/* Onda encima de productos */
+.section-propiedades {
+  position: relative;
+}
+
+.section-propiedades::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60'%3E%3Cpath fill='%230a0a0a' d='M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z'/%3E%3C/svg%3E") no-repeat bottom/cover;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ══════════════════════════════════════════════════
+   PRODUCTOS — fondo negro con orbes dorados
+══════════════════════════════════════════════════ */
+.section-propiedades {
+  background:
+    radial-gradient(ellipse at 90% 10%, rgba(149, 187, 48, .03) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 90%, rgba(149, 187, 48, .02) 0%, transparent 45%),
+    #0a0a0a !important;
+}
+
+/* Patrón de puntos ultra sutil */
+.section-propiedades::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  height: auto !important;
+  background-image: radial-gradient(circle, rgba(149, 187, 48, .03) 1px, transparent 1px) !important;
+  background-size: 32px 32px !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+.section-propiedades .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Cards con sombra oscura */
+.gal-card,
+.list-card {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, .3) !important;
+  transition: transform .35s ease, box-shadow .35s ease !important;
+}
+
+.gal-card:hover,
+.list-card:hover {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, .5) !important;
+  transform: translateY(-4px) !important;
+}
+
+/* ══════════════════════════════════════════════════
+   SERVICIOS — fondo negro con bordes dorados
+══════════════════════════════════════════════════ */
+.section-servicios::before {
+  content: '';
+  position: absolute;
+  top: -150px;
+  right: -150px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 1px solid rgba(149, 187, 48, .04);
+  pointer-events: none;
+}
+
+.section-servicios::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  border: 1px solid rgba(149, 187, 48, .03);
+  pointer-events: none;
+}
+
+.section-servicios .section-eyebrow {
+  color: var(--green, #95BB30) !important;
+}
+
+.section-servicios .section-title {
+  color: var(--blanco, #f5f2ec) !important;
+}
+
+.section-servicios .section-title em {
+  color: var(--green-lt, #CEE632) !important;
+}
+
+.section-servicios .section-sub {
+  color: rgba(245, 242, 236, .35) !important;
+}
+
+.servicio-card {
+  background: var(--negro-4, #181818) !important;
+  border: 1.5px solid rgba(149, 187, 48, .1) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, .25) !important;
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease !important;
+}
+
+.servicio-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 20px 56px rgba(0, 0, 0, .45) !important;
+  border-color: rgba(149, 187, 48, .3) !important;
+  background: rgba(149, 187, 48, .04) !important;
+}
+
+.servicio-card h3 {
+  color: var(--blanco, #f5f2ec) !important;
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+}
+
+.servicio-card p {
+  color: rgba(245, 242, 236, .4) !important;
+  font-size: .88rem !important;
+  line-height: 1.75 !important;
+}
+
+.servicio-icon {
+  font-size: 2rem !important;
+  margin-bottom: 14px !important;
+  display: block !important;
+}
+
+
+/* ══════════════════════════════════════════════════
+   NOTICIAS — fondo negro con textura
+══════════════════════════════════════════════════ */
+.section-noticias {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(149, 187, 48, .03) 0%, transparent 60%),
+    var(--negro-3, #111111) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Líneas diagonales sutiles */
+.section-noticias::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  height: auto !important;
+  background-image: repeating-linear-gradient(-45deg,
+      transparent,
+      transparent 28px,
+      rgba(149, 187, 48, .015) 28px,
+      rgba(149, 187, 48, .015) 29px) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+.section-noticias .container,
+.section-noticias .section-header {
+  position: relative;
+  z-index: 1;
+}
+
+/* Cards noticias */
+.noticia-card {
+  background: var(--negro-4, #181818) !important;
+  border: 1px solid rgba(149, 187, 48, .06) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .25) !important;
+  overflow: hidden !important;
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease !important;
+}
+
+.noticia-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 20px 56px rgba(0, 0, 0, .5) !important;
+  border-color: rgba(149, 187, 48, .25) !important;
+}
+
+.noticia-fecha {
+  color: var(--green, #95BB30) !important;
+}
+
+.noticia-titulo {
+  color: var(--blanco, #f5f2ec) !important;
+  font-weight: 600 !important;
+}
+
+.noticia-excerpt {
+  color: rgba(245, 242, 236, .35) !important;
+}
+
+.noticia-link {
+  color: var(--green, #95BB30) !important;
+}
+
+/* Flechas noticias */
+.noticias-arrow {
+  background: var(--negro-4, #181818) !important;
+  border: 1.5px solid rgba(149, 187, 48, .15) !important;
+  color: var(--green, #95BB30) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .3) !important;
+}
+
+.noticias-arrow:hover {
+  background: var(--green, #95BB30) !important;
+  color: var(--negro-1, #050505) !important;
+}
+
+/* ══════════════════════════════════════════════════
+   TESTIMONIOS — negro con patrón sutil
+══════════════════════════════════════════════════ */
+.section-testimonios {
+  background: var(--negro-2, #0a0a0a) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Rombos removidos */
+.section-testimonios::before {
+  display: none !important;
+}
+
+/* Cards testimonios */
+.testi-card {
+  background: var(--negro-4, #181818) !important;
+  border: 1.5px solid rgba(149, 187, 48, .08) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .25) !important;
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease !important;
+}
+
+.testi-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, .45) !important;
+  border-color: rgba(149, 187, 48, .25) !important;
+}
+
+.testi-text {
+  color: rgba(245, 242, 236, .65) !important;
+}
+
+.testi-stars {
+  color: var(--green, #95BB30) !important;
+}
+
+.testi-autor strong {
+  color: var(--blanco, #f5f2ec) !important;
+}
+
+.testi-autor span {
+  color: rgba(149, 187, 48, .45) !important;
+}
+
+/* Flechas testimonios */
+.testi-arrow {
+  background: var(--negro-4, #181818) !important;
+  border: 1.5px solid rgba(149, 187, 48, .15) !important;
+  color: var(--green, #95BB30) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .3) !important;
+}
+
+.testi-arrow:hover {
+  background: var(--green, #95BB30) !important;
+  color: var(--negro-1, #050505) !important;
+  border-color: var(--green, #95BB30) !important;
+}
+
+.testi-dot {
+  background: rgba(149, 187, 48, .12) !important;
+}
+
+.testi-dot.active {
+  background: var(--green, #95BB30) !important;
+}
+
+/* ══════════════════════════════════════════════════
+   CTA — negro con luminosidad dorada
+══════════════════════════════════════════════════ */
+.section-cta {
+  background: var(--negro-3, #111111) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-cta::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  border: 1px solid rgba(149, 187, 48, .06);
+  pointer-events: none;
+}
+
+.section-cta::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: -80px;
+  right: -80px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 1px solid rgba(149, 187, 48, .04);
+  pointer-events: none;
+}
+
+.section-cta .cta-content h2 {
+  color: var(--blanco, #f5f2ec) !important;
+}
+
+.section-cta .cta-content h2 em {
+  color: var(--green-lt, #CEE632) !important;
+}
+
+.section-cta .cta-content p {
+  color: rgba(245, 242, 236, .35) !important;
+}
+
+
+/* ══════════════════════════════════════════════════
+   CONTACTO — profundidad negra con orbes
+══════════════════════════════════════════════════ */
+.section-contacto {
+  background:
+    radial-gradient(ellipse at 90% 10%, rgba(149, 187, 48, .03) 0%, transparent 50%),
+    var(--negro-3, #111111) !important;
+  position: relative;
+}
+
+.section-contacto::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  height: auto !important;
+  background-image: radial-gradient(circle, rgba(149, 187, 48, .015) 1px, transparent 1px) !important;
+  background-size: 36px 36px !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+.section-contacto .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Form wrap con sombra premium */
+.contacto-form-wrap {
+  background: var(--negro-4, #181818) !important;
+  border: 1px solid rgba(149, 187, 48, .1) !important;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, .4) !important;
+  border-radius: 12px !important;
+}
+
+/* ══════════════════════════════════════════════════
+   EQUIPO — negro con textura
+══════════════════════════════════════════════════ */
+.section-equipo {
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(149, 187, 48, .03) 0%, transparent 55%),
+    linear-gradient(180deg, var(--negro-3, #111111) 0%, var(--negro-2, #0a0a0a) 100%) !important;
+  position: relative;
+}
+
+/* ══════════════════════════════════════════════════
+   SECCIÓN EYEBROW Y TÍTULOS — dorados y blancos
+══════════════════════════════════════════════════ */
+.section-noticias .section-eyebrow,
+.section-testimonios .section-eyebrow,
+.section-servicios .section-eyebrow,
+.section-contacto .section-eyebrow,
+.section-equipo .section-eyebrow {
+  color: var(--green, #95BB30) !important;
+}
+
+.section-noticias .section-title,
+.section-testimonios .section-title,
+.section-servicios .section-title,
+.section-contacto .section-title,
+.section-equipo .section-title {
+  color: var(--blanco, #f5f2ec) !important;
+}
+
+.section-noticias .section-title em,
+.section-testimonios .section-title em,
+.section-servicios .section-title em,
+.section-contacto .section-title em,
+.section-equipo .section-title em {
+  color: var(--green-lt, #CEE632) !important;
+}
+
+.section-noticias .section-sub,
+.section-testimonios .section-sub,
+.section-servicios .section-sub,
+.section-contacto .section-sub,
+.section-equipo .section-sub {
+  color: rgba(245, 242, 236, .35) !important;
+}
+
+/* ══ SERVICIOS — forzar colores oscuros ══ */
+.section-servicios .servicio-card h3,
+.section-servicios .section-title {
+  color: var(--blanco, #f5f2ec) !important;
+}
+
+.section-servicios .servicio-card p {
+  color: rgba(245, 242, 236, .4) !important;
+}
+
+.section-servicios .section-eyebrow {
+  color: var(--green, #95BB30) !important;
+}
+
+.section-servicios .section-sub {
+  color: rgba(245, 242, 236, .35) !important;
+}
+
+/* Cards de servicios */
+.section-servicios .servicio-card {
+  background: var(--negro-4, #181818) !important;
+  border: 1.5px solid rgba(149, 187, 48, .1) !important;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .3) !important;
+}

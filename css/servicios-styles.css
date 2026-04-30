@@ -410,11 +410,13 @@
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
     }
     .srv-feature {
-      padding: 40px 36px;
+      padding: 25px 20px; /* Reducido de 40px 36px para achicar el bloque */ 
       background: rgba(255,255,255,.025);
-      border: 1px solid rgba(255,255,255,.06);
-      transition: background .3s, border-color .3s, transform .3s;
-      position: relative; overflow: hidden;
+      border: 1px solid rgba(255,255,255,.06); 
+      min-height: 180px; /* Altura controlada para que no sean cuadrados gigantes */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .srv-feature::before {
       content: ''; position: absolute;

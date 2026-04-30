@@ -1,0 +1,484 @@
+/* ═══════════════════════════════════════════════════
+   OYAGUE & MENDOZA — index-negro-elegante.css
+   Tema negro elegante con acentos dorados/champagne.
+   Cargado DESPUÉS de index-premium.css
+═══════════════════════════════════════════════════ */
+
+/* ── PALETA ELEGANTE NEGRO ── */
+:root {
+  --negro-1:    #050505;
+  --negro-2:    #0a0a0a;
+  --negro-3:    #111111;
+  --negro-4:    #181818;
+  --negro-5:    #1f1f1f;
+  --negro-6:    #282828;
+  --oro:        #95BB30;
+  --oro-claro:  #CEE632;
+  --oro-oscuro: #6a8f1a;
+  --oro-palido: #f4f9e8;
+  --blanco:     #f5f2ec;
+  --blanco-50:  rgba(245,242,236,.5);
+  --blanco-30:  rgba(245,242,236,.3);
+  --blanco-15:  rgba(245,242,236,.15);
+  --blanco-08:  rgba(245,242,236,.08);
+  --blanco-04:  rgba(245,242,236,.04);
+}
+
+/* ── BODY ── */
+body { background: var(--negro-1); }
+
+/* ── CURSOR ── */
+.cursor { background: var(--oro); }
+.cursor-ring { border-color: rgba(149, 187, 48, .45); }
+body.cursor-hover .cursor { background: var(--oro-claro); width: 18px; height: 18px; }
+body.cursor-hover .cursor-ring { border-color: var(--oro-claro); width: 54px; height: 54px; }
+
+/* ══════════ NAV ══════════════════════════════════ */
+
+/* ── Tamaño de letra ── */
+#navbar .nav-links a {
+  font-size: .85rem !important;
+  font-weight: 600 !important;
+  letter-spacing: .06em !important;
+}
+#navbar .nav-cta {
+  font-size: .83rem !important;
+  font-weight: 700 !important;
+  padding: 9px 22px !important;
+}
+
+/* Gradiente superior hero para legibilidad */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, rgba(5,5,5,.7) 0%, transparent 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Nav sin scroll — links blancos con glow sutil */
+#navbar:not(.scrolled) .nav-links a { color: rgba(245,242,236,.85); }
+#navbar:not(.scrolled) .nav-links a:hover { color: var(--oro-claro); }
+#navbar:not(.scrolled) .nav-social-link { color: rgba(245,242,236,.55); }
+#navbar:not(.scrolled) .nav-social-link:hover { color: var(--oro); }
+#navbar:not(.scrolled) .hamburger span { background: var(--blanco); }
+
+/* Nav scrolled — negro sólido con borde dorado */
+#navbar.scrolled {
+  background: rgba(8,8,8,.96) !important;
+  backdrop-filter: blur(24px) !important;
+  border-bottom: 1px solid rgba(149, 187, 48, .2) !important;
+}
+#navbar.scrolled .nav-links a { color: rgba(245,242,236,.75); }
+#navbar.scrolled .nav-links a:hover { color: var(--oro-claro); }
+#navbar.scrolled .nav-social-link { color: rgba(245,242,236,.4); }
+#navbar.scrolled .nav-social-link:hover { color: var(--oro); }
+#navbar.scrolled .hamburger span { background: rgba(245,242,236,.8); }
+#navbar.scrolled .nav-cta { color: var(--negro-1) !important; }
+
+#navbar:not(.scrolled) .nav-logo-img,
+#navbar.scrolled .nav-logo-img {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* ── DROPDOWN — negro elegante con borde dorado ── */
+.dropdown-menu {
+  background: var(--negro-3) !important;
+  border: 1px solid rgba(149, 187, 48, .2) !important;
+  border-top: 2px solid var(--oro) !important;
+  box-shadow: 0 16px 48px rgba(0,0,0,.7) !important;
+}
+.dropdown-menu li a {
+  color: rgba(245,242,236,.7) !important;
+  font-size: .85rem !important;
+  font-weight: 600 !important;
+}
+.dropdown-menu li a:hover {
+  background: rgba(149, 187, 48, .08) !important;
+  color: var(--oro-claro) !important;
+}
+.dd-icon { color: var(--oro) !important; }
+
+/* CTA dorado */
+.nav-cta {
+  background: var(--oro) !important;
+  color: var(--negro-1) !important;
+  font-weight: 800;
+  border: none !important;
+}
+.nav-cta:hover {
+  background: var(--oro-claro) !important;
+  color: var(--negro-1) !important;
+}
+
+/* ══════════ HERO ═══════════════════════════════ */
+.hero-overlay {
+  background: linear-gradient(
+    160deg,
+    rgba(5,5,5,.2) 0%,
+    rgba(5,5,5,.65) 45%,
+    rgba(5,5,5,.97) 100%
+  ) !important;
+}
+.hero-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") !important;
+  opacity: .03 !important;
+}
+.hero-eyebrow { color: var(--oro) !important; letter-spacing: .3em !important; }
+.hero-title { color: var(--blanco) !important; }
+.hero-title em { color: var(--oro-claro) !important; }
+.hero-sub { color: rgba(245,242,236,.45) !important; }
+
+/* Botones hero */
+.btn-primary {
+  background: var(--oro) !important;
+  color: var(--negro-1) !important;
+  font-weight: 800 !important;
+  border: none !important;
+}
+.btn-primary:hover {
+  background: var(--oro-claro) !important;
+  color: var(--negro-1) !important;
+}
+.btn-ghost {
+  border-color: rgba(149, 187, 48, .35) !important;
+  color: var(--oro-palido) !important;
+}
+.btn-ghost:hover {
+  border-color: var(--oro) !important;
+  background: rgba(149, 187, 48, .08) !important;
+  color: var(--oro-claro) !important;
+}
+.scroll-line { background: linear-gradient(to bottom, var(--oro), transparent) !important; }
+.hero-scroll span { color: rgba(149, 187, 48, .35) !important; }
+.hero-num-deco { color: rgba(149, 187, 48, .04) !important; }
+
+/* Stats — dorados */
+.stat-top { color: var(--oro-claro) !important; }
+.stat-num { color: var(--oro-claro) !important; }
+.stat-suffix { color: var(--oro) !important; }
+.stat-label { color: rgba(245,242,236,.35) !important; }
+.hero-stats {
+  border-left-color: rgba(149, 187, 48, .15) !important;
+}
+
+/* ══════════ PRODUCTOS — negro profundo ════════════════ */
+.section-propiedades { background: var(--negro-2) !important; }
+.props-eyebrow { color: var(--oro) !important; }
+.props-title { color: var(--blanco) !important; }
+.props-title em { color: var(--oro-claro) !important; }
+.props-count-badge { color: rgba(149, 187, 48, .08) !important; }
+
+/* Filtros */
+.filter-tab { color: rgba(245,242,236,.35) !important; }
+.filter-tab:hover { color: var(--blanco) !important; }
+.filter-tab.active { color: var(--oro-claro) !important; border-bottom-color: var(--oro) !important; }
+.filter-divider { background: rgba(245,242,236,.06) !important; }
+.precio-toggle {
+  background: rgba(149, 187, 48, .06) !important;
+  border-color: rgba(149, 187, 48, .15) !important;
+  color: rgba(245,242,236,.4) !important;
+}
+.precio-toggle:hover { border-color: var(--oro) !important; color: var(--oro-claro) !important; }
+.precio-toggle.active { background: var(--oro) !important; border-color: var(--oro) !important; color: var(--negro-1) !important; }
+.view-btn { background: rgba(149, 187, 48, .04) !important; border-color: rgba(149, 187, 48, .12) !important; }
+.view-btn svg { stroke: rgba(149, 187, 48, .5) !important; }
+.view-btn:hover { border-color: var(--oro) !important; background: rgba(149, 187, 48, .1) !important; }
+.view-btn.active { background: var(--oro) !important; border-color: var(--oro) !important; }
+.view-btn.active svg { stroke: var(--negro-1) !important; }
+
+/* Gallery grid */
+.gallery-grid { background: var(--negro-3) !important; border-color: var(--negro-3) !important; }
+.gal-price { color: var(--oro-claro) !important; }
+.gal-spec::before { color: var(--oro) !important; }
+.gal-cta { color: var(--oro-claro) !important; }
+.gal-cta-arrow { background: var(--oro) !important; }
+.gal-cta-arrow::after { border-color: var(--oro) !important; }
+.gal-featured-badge { background: var(--oro) !important; color: var(--negro-1) !important; }
+
+/* Lista */
+.list-card {
+  background: var(--negro-3) !important;
+  border: 1.5px solid rgba(149, 187, 48, .1) !important;
+}
+.list-card:hover {
+  border-color: rgba(149, 187, 48, .3) !important;
+  box-shadow: 0 16px 56px rgba(0,0,0,.5) !important;
+}
+.list-title { color: var(--blanco) !important; }
+.list-loc { color: rgba(149, 187, 48, .5) !important; }
+.list-spec-chip { background: rgba(149, 187, 48, .08) !important; color: var(--oro-claro) !important; }
+.list-price { color: var(--oro-claro) !important; }
+.list-action { color: var(--oro) !important; }
+.list-action-line { background: var(--oro) !important; }
+.btn-editorial { color: var(--oro-claro) !important; border-color: var(--oro) !important; }
+.btn-editorial:hover { background: var(--oro) !important; color: var(--negro-1) !important; }
+
+/* ══════════ SERVICIOS ══════════ */
+.section-servicios .section-eyebrow { color: var(--oro) !important; }
+.section-servicios .section-title { color: var(--blanco) !important; font-weight: 800 !important; }
+.servicio-card {
+  background: var(--negro-3) !important;
+  border: 1.5px solid rgba(149, 187, 48, .12) !important;
+}
+.servicio-card:hover {
+  background: rgba(149, 187, 48, .04) !important;
+  border-color: rgba(149, 187, 48, .35) !important;
+  transform: translateY(-4px) !important;
+}
+.servicio-card h3 { color: var(--blanco) !important; font-weight: 700 !important; }
+.servicio-card p { color: rgba(245,242,236,.45) !important; }
+
+/* ══════════ NOTICIAS ════════════ */
+.section-noticias { background: var(--negro-3) !important; }
+.section-noticias .section-eyebrow { color: var(--oro) !important; }
+.section-noticias .section-title { color: var(--blanco) !important; }
+.section-noticias .section-sub { color: rgba(245,242,236,.4) !important; }
+.noticia-card {
+  background: var(--negro-4) !important;
+  border: 1px solid rgba(149, 187, 48, .08) !important;
+  box-shadow: none !important;
+}
+.noticia-card:hover {
+  border-color: rgba(149, 187, 48, .25) !important;
+  box-shadow: 0 16px 48px rgba(0,0,0,.5) !important;
+  transform: translateY(-5px) !important;
+}
+.noticia-fecha { color: var(--oro) !important; }
+.noticia-titulo { color: var(--blanco) !important; }
+.noticia-excerpt { color: rgba(245,242,236,.4) !important; }
+.noticia-link { color: var(--oro) !important; }
+.noticia-link:hover { color: var(--oro-claro) !important; }
+.noticia-cat { background: var(--oro) !important; color: var(--negro-1) !important; }
+
+/* Flechas y dots noticias */
+#noticias .noticias-arrow {
+  background: rgba(149, 187, 48, .08) !important;
+  border-color: rgba(149, 187, 48, .2) !important;
+  color: var(--oro) !important;
+  font-weight: 800 !important;
+  transition: all .3s ease !important;
+}
+#noticias .noticias-arrow:hover {
+  background: var(--oro) !important;
+  border-color: var(--oro) !important;
+  color: var(--negro-1) !important;
+  transform: scale(1.1) !important;
+}
+#noticias .noticias-dot { background: rgba(149, 187, 48, .15) !important; }
+#noticias .noticias-dot.active { background: var(--oro) !important; }
+
+#noticias .noticia-card {
+  background: var(--negro-4) !important;
+  border: 1px solid rgba(149, 187, 48, .08) !important;
+  border-radius: 12px !important;
+}
+#noticias .noticia-card:hover {
+  background: rgba(149, 187, 48, .04) !important;
+  border-color: rgba(149, 187, 48, .3) !important;
+  transform: translateY(-4px) !important;
+}
+#noticias .noticia-titulo { color: var(--blanco) !important; font-weight: 700 !important; }
+#noticias .noticia-fecha { color: var(--oro) !important; }
+#noticias .noticia-excerpt { color: rgba(245,242,236,.4) !important; }
+#noticias .noticia-link { color: var(--oro) !important; }
+
+/* ══════════ TESTIMONIOS — negro ══════════════ */
+.section-testimonios { background: var(--negro-2) !important; }
+.section-testimonios .section-eyebrow { color: var(--oro) !important; }
+.section-testimonios .section-title { color: var(--blanco) !important; }
+.testi-card {
+  background: var(--negro-4) !important;
+  border: 1.5px solid rgba(149, 187, 48, .1) !important;
+}
+.testi-card:hover { border-color: rgba(149, 187, 48, .3) !important; }
+.testi-stars { color: var(--oro) !important; }
+.testi-text { color: rgba(245,242,236,.7) !important; }
+.testi-autor strong { color: var(--blanco) !important; }
+.testi-autor span { color: rgba(149, 187, 48, .5) !important; }
+.testi-arrow {
+  background: rgba(149, 187, 48, .08) !important;
+  border-color: rgba(149, 187, 48, .2) !important;
+  color: var(--oro) !important;
+}
+.testi-arrow:hover { background: var(--oro) !important; color: var(--negro-1) !important; border-color: var(--oro) !important; }
+.testi-dot { background: rgba(149, 187, 48, .15) !important; }
+.testi-dot.active { background: var(--oro) !important; }
+
+/* ══════════ CTA ══════════ */
+.section-cta,
+.nos-cta,
+.esg-cta {
+  background: var(--negro-3) !important;
+  border-top: 1px solid rgba(149, 187, 48, .15) !important;
+  border-bottom: 1px solid rgba(149, 187, 48, .15) !important;
+  box-shadow: none !important;
+}
+.cta-content h2 { color: var(--blanco) !important; font-weight: 800 !important; }
+.cta-content h2 em { color: var(--oro-claro) !important; }
+.cta-content p { color: rgba(245,242,236,.4) !important; }
+
+.section-cta .btn-primary,
+.nos-cta .btn-primary,
+.esg-cta .btn-primary {
+  background: var(--oro) !important;
+  color: var(--negro-1) !important;
+  border-radius: 2px !important;
+}
+.section-cta .btn-primary:hover,
+.nos-cta .btn-primary:hover,
+.esg-cta .btn-primary:hover {
+  background: var(--oro-claro) !important;
+}
+
+/* ══════════ CONTACTO — negro con acentos dorados ════════════ */
+.section-contacto { background: var(--negro-3) !important; }
+.section-contacto .section-eyebrow { color: var(--oro) !important; }
+.section-contacto .section-title { color: var(--blanco) !important; text-align: left !important; }
+.contacto-desc { color: rgba(245,242,236,.4) !important; }
+.contacto-item strong { color: var(--blanco) !important; }
+.contacto-item p, .contacto-item a { color: rgba(245,242,236,.45) !important; }
+.contacto-item a:hover { color: var(--oro-claro) !important; }
+.ci-icon {
+  color: var(--oro) !important;
+  background: rgba(149, 187, 48, .08) !important;
+  border-radius: 50% !important;
+  padding: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.contacto-form-wrap {
+  background: var(--negro-4) !important;
+  border: 1px solid rgba(149, 187, 48, .12) !important;
+  box-shadow: 0 12px 48px rgba(0,0,0,.4) !important;
+}
+.contacto-form h3 { color: #ffffff !important; border-bottom-color: rgba(149, 187, 48, .12) !important; }
+.form-group label { color: #ffffff !important; }
+.form-group input, .form-group select, .form-group textarea {
+  background: rgba(245,242,236,.04) !important;
+  border-color: rgba(149, 187, 48, .1) !important;
+  color: #ffffff !important;
+}
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,.6) !important; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: var(--oro) !important;
+  background: rgba(149, 187, 48, .04) !important;
+  box-shadow: 0 0 0 3px rgba(149, 187, 48, .1) !important;
+}
+.contacto-form .btn-primary { background: var(--oro) !important; color: var(--negro-1) !important; }
+.contacto-form .btn-primary:hover { background: var(--oro-claro) !important; }
+.btn-whatsapp {
+  background: var(--oro) !important;
+  color: var(--negro-1) !important;
+}
+.btn-whatsapp:hover { background: var(--oro-claro) !important; color: var(--negro-1) !important; }
+
+/* ══════════ FOOTER — negro puro ════════════ */
+.footer { background: var(--negro-1) !important; }
+.footer-col h4 { color: var(--oro) !important; }
+.footer-col a { color: #ffffff !important; }
+.footer-col a:hover { color: var(--oro-claro) !important; }
+.footer-bottom { border-top-color: rgba(149, 187, 48, .08) !important; }
+.footer-bottom p { color: rgba(245,242,236,.6) !important; }
+.footer-tagline { color: var(--oro-claro) !important; }
+.partner-label { color: rgba(245,242,236,.5) !important; }
+.footer-partnership { border-top-color: rgba(149, 187, 48, .1) !important; }
+.footer-soc {
+  background: rgba(149, 187, 48, .06) !important;
+  border-color: rgba(149, 187, 48, .12) !important;
+  color: rgba(245,242,236,.4) !important;
+}
+.footer-soc:hover {
+  background: var(--oro) !important;
+  color: var(--negro-1) !important;
+  border-color: var(--oro) !important;
+}
+
+/* ══════════ MODAL ════════════════════════════ */
+.modal-overlay { background: rgba(5,5,5,.94) !important; }
+.modal-box {
+  background: var(--negro-3) !important;
+  border: 1px solid rgba(149, 187, 48, .12) !important;
+}
+.modal-top h2 { color: var(--blanco) !important; }
+.modal-location { color: var(--oro) !important; }
+.modal-desc { color: rgba(245,242,236,.45) !important; }
+.modal-section-title { color: var(--oro) !important; border-bottom-color: rgba(149, 187, 48, .1) !important; }
+.modal-spec-item { background: rgba(149, 187, 48, .04) !important; }
+.spec-label { color: rgba(245,242,236,.35) !important; }
+.spec-value { color: var(--blanco) !important; }
+.modal-detail-row { background: rgba(149, 187, 48, .03) !important; }
+.det-label { color: rgba(245,242,236,.4) !important; }
+.det-value { color: var(--blanco) !important; }
+.modal-acabados li { color: rgba(245,242,236,.6) !important; }
+.modal-acabados li::before { color: var(--oro) !important; }
+.modal-tag { background: rgba(149, 187, 48, .08) !important; color: var(--oro-claro) !important; }
+.modal-actions { border-top-color: rgba(149, 187, 48, .1) !important; }
+.modal-map-address { color: var(--oro) !important; }
+.modal-close { background: rgba(149, 187, 48, .1); color: rgba(245,242,236,.7); }
+.modal-close:hover { background: var(--oro) !important; color: var(--negro-1) !important; }
+.carousel-thumb.active { border-color: var(--oro) !important; opacity: 1 !important; }
+
+/* Avance */
+.av-step.done { background: rgba(149, 187, 48, .08) !important; border-color: rgba(149, 187, 48, .25) !important; }
+.av-step.current { border-color: var(--oro) !important; background: rgba(149, 187, 48, .12) !important; }
+.av-step-badge { background: var(--oro) !important; }
+.av-step-name { color: rgba(245,242,236,.7) !important; }
+.av-step.done .av-step-name { color: var(--oro-claro) !important; }
+.av-step.current .av-step-name { color: var(--blanco) !important; }
+.av-step.pending .av-step-name { color: rgba(245,242,236,.35) !important; }
+.avance-desc-text { border-left-color: var(--oro) !important; background: rgba(149, 187, 48, .04) !important; color: rgba(245,242,236,.5) !important; }
+
+/* Modal noticias */
+.noticia-modal-box {
+  background: var(--negro-3) !important;
+  border: 1px solid rgba(149, 187, 48, .12) !important;
+}
+.noticia-modal-title { color: var(--blanco) !important; }
+.noticia-modal-desc { color: rgba(245,242,236,.45) !important; }
+.noticia-modal-fecha { color: var(--oro) !important; }
+.noticia-modal-lugar { color: rgba(245,242,236,.4) !important; }
+.noticia-modal-actions { border-top-color: rgba(149, 187, 48, .1) !important; }
+
+.noticia-modal-actions a,
+.noticia-modal-actions .btn-primary,
+.noticia-modal-actions .btn-wa-modal {
+  background: var(--oro) !important;
+  color: var(--negro-1) !important;
+  border-color: var(--oro) !important;
+}
+.noticia-modal-actions a:hover,
+.noticia-modal-actions .btn-primary:hover,
+.noticia-modal-actions .btn-wa-modal:hover {
+  background: var(--oro-claro) !important;
+  border-color: var(--oro-claro) !important;
+  transform: scale(1.05) !important;
+  transition: all .3s ease !important;
+}
+
+/* ══════════ MOBILE MENU ══════════════════════ */
+.mobile-menu { background: var(--negro-2) !important; }
+.mobile-menu > ul > li > a { color: var(--blanco) !important; }
+.mobile-menu > ul > li > a:hover { color: var(--oro-claro) !important; }
+.mob-label { color: rgba(149, 187, 48, .4) !important; }
+.mob-group ul li a { color: rgba(245,242,236,.55) !important; }
+.mob-group ul li a:hover { color: var(--oro-claro) !important; }
+
+/* ══════════ MISC ═════════════════════════════ */
+.eyebrow-line { background: var(--oro) !important; }
+.whatsapp-float { box-shadow: 0 4px 24px rgba(37,211,102,.3) !important; }
+
+/* ══════════ SECCIÓN PRODUCTOS — Títulos inline ══════════ */
+#productos h2 { color: var(--blanco) !important; }
+#productos h2 em { color: var(--oro-claro) !important; }
+#productos span[style*="color:#6a8f1a"] { color: var(--oro) !important; }
+#productos span[style*="background:#95BB30"] { background: var(--oro) !important; }
+
+/* ══════════ BADGE NUEVO ══════════ */
+div[style*="background:#95BB30"] {
+  background: var(--oro) !important;
+  color: var(--negro-1) !important;
+}

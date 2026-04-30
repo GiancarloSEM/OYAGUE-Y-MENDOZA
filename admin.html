@@ -37,6 +37,7 @@
       <button class="sidebar-link" onclick="showPanel('servicios',this)"><span class="sl-icon">🎨</span> Trabajos / Portfolio</button>
       <div class="sidebar-section">Contenido</div>
       <button class="sidebar-link" onclick="showPanel('noticias',this)"><span class="sl-icon">📰</span> Noticias</button>
+      <button class="sidebar-link" onclick="showPanel('testimonios',this)"><span class="sl-icon">⭐</span> Testimonios</button>
       <button class="sidebar-link" onclick="showPanel('equipo',this)"><span class="sl-icon">👥</span> Equipo</button>
       <button class="sidebar-link" onclick="showPanel('colaboradores',this)"><span class="sl-icon">🤝</span> Colaboradores</button>
       <button class="sidebar-link" onclick="window.open('index.html','_blank')"><span class="sl-icon">🌐</span> Ver sitio</button>
@@ -144,6 +145,25 @@
           </thead>
           <tbody id="noticiasTable">
             <tr><td colspan="5" style="text-align:center;color:var(--gray);padding:32px">Cargando...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+      <!-- TESTIMONIOS -->
+        <div class="admin-panel" id="panel-testimonios">
+      <div class="admin-topbar">
+        <h1>Testimonios</h1>
+        <button class="btn-add" onclick="openTestimonioForm()">+ Agregar testimonio</button>
+      </div>
+      <div class="table-wrap">
+        <div class="table-header"><h3>Lista de testimonios</h3></div>
+        <table>
+          <thead>
+            <tr><th>Avatar</th><th>Nombre</th><th>Cargo</th><th>Estrellas</th><th>Orden</th><th>Estado</th><th>Acciones</th></tr>
+          </thead>
+          <tbody id="testimoniosTable">
+            <tr><td colspan="7" style="text-align:center;color:var(--gray);padding:32px">Cargando...</td></tr>
           </tbody>
         </table>
       </div>
@@ -324,6 +344,10 @@
           <div class="form-group"><label>Año</label><input type="text" id="srvAño" placeholder="2025" /></div>
           <div class="form-group full"><label>Subtítulo / Categoría visual</label><input type="text" id="srvSubtitulo" placeholder="Ej: Residencial · Huancayo" /></div>
           <div class="form-group full"><label>Descripción</label><textarea id="srvDesc" rows="3" placeholder="Descripción del proyecto..."></textarea></div>
+          <div class="form-group full">
+            <label>Historia del proyecto</label>
+            <textarea id="srvHistoria" rows="4" placeholder="Cuenta la historia detrás del proyecto, el proceso, los desafíos..."></textarea>
+          </div>
         </div>
       </div>
       <div class="form-section">
@@ -361,6 +385,50 @@
     <div class="modal-form-footer">
       <button class="btn-cancel" onclick="closeSrvForm()">Cancelar</button>
       <button class="btn-save" id="btnSrvSave" onclick="saveSrvItem()">Guardar trabajo</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MODAL TESTIMONIO ═══════════ -->
+<div class="modal-bg" id="testimonioModal">
+  <div class="modal-form">
+    <div class="modal-form-header">
+      <h3 id="testimonioFormTitle">Agregar testimonio</h3>
+      <button class="modal-form-close" onclick="closeTestimonioForm()">✕</button>
+    </div>
+    <div class="modal-form-body">
+      <div class="form-section">
+        <div class="form-section-title">⭐ Información del testimonio</div>
+        <div class="form-grid">
+          <div class="form-group full"><label>Nombre *</label><input type="text" id="tNombre" placeholder="Ej: María García" /></div>
+          <div class="form-group full"><label>Cargo / Descripción</label><input type="text" id="tCargo" placeholder="Ej: Compró departamento en Chilca" /></div>
+          <div class="form-group full"><label>Testimonio *</label><textarea id="tTexto" rows="4" placeholder="Escribe el testimonio aquí..."></textarea></div>
+          <div class="form-group"><label>Color del avatar</label>
+            <select id="tColor">
+              <option value="#95BB30">Verde empresa</option>
+              <option value="#b0d440">Verde claro</option>
+              <option value="#6a8f1a">Verde oscuro</option>
+              <option value="#CEE632">Verde limón</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Estrellas</label>
+            <select id="tStars">
+              <option value="5">⭐⭐⭐⭐⭐ 5 estrellas</option>
+              <option value="4">⭐⭐⭐⭐ 4 estrellas</option>
+              <option value="3">⭐⭐⭐ 3 estrellas</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Orden</label><input type="number" id="tOrden" placeholder="1" min="1" value="1" /></div>
+          <div class="form-group" style="display:flex;align-items:center;gap:12px;padding-top:24px;">
+            <input type="checkbox" id="tActivo" checked style="width:18px;height:18px;accent-color:var(--green);" />
+            <label for="tActivo" style="font-size:.85rem;font-weight:600;color:var(--dark);text-transform:none;letter-spacing:0;">Mostrar en el sitio</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-form-footer">
+      <button class="btn-cancel" onclick="closeTestimonioForm()">Cancelar</button>
+      <button class="btn-save" id="btnTestimonioSave" onclick="saveTestimonio()">Guardar testimonio</button>
     </div>
   </div>
 </div>
@@ -527,5 +595,6 @@
 
 <script src="js/admin-logic.js"></script>
 <script src="js/admin-colab-logic.js"></script>
+<script src="js/admin-testimonios-logic.js"></script>
 </body>
 </html>

@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noticias — Oyague & Mendoza Inmobiliaria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/index-premium.css" />
+  <link rel="stylesheet" href="css/index-verde-blanco.css" />
+  <style>
+    :root {
+      --green:#95BB30; --green-lt:#CEE632; --green-dk:#6a8f1a;
+      --green-bg:rgba(149,187,48,.1); --white:#fff; --black:#050505;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family:'Inter',sans-serif; background:#050505; color:#f5f2ec; cursor:none; overflow-x:hidden; }
+    @media(max-width:768px){ body{cursor:auto;} .cursor,.cursor-ring{display:none!important;} }
+
+    .cursor {
+      position:fixed; width:8px; height:8px; background:#95BB30; border-radius:50%;
+      pointer-events:none; z-index:9999; transform:translate(-50%,-50%);
+      transition:width .25s, height .25s;
+    }
+    .cursor-ring {
+      position:fixed; width:32px; height:32px; border:1.5px solid rgba(149,187,48,.45); border-radius:50%;
+      pointer-events:none; z-index:9998; transform:translate(-50%,-50%);
+      transition:width .35s, height .35s;
+    }
+    body.cursor-hover .cursor { width:16px; height:16px; }
+    body.cursor-hover .cursor-ring { width:48px; height:48px; border-color:#95BB30; }
+
+    /* HERO */
+    .not-hero {
+      min-height: 55vh;
+      background: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1600&q=80') center/cover no-repeat;
+      position: relative; display: flex; align-items: flex-end;
+    }
+    .not-hero::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:200px;
+      background:linear-gradient(to bottom,rgba(0,0,0,.5),transparent); z-index:1;
+    }
+    .not-hero-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(160deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.5) 50%,rgba(0,0,0,.92) 100%);
+    }
+    .not-hero-content {
+      position:relative; z-index:2;
+      max-width:1200px; margin:0 auto; width:100%; padding:0 56px 72px;
+    }
+    .not-hero-eyebrow {
+      font-size:.68rem; font-weight:700; letter-spacing:.32em; text-transform:uppercase;
+      color:var(--green-lt); display:flex; align-items:center; gap:12px; margin-bottom:18px;
+    }
+    .not-hero-eyebrow::before { content:''; width:36px; height:1px; background:var(--green); display:inline-block; }
+    .not-hero-title {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(3rem,7vw,5rem); font-weight:400; line-height:.96;
+      letter-spacing:-.03em; color:#fff; margin-bottom:16px;
+    }
+    .not-hero-title em { font-style:italic; color:var(--green-lt); }
+    .not-hero-sub {
+      font-size:.95rem; font-weight:300; color:rgba(255,255,255,.55); max-width:480px; line-height:1.85;
+    }
+
+    
+
+    /* GRID NOTICIAS */
+   .not-grid-section { padding:56px 0 80px; background:#0a0a0a; }
+  .not-container { max-width:1500px; margin:0 auto; padding:0 48px; }
+  .not-grid {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+  }
+    @media(max-width:960px){ .not-grid{ grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:560px){ .not-grid{ grid-template-columns:1fr; } }
+
+    /* CARD */
+    .not-card {
+      background:#111; border:1.5px solid rgba(149,187,48,.1);
+      border-radius:12px; overflow:hidden;
+      box-shadow:0 4px 20px rgba(0,0,0,.3);
+      transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+      cursor:none;
+    }
+    .not-card:hover {
+      transform:translateY(-5px);
+      box-shadow:0 16px 48px rgba(149,187,48,.15);
+      border-color:var(--green);
+    }
+    .not-card-img {
+      height:200px;
+      background:#e8f5d0 center/cover no-repeat;
+      position:relative;
+    }
+    .not-card-img-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to top, rgba(10,26,5,.5) 0%, transparent 60%);
+    }
+    .not-card-cat {
+      position:absolute; top:14px; left:14px;
+      background:var(--green); color:#fff;
+      font-size:.6rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+      padding:4px 10px; border-radius:3px;
+    }
+    .not-card-body { padding:20px 18px 22px; }
+    .not-card-fecha {
+      font-size:.72rem; font-weight:600; color:var(--green-dk);
+      letter-spacing:.06em; margin-bottom:8px; display:block;
+    }
+    .not-card-title {
+      font-family:'Playfair Display',serif;
+      font-size:1.05rem; font-weight:500; color:#f5f2ec;
+      line-height:1.35; margin-bottom:10px;
+    }
+    .not-card-excerpt {
+      font-size:.82rem; font-weight:300; color:rgba(245,242,236,.4);
+      line-height:1.7; margin-bottom:14px;
+      display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+    }
+    .not-card-link {
+      font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--green); display:flex; align-items:center; gap:6px;
+    }
+
+    /* Loading / Empty */
+    .not-loading {
+      text-align:center; padding:80px 32px; grid-column:1/-1;
+    }
+    .not-loading-icon { font-size:2.5rem; margin-bottom:16px; display:block; }
+    .not-loading-text {
+      font-family:'Playfair Display',serif;
+      font-size:1.4rem; font-weight:400; color:#f5f2ec; margin-bottom:8px;
+    }
+    .not-loading-sub { font-size:.85rem; color:#888; font-weight:300; }
+
+    /* MODAL */
+    .not-modal-overlay {
+      position:fixed; inset:0;
+      background:rgba(0,0,0,.85); backdrop-filter:blur(10px);
+      z-index:600; display:none; align-items:center; justify-content:center; padding:20px;
+    }
+    .not-modal-overlay.open { display:flex; animation:notFadeIn .25s ease; }
+    @keyframes notFadeIn { from{opacity:0} to{opacity:1} }
+    .not-modal {
+      background:#111; max-width:680px; width:100%;
+      max-height:90vh; overflow-y:auto; position:relative;
+      border-radius:8px; border:1px solid rgba(149,187,48,.1);
+      animation:notSlideUp .3s ease;
+    }
+    @keyframes notSlideUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:none} }
+    .not-modal::-webkit-scrollbar { width:3px; }
+    .not-modal::-webkit-scrollbar-thumb { background:var(--green); }
+    .not-modal-close {
+      position:absolute; top:16px; right:16px; z-index:10;
+      background:rgba(0,0,0,.5); color:#fff; border:none;
+      width:36px; height:36px; border-radius:0; cursor:none;
+      display:flex; align-items:center; justify-content:center;
+      font-size:.95rem; transition:background .25s;
+    }
+    .not-modal-close:hover { background:var(--green); }
+    .not-modal-img {
+      width:100%; height:280px; object-fit:cover; display:block;
+      background:#e8f5d0;
+    }
+    .not-modal-body { padding:28px 32px 32px; }
+    .not-modal-meta {
+      display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap;
+    }
+    .not-modal-cat {
+      background:var(--green-bg); color:var(--green-dk);
+      font-size:.62rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+      padding:4px 12px;
+    }
+    .not-modal-fecha {
+      font-size:.78rem; color:#888; font-weight:300;
+    }
+    .not-modal-title {
+      font-family:'Playfair Display',serif;
+      font-size:1.7rem; font-weight:400; color:#f5f2ec;
+      letter-spacing:-.02em; margin-bottom:16px; line-height:1.2;
+    }
+    .not-modal-section-label {
+      font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+      color:var(--green-dk); margin-bottom:8px; display:block;
+      padding-bottom:8px; border-bottom:1px solid rgba(149,187,48,.2);
+    }
+    .not-modal-text {
+      font-size:.88rem; font-weight:300; color:rgba(245,242,236,.6); line-height:1.9; margin-bottom:24px;
+    }
+    .not-modal-actions {
+      display:flex; gap:12px; flex-wrap:wrap;
+      padding-top:20px; border-top:1px solid rgba(149,187,48,.15);
+    }
+    .not-modal-btn-wa {
+      display:inline-flex; align-items:center; gap:10px;
+      background:#25D366; color:#fff;
+      padding:12px 24px; font-size:.78rem; font-weight:700; letter-spacing:.08em;
+      text-decoration:none; transition:background .25s;
+    }
+    .not-modal-btn-wa:hover { background:#1aab56; }
+    .not-modal-btn-back {
+      display:inline-flex; align-items:center; gap:10px;
+      background:transparent; color:#f5f2ec;
+      border:1.5px solid rgba(149,187,48,.3);
+      padding:12px 24px; font-size:.78rem; font-weight:600; letter-spacing:.08em;
+      cursor:none; transition:all .25s;
+    }
+    .not-modal-btn-back:hover { border-color:var(--green); background:var(--green-bg); }
+
+    /* CTA */
+    .not-cta {
+      padding:72px 32px; text-align:center;
+      background:linear-gradient(160deg,#1a3a0a,#2a5a10);
+      position:relative; overflow:hidden;
+    }
+    .not-cta::before {
+      content:''; position:absolute; top:-100px; left:50%; transform:translateX(-50%);
+      width:500px; height:500px; border-radius:50%;
+      background:radial-gradient(circle,rgba(149,187,48,.1) 0%,transparent 70%);
+      pointer-events:none;
+    }
+    .not-cta-title {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.8rem,3vw,2.6rem); font-weight:400; color:#fff;
+      margin-bottom:12px; position:relative; z-index:1;
+    }
+    .not-cta-title em { font-style:italic; color:var(--green-lt); }
+    .not-cta-sub { font-size:.88rem; color:rgba(255,255,255,.5); margin-bottom:32px; position:relative; z-index:1; }
+    .not-cta-btn {
+      display:inline-flex; align-items:center; gap:10px;
+      background:var(--green); color:#fff;
+      padding:14px 36px; font-size:.78rem; font-weight:700;
+      letter-spacing:.14em; text-transform:uppercase; text-decoration:none;
+      transition:background .25s; position:relative; z-index:1;
+    }
+    .not-cta-btn:hover { background:#fff; color:var(--green-dk); }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ══════════════════════ NAV ══════════════════════ -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <a href="index.html"><img src="fotos/logos/4.png" alt="Oyague y Mendoza Inmobiliaria" class="nav-logo-img" style="filter: brightness(0) invert(1);" /></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#inicio">Inicio</a></li>
+    <li class="has-dropdown">
+      <a href="#" class="dropdown-trigger">
+        Productos
+        <svg class="chevron" viewBox="0 0 10 6" width="10"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="bosque-vertical.html">Departamentos</a></li>
+        <li><a href="terrenos.html">Terrenos</a></li>
+        <li><a href="casas.html">Casas</a></li>
+        <li><a href="diseno.html">Diseño</a></li>
+      </ul>
+    </li>
+    <li class="has-dropdown">
+      <a href="esg.html" class="dropdown-trigger">
+        ESG
+        <svg class="chevron" viewBox="0 0 10 6" width="10"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="esg.html#ambiental">Ambiental</a></li>
+        <li><a href="esg.html#social">Social</a></li>
+        <li><a href="esg.html#gobernanza">Gobernanza</a></li>
+      </ul>
+    </li>
+    <li><a href="nosotros.html">Nosotros</a></li>
+    <li><a href="noticias.html">Noticias</a></li>
+    <li><a href="index.html#contacto">Contacto</a></li>
+  </ul>
+  <div class="nav-social">
+    <a href="https://www.instagram.com/oyagueymendozaoficial/?hl=es" target="_blank" class="nav-social-link" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
+    <a href="https://web.facebook.com/profile.php?id=61572488620640&locale=es_LA" target="_blank" class="nav-social-link" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@oyagueymendoza" target="_blank" class="nav-social-link" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+    </a>
+  </div>
+  <a href="index.html#contacto" class="nav-cta">Consultar ahora</a>
+  <button class="hamburger" id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ══════════════════════ MOBILE MENU ══════════════════════ -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobile()">✕</button>
+  <ul>
+    <li><a href="index.html#inicio" onclick="closeMobile()">Inicio</a></li>
+    <li class="mob-group">
+      <span class="mob-label">Productos</span>
+      <ul>
+        <li><a href="bosque-vertical.html" onclick="closeMobile()">Departamentos</a></li>
+        <li><a href="terrenos.html" onclick="closeMobile()">Terrenos</a></li>
+        <li><a href="casas.html" onclick="closeMobile()">Casas</a></li>
+        <li><a href="diseno.html" onclick="closeMobile()">Diseño</a></li>
+      </ul>
+    </li>
+    <li class="mob-group">
+      <span class="mob-label">ESG</span>
+      <ul>
+        <li><a href="esg.html#ambiental" onclick="closeMobile()">Ambiental</a></li>
+        <li><a href="esg.html#social" onclick="closeMobile()">Social</a></li>
+        <li><a href="esg.html#gobernanza" onclick="closeMobile()">Gobernanza</a></li>
+      </ul>
+    </li>
+    <li><a href="nosotros.html" onclick="closeMobile()">Nosotros</a></li>
+    <li><a href="noticias.html" onclick="closeMobile()">Noticias</a></li>
+    <li><a href="index.html#contacto" onclick="closeMobile()">Contacto</a></li>
+    <li class="mob-social-row">
+      <a href="https://www.instagram.com/oyagueymendozaoficial/?hl=es" target="_blank" class="mob-social-link">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://web.facebook.com/profile.php?id=61572488620640&locale=es_LA" target="_blank" class="mob-social-link">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@oyagueymendoza" target="_blank" class="mob-social-link">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+<section class="not-hero">
+  <div class="not-hero-overlay"></div>
+  <div class="not-hero-content">
+    <span class="not-hero-eyebrow">Oyague &amp; Mendoza · Actualidad</span>
+    <h1 class="not-hero-title">Noticias y<br><em>novedades</em></h1>
+    <p class="not-hero-sub">Las últimas noticias del sector inmobiliario y las novedades de Oyague y Mendoza en Huancayo.</p>
+  </div>
+</section>
+
+
+
+<!-- GRID -->
+<section class="not-grid-section">
+  <div class="not-container">
+    <div class="not-grid" id="noticiasPageGrid">
+      <div class="not-loading">
+        <span class="not-loading-icon">📰</span>
+        <p class="not-loading-text">Cargando noticias...</p>
+        <p class="not-loading-sub">Un momento por favor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="not-modal-overlay" id="notPageModal">
+  <div class="not-modal">
+    <button class="not-modal-close" onclick="closeNotPageModal()">✕</button>
+    <div id="notModalImgWrap">
+      <img id="notModalImg" src="" alt="" class="not-modal-img" />
+    </div>
+    <div class="not-modal-body">
+      <div class="not-modal-meta">
+        <span class="not-modal-cat" id="notModalCat"></span>
+        <span class="not-modal-fecha" id="notModalFecha"></span>
+      </div>
+      <h2 class="not-modal-title" id="notModalTitle"></h2>
+      <span class="not-modal-section-label">Descripción</span>
+      <p class="not-modal-text" id="notModalExtracto"></p>
+      <span class="not-modal-section-label" id="notModalContenidoLabel" style="display:none;">Historia completa</span>
+      <p class="not-modal-text" id="notModalContenido"></p>
+      <div class="not-modal-actions">
+        <a id="notModalWA" href="#" target="_blank" class="not-modal-btn-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Consultar por WhatsApp
+        </a>
+        <button class="not-modal-btn-back" onclick="closeNotPageModal()">← Volver</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<!-- FOOTER -->
+<!-- ══════════════════════ FOOTER ════════════════════ -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="fotos/logos/4.png" alt="Oyague y Mendoza" class="footer-logo-img" />
+      <p class="footer-tagline">Tu propiedad, nuestra prioridad.</p>
+      <div class="footer-partnership">
+        <p class="partner-label">Empresa del grupo</p>
+        <a href="https://rino.pe" target="_blank" class="partner-container">
+          <img src="fotos/logos/rinu.png" alt="Rinosirunti" class="partner-logo-img" />
+          <div class="partner-info">
+            <a> </a>
+            <p class="footer-tagline">Ingeniería de Vanguardia</p>
+          </div>
+        </a>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/oyagueymendozaoficial/?hl=es" target="_blank" class="footer-soc" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://web.facebook.com/profile.php?id=61572488620640&locale=es_LA" target="_blank" class="footer-soc" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@oyagueymendoza" target="_blank" class="footer-soc" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Productos</h4><ul>
+      <li><a href="bosque-vertical.html">Departamentos</a></li>
+      <li><a href="terrenos.html">Terrenos</a></li>
+      <li><a href="casas.html">Casas</a></li>
+      <li><a href="diseno.html">Diseño</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Empresa</h4><ul>
+      <li><a href="esg.html">ESG</a></li>
+      <li><a href="nosotros.html">Sobre Nosotros</a></li>
+      <li><a href="noticias.html">Noticias</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Legal</h4><ul>
+      <li><a href="#">Política de privacidad</a></li>
+      <li><a href="#">Términos y condiciones</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Oyague & Mendoza Inmobiliaria. Todos los derechos reservados.</p>
+    <p>Huancayo, Perú</p>
+  </div>
+</footer>
+
+
+<a href="https://wa.me/51941914867" class="whatsapp-float" target="_blank">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// ── CURSOR ──────────────────────────────────────
+(function(){
+  const c=document.getElementById('cursor'),r=document.getElementById('cursorRing');
+  if(!c||!r)return;
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  const loop=()=>{rx+=(mx-rx)*.14;ry+=(my-ry)*.14;c.style.left=mx+'px';c.style.top=my+'px';r.style.left=rx+'px';r.style.top=ry+'px';requestAnimationFrame(loop);};
+  loop();
+  document.querySelectorAll('a,button,.not-card').forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
+  });
+})();
+
+// ── NAVBAR ──────────────────────────────────────
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60));
+function closeMobile(){ document.getElementById('mobileMenu').classList.remove('open'); }
+document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('open'));
+
+// ── SUPABASE ─────────────────────────────────────
+const SB_URL = 'https://nghyvznyiufdbhohtdub.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5naHl2em55aXVmZGJob2h0ZHViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzMTUyNDEsImV4cCI6MjA5MTg5MTI0MX0.pvyGX-nn1joLQsQ20Ehe4CoI1PA9Qxv4xf7JCx2uafg';
+let sbClient = null;
+try { sbClient = supabase.createClient(SB_URL, SB_KEY); } catch(e) {}
+
+const CAT_LABELS = { empresa:'Empresa', mercado:'Mercado', consejos:'Consejos', inversion:'Inversión' };
+let todasNoticias = [];
+
+function formatFecha(f) {
+  if(!f) return '';
+  const d = new Date(f);
+  return d.toLocaleDateString('es-PE', { day:'numeric', month:'long', year:'numeric' });
+}
+
+// ── RENDER CARDS ─────────────────────────────────
+function renderCards(data) {
+  const grid = document.getElementById('noticiasPageGrid');
+  if(!data || !data.length) {
+    grid.innerHTML = `
+      <div class="not-loading">
+        <span class="not-loading-icon">📭</span>
+        <p class="not-loading-text">No hay noticias aún</p>
+        <p class="not-loading-sub">Vuelve pronto para ver las últimas novedades.</p>
+      </div>`;
+    return;
+  }
+  grid.innerHTML = data.map(n => {
+    const img = n.imagen_url || '';
+    const bgStyle = img ? `background-image:url('${img}')` : 'background:#c8e08a';
+    const cat = n.categoria || 'empresa';
+    return `
+      <article class="not-card" onclick="openNotModal('${n.id}')">
+        <div class="not-card-img" style="${bgStyle}">
+          <div class="not-card-img-overlay"></div>
+          <span class="not-card-cat">${CAT_LABELS[cat] || cat}</span>
+        </div>
+        <div class="not-card-body">
+          <span class="not-card-fecha">${formatFecha(n.fecha)}</span>
+          <h3 class="not-card-title">${n.titulo}</h3>
+          <p class="not-card-excerpt">${n.extracto || ''}</p>
+          <span class="not-card-link">Leer más <span>→</span></span>
+        </div>
+      </article>`;
+  }).join('');
+
+  // Cursor hover en cards
+  grid.querySelectorAll('.not-card').forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
+  });
+}
+
+// ── CARGAR DESDE SUPABASE ────────────────────────
+async function loadNoticias() {
+  const grid = document.getElementById('noticiasPageGrid');
+  if(!sbClient) {
+    grid.innerHTML = `<div class="not-loading"><span class="not-loading-icon">⚠️</span><p class="not-loading-text">Sin conexión</p><p class="not-loading-sub">No se pudo conectar a la base de datos.</p></div>`;
+    return;
+  }
+  try {
+    const { data, error } = await sbClient
+      .from('noticias')
+      .select('*')
+      .order('fecha', { ascending: false });
+    if(error || !data) throw error;
+    todasNoticias = data;
+    renderCards(data);
+  } catch(e) {
+    grid.innerHTML = `<div class="not-loading"><span class="not-loading-icon">⚠️</span><p class="not-loading-text">Error al cargar</p><p class="not-loading-sub">Intenta recargar la página.</p></div>`;
+  }
+}
+
+// ── FILTRAR ──────────────────────────────────────
+
+
+// ── MODAL ────────────────────────────────────────
+function openNotModal(id) {
+  const n = todasNoticias.find(x => String(x.id) === String(id));
+  if(!n) return;
+
+  // Imagen
+  const imgEl = document.getElementById('notModalImg');
+  if(n.imagen_url) {
+    imgEl.src = n.imagen_url;
+    imgEl.style.display = 'block';
+  } else {
+    imgEl.style.display = 'none';
+  }
+
+  // Datos
+  const cat = n.categoria || 'empresa';
+  document.getElementById('notModalCat').textContent    = CAT_LABELS[cat] || cat;
+  document.getElementById('notModalFecha').textContent  = formatFecha(n.fecha);
+  document.getElementById('notModalTitle').textContent  = n.titulo;
+  document.getElementById('notModalExtracto').textContent = n.extracto || '';
+
+  // Contenido / historia
+  const contenidoLabel = document.getElementById('notModalContenidoLabel');
+  const contenidoEl    = document.getElementById('notModalContenido');
+  if(n.contenido) {
+    contenidoLabel.style.display = 'block';
+    contenidoEl.textContent = n.contenido;
+  } else {
+    contenidoLabel.style.display = 'none';
+    contenidoEl.textContent = '';
+  }
+
+  // WA
+  document.getElementById('notModalWA').href =
+    `https://wa.me/51941914867?text=${encodeURIComponent('Hola, leí la noticia: ' + n.titulo + ' y quiero más información.')}`;
+
+  document.getElementById('notPageModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeNotPageModal() {
+  document.getElementById('notPageModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('notPageModal').addEventListener('click', e => {
+  if(e.target === document.getElementById('notPageModal')) closeNotPageModal();
+});
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeNotPageModal(); });
+
+// ── INIT ─────────────────────────────────────────
+if(document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadNoticias);
+} else {
+  loadNoticias();
+}
+</script>
+</body>
+</html>

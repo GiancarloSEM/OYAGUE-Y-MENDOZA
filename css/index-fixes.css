@@ -1,0 +1,186 @@
+/* ═══════════════════════════════════════════════════
+   OYAGUE & MENDOZA — index-fixes.css
+   Correcciones: espaciado y sección servicios
+   Cargar DESPUÉS de index-verde-blanco.css
+═══════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════════
+   ESPACIADO GLOBAL — reducir padding de secciones
+══════════════════════════════════════════════════ */
+
+/* Secciones principales — de 100px a 56px */
+.section-propiedades,
+.section-servicios,
+.section-equipo,
+.section-noticias,
+.section-testimonios,
+.section-contacto {
+  padding: 56px 0 !important;
+}
+
+/* CTA — de 100px a 56px */
+.section-cta,
+.nos-cta,
+.esg-cta {
+  padding: 56px 48px !important;
+}
+
+/* Section header — título + eyebrow — menos espacio abajo */
+.section-header {
+  margin-bottom: 36px !important;
+}
+
+/* Títulos de sección más ajustados */
+.section-title {
+  margin-bottom: 10px !important;
+}
+
+.section-sub {
+  margin-top: 8px !important;
+}
+
+/* Props header menos margen */
+.props-header {
+  margin-bottom: 28px !important;
+}
+
+/* Container más estrecho — reduce márgenes laterales */
+.container {
+  padding: 0 32px !important;
+}
+
+/* Noticias — reducir espacio encima del slider */
+#noticias .section-header {
+  margin-bottom: 28px !important;
+}
+
+/* Testimonios — reducir espacio encima del slider */
+.section-testimonios .section-header {
+  margin-bottom: 28px !important;
+}
+
+/* Hero stats — menos padding */
+.hero-stats {
+  padding: 18px 0 !important;
+}
+
+.stat {
+  padding: 0 36px !important;
+}
+
+/* Footer — menos padding top */
+.footer {
+  padding: 48px 0 0 !important;
+}
+
+.footer-grid {
+  padding-bottom: 36px !important;
+}
+
+/* Galería grid — mantiene su espacio natural */
+.gallery-grid {
+  margin-top: 0 !important;
+}
+
+/* Props more — menos margen arriba */
+.props-more {
+  margin-top: 32px !important;
+}
+
+/* Dots y flechas testimonios — menos margen */
+.testi-dots {
+  margin-top: 20px !important;
+}
+
+
+/* ══════════════════════════════════════════════════
+   SERVICIOS — rediseño: blanco con cards verde claro
+   Igual estilo que testimonios
+══════════════════════════════════════════════════ */
+
+.section-servicios {
+  background: #fff !important;
+}
+
+.section-servicios .section-eyebrow {
+  color: #6a8f1a !important;
+}
+
+.section-servicios .section-title {
+  color: #1a3a0a !important;
+  font-weight: 600 !important;
+}
+
+.section-servicios .section-sub {
+  color: #4a7a2a !important;
+}
+
+/* Cards — igual a las de testimonios: fondo verde claro elegante */
+.servicio-card {
+  background: #f5faea !important;
+  border: 1.5px solid rgba(149, 187, 48, .25) !important;
+  border-radius: 16px !important;
+  padding: 32px 24px !important;
+  transition: border-color .3s, transform .3s, box-shadow .3s !important;
+}
+
+.servicio-card:hover {
+  background: #f5faea !important;
+  border-color: #95BB30 !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 40px rgba(149, 187, 48, .15) !important;
+}
+
+.servicio-card h3 {
+  color: #1a3a0a !important;
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+}
+
+.servicio-card p {
+  color: #4a7a2a !important;
+  font-size: .88rem !important;
+  line-height: 1.7 !important;
+}
+
+/* Ícono — color verde */
+.servicio-icon {
+  filter: none !important;
+}
+
+
+/* ══════════════════════════════════════════════════
+   NOTICIAS — reducir espacio entre borde y cards
+══════════════════════════════════════════════════ */
+
+/* El wrapper del slider de noticias tiene padding excesivo */
+#noticias .testi-wrapper,
+#noticias .noticias-wrapper {
+  padding: 0 !important;
+}
+
+/* Flechas pegadas al slider, no al borde de pantalla */
+#noticias .noticias-arrow {
+  flex-shrink: 0 !important;
+}
+
+
+/* ══════════════════════════════════════════════════
+   PÁGINAS INTERNAS — mismo ajuste de espaciado
+   (nosotros.html, equipo.html, esg.html, servicios.html)
+══════════════════════════════════════════════════ */
+
+.nos-section,
+.eq-section,
+.esg-section,
+.srv-section {
+  padding: 56px 0 !important;
+}
+
+/* Heroes de páginas internas — menos altura */
+.nos-hero,
+.eq-hero,
+.esg-hero,
+.srv-hero {
+  min-height: 52vh !important;
+}

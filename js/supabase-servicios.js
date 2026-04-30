@@ -26,7 +26,14 @@
     const isFirst = index === 0;
 
     return `
-      <div class="srv-work ${tipo} reveal-up">
+      <div class="srv-work ${tipo} reveal-up"
+        data-titulo="${item.titulo || ''}"
+        data-subtitulo="${item.subtitulo || ''}"
+        data-desc="${item.descripcion || ''}"
+        data-historia="${item.historia || ''}"
+        data-año="${item.año || ''}"
+        data-img="${img}"
+        onclick="openSrvModal(this)">
         <div class="srv-work-bg" style="background-image:url('${img}')"></div>
         <div class="srv-work-overlay"></div>
         <div class="srv-work-content">

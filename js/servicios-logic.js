@@ -72,3 +72,51 @@ window.addEventListener('scroll', () => {
   const hero = document.querySelector('.srv-hero-bg');
   if (hero) hero.style.transform = `translateY(${window.scrollY * 0.3}px)`;
 });
+
+function openSrvModal(el) {
+  const titulo    = el.dataset.titulo || '';
+  const subtitulo = el.dataset.subtitulo || '';
+  const desc      = el.dataset.desc || '';
+  const historia  = el.dataset.historia || '';
+  const año       = el.dataset.año || '';
+  const img       = el.dataset.img || '';
+
+  let modal = document.getElementById('srvWorkModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'srvWorkModal';
+    modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;';
+    modal.onclick = function(e) { if(e.target === modal) closeSrvModal(); };
+    document.body.appendChild(modal);
+  }
+
+  modal.innerHTML = `
+    <div style="background:#fff;border-radius:16px;width:100%;max-width:620px;max-height:90vh;overflow-y:auto;position:relative;">
+      <button onclick="closeSrvModal()" style="position:absolute;top:14px;right:14px;background:rgba(0,0,0,.3);color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-size:1rem;cursor:pointer;z-index:10;">✕</button>
+      ${img ? `<div style="height:280px;background:url('${img}') center/cover no-repeat;border-radius:16px 16px 0 0;"></div>` : ''}
+      <div style="padding:32px;">
+        <p style="font-family:var(--font-sans);font-size:.7rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#95BB30;margin-bottom:8px;">${subtitulo}${año ? ' · ' + año : ''}</p>
+        <h2 style="font-family:var(--font-sans);font-size:1.6rem;font-weight:700;color:#1a3a0a;margin-bottom:20px;">${titulo}</h2>
+        ${desc ? `
+        <div style="border-left:3px solid #95BB30;padding-left:16px;margin-bottom:24px;">
+          <p style="font-family:var(--font-sans);font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#6a8f1a;margin-bottom:8px;">Descripción</p>
+          <p style="font-family:var(--font-sans);font-size:.92rem;color:#555;line-height:1.75;margin:0;">${desc}</p>
+        </div>` : ''}
+        ${historia ? `
+        <div style="border-left:3px solid #CEE632;padding-left:16px;margin-bottom:24px;">
+          <p style="font-family:var(--font-sans);font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#6a8f1a;margin-bottom:8px;">Historia del proyecto</p>
+          <p style="font-family:var(--font-sans);font-size:.92rem;color:#555;line-height:1.75;margin:0;">${historia}</p>
+        </div>` : ''}
+        <a href="index.html#contacto" style="display:inline-block;background:#95BB30;color:#fff;font-family:var(--font-sans);font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:12px 28px;border-radius:4px;text-decoration:none;">Consultar proyecto</a>
+      </div>
+    </div>`;
+
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSrvModal() {
+  const modal = document.getElementById('srvWorkModal');
+  if (modal) modal.style.display = 'none';
+  document.body.style.overflow = '';
+}

@@ -21,14 +21,7 @@ const revealObs = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 setTimeout(() => document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible')), 150);
 
-const listData = [
-  { id:'prop2', type:'departamento', num:'01', title:'Departamento Moderno Chilca', loc:'Urb. Los Cipreses, Chilca, Huancayo', precioTotal:'S/ 220,000', precioM2:'S/ 2,000/m²', specs:['3 hab.','2 baños','110 m²','Cochera'], img:'fotos/depa%201/dep1-1.jpeg' },
-  { id:'prop4', type:'departamento', num:'02', title:'Vista Panorámica',            loc:'San Carlos, Huancayo',                precioTotal:'S/ 175,000', precioM2:'S/ 2,059/m²', specs:['2 hab.','1 baño','85 m²'],           img:'fotos/depa%202/dep2-1.jpeg' },
-  { id:'prop3', type:'terreno',      num:'03', title:'Urb. Los Jardines',           loc:'Huancayo Centro',                     precioTotal:'S/ 120,000', precioM2:'S/ 267/m²',    specs:['450 m²','Esquinero'],               img:'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=600&q=80' },
-  { id:'prop1', type:'terreno',      num:'04', title:'Terreno El Tambo',            loc:'El Tambo, Huancayo',                  precioTotal:'S/ 85,000',  precioM2:'S/ 283/m²',    specs:['300 m²','Habilitado'],              img:'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80' },
-  { id:'prop7', type:'departamento', num:'05', title:'Departamento Premium',        loc:'Huancayo, Junín',                     precioTotal:'S/ 195,000', precioM2:'S/ 1,950/m²',  specs:['3 hab.','2 baños','100 m²'],        img:'fotos/depa%203/dep3-1.jpeg' },
-  { id:'prop6', type:'terreno',      num:'06', title:'Terreno Saño',                loc:'Saño, Huancayo',                      precioTotal:'S/ 65,000',  precioM2:'S/ 325/m²',    specs:['200 m²','Plano'],                   img:'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80' },
-];
+let listData = [];
 
 let currentView = 'grid', currentFilter = 'all', mostrarM2 = false;
 
@@ -73,7 +66,7 @@ function renderList() {
   updateCount(filtered.length);
   lc.innerHTML = filtered.map(p => {
     const precio = mostrarM2 ? p.precioM2 : p.precioTotal;
-    return `<div class="list-card" onclick="openModal('${p.id}')">
+    return `<div class="list-card" onclick="openModalDynamic('${p.id}')">
         <div class="list-img" style="background-image:url('${p.img}')"></div>
         <div class="list-body">
           <div>
@@ -298,6 +291,11 @@ const overlay = document.getElementById('modalOverlay');
 function openModal(id) {
   const p = properties[id];
   if (!p) return;
+
+  if (p.title && p.title.toLowerCase().includes('bosque vertical')) {
+    window.location.href = 'bosque-vertical.html';
+    return;
+  }
   const anteriorExtra = document.querySelector('.modal-extra-btn');
   if (anteriorExtra) anteriorExtra.remove();
   buildCarousel(p.gallery || []);
@@ -381,7 +379,7 @@ const total = testiCards.length;
 let currentSlide = 0, autoplayTimer;
 
 function getVisible() { const w=window.innerWidth; return w<640?1:w<960?2:3; }
-function getTotalSlides() { return Math.max(0, total - getVisible()); }
+function getTotalSlides() { return Math.max(4, total - getVisible()); }
 function buildDots() {
   dotsWrap.innerHTML = '';
   for (let i=0; i<=getTotalSlides(); i++) {
@@ -392,9 +390,12 @@ function buildDots() {
   }
 }
 function goTo(n) {
-  currentSlide = Math.max(0, Math.min(n, getTotalSlides()));
-  track.style.transform = `translateX(-${currentSlide*(testiCards[0].offsetWidth+20)}px)`;
-  document.querySelectorAll('.testi-dot').forEach((d,i) => d.classList.toggle('active', i===currentSlide));
+  noticiaSlide = Math.max(0, Math.min(n, getTotalSlides()));
+  const visible = getVisible();
+  const trackWidth = track.parentElement.offsetWidth;
+  const cardW = (trackWidth - (24 * (visible - 1))) / visible + 24;
+  track.style.transform = `translateX(-${noticiaSlide * cardW}px)`;
+  document.querySelectorAll('.noticias-dot').forEach((d, i) => d.classList.toggle('active', i === noticiaSlide));
 }
 function next() { goTo(currentSlide+1>getTotalSlides()?0:currentSlide+1); }
 function prev() { goTo(currentSlide-1<0?getTotalSlides():currentSlide-1); }
@@ -404,6 +405,7 @@ function startAuto() { autoplayTimer = setInterval(next, 4500); }
 function resetAuto() { clearInterval(autoplayTimer); startAuto(); }
 buildDots(); startAuto();
 window.addEventListener('resize', () => { buildDots(); goTo(0); });
+window.addEventListener('load', () => { buildDots(); goTo(0); });
 
 // ── FORMULARIO CONTACTO ──────────────────────────
 function submitForm(e) {
@@ -455,7 +457,7 @@ async function loadNoticiasPublico() {
       .from('noticias')
       .select('*')
       .order('fecha', { ascending: false })
-      .limit(4);
+      .limit(20);
     if (error || !data || !data.length) { renderNoticiasHardcoded(); return; }
     noticiasData = data;
     renderNoticiasCards(data);
@@ -464,10 +466,13 @@ async function loadNoticiasPublico() {
 
 const CAT_LABELS_NOT = { empresa:'Empresa', mercado:'Mercado', consejos:'Consejos', inversion:'Inversión' };
 
+let noticiaSlide = 0;
+let noticiaAutoTimer;
+
 function renderNoticiasCards(noticias) {
-  const grid = document.getElementById('noticiasGrid');
-  if (!grid) return;
-  grid.innerHTML = noticias.map(n => {
+  const track = document.getElementById('noticiasGrid');
+  if (!track) return;
+  track.innerHTML = noticias.map(n => {
     const fecha = n.fecha ? formatFechaNot(n.fecha) : '';
     const cat = n.categoria || 'empresa';
     const img = n.imagen_url || '';
@@ -486,6 +491,77 @@ function renderNoticiasCards(noticias) {
         </div>
       </article>`;
   }).join('');
+  initNoticiasCarousel(noticias.length);
+}
+
+function initNoticiasCarousel(total) {
+  const track = document.getElementById('noticiasGrid');
+  const dotsWrap = document.getElementById('noticiasDots');
+  const prevBtn = document.getElementById('noticiasPrev');
+  const nextBtn = document.getElementById('noticiasNext');
+  noticiaSlide = 0;
+
+  function getVisible() {
+    const w = window.innerWidth;
+    return w < 640 ? 1 : w < 960 ? 2 : 4;
+  }
+
+  function getTotalSlides() {
+    return Math.max(0, total - getVisible());
+  }
+
+  function setCardWidths() {
+    const visible = getVisible();
+    const gap = 24;
+    const trackWidth = track.parentElement.offsetWidth;
+    const cardW = (trackWidth - (gap * (visible - 1))) / visible;
+    track.querySelectorAll('.noticia-card').forEach(c => {
+      c.style.flex = `0 0 ${cardW}px`;
+      c.style.width = `${cardW}px`;
+    });
+    return cardW;
+  }
+
+  function buildDots() {
+    dotsWrap.innerHTML = '';
+    for (let i = 0; i <= getTotalSlides(); i++) {
+      const d = document.createElement('button');
+      d.className = 'noticias-dot' + (i === 0 ? ' active' : '');
+      d.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(d);
+    }
+  }
+
+  function goTo(n) {
+    noticiaSlide = Math.max(0, Math.min(n, getTotalSlides()));
+    const cardW = setCardWidths();
+    const gap = 24;
+    track.style.transform = `translateX(-${noticiaSlide * (cardW + gap)}px)`;
+    document.querySelectorAll('.noticias-dot').forEach((d, i) => 
+      d.classList.toggle('active', i === noticiaSlide)
+    );
+  }
+
+  function next() { goTo(noticiaSlide + 1 > getTotalSlides() ? 0 : noticiaSlide + 1); }
+  function prev() { goTo(noticiaSlide - 1 < 0 ? getTotalSlides() : noticiaSlide - 1); }
+
+  prevBtn.onclick = () => { prev(); resetAuto(); };
+  nextBtn.onclick = () => { next(); resetAuto(); };
+
+  function startAuto() { noticiaAutoTimer = setInterval(next, 3000); }
+  function resetAuto() { clearInterval(noticiaAutoTimer); startAuto(); }
+
+  setTimeout(() => {
+    setCardWidths();
+    buildDots();
+    startAuto();
+  }, 300);
+
+  window.addEventListener('resize', () => {
+    setCardWidths();
+    buildDots();
+    goTo(0);
+  });
 }
 
 function renderNoticiasHardcoded() {
@@ -562,6 +638,7 @@ function closeNoticiaModal(e) {
   document.getElementById('noticiaModalOverlay').classList.remove('open');
   document.body.style.overflow = '';
 }
+
 
 // ── INIT NOTICIAS ────────────────────────────────
 initSupabaseNoticias();

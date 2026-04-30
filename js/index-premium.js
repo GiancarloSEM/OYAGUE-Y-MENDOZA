@@ -55,7 +55,7 @@
   if (heroBg) {
     window.addEventListener('scroll', () => {
       const scroll = window.scrollY;
-      heroBg.style.transform = `translateY(${scroll * 0.28}px)`;
+      heroBg.style.transform = `translateY(${scroll * 2}px)`;
     }, { passive: true });
   }
 
@@ -144,5 +144,43 @@
     const card = e.target.closest('.gal-card');
     if (card) document.body.classList.remove('cursor-hover');
   });
+
+  /* ── COUNTER STATS ── */
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = entry.target;
+        const targetVal = target.getAttribute('data-target');
+        const countTo = parseFloat(targetVal);
+        const isDecimal = targetVal.includes('.');
+        let current = 0;
+        const duration = 2000; 
+        const startTime = performance.now();
+
+        const updateCount = (timestamp) => {
+          const progress = Math.min((timestamp - startTime) / duration, 1);
+          const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+          
+          current = easeProgress * countTo;
+          
+          if (isDecimal) {
+            target.textContent = current.toFixed(1);
+          } else {
+            target.textContent = Math.floor(current);
+          }
+
+          if (progress < 1) {
+            requestAnimationFrame(updateCount);
+          } else {
+            target.textContent = targetVal;
+          }
+        };
+        requestAnimationFrame(updateCount);
+        counterObs.unobserve(target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.stat-num').forEach(num => counterObs.observe(num));
 
 })();

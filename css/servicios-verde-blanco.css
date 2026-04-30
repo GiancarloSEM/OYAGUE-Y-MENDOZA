@@ -1,0 +1,204 @@
+/* ═══════════════════════════════════════════════════
+   OYAGUE & MENDOZA — servicios-verde-blanco.css
+   Paleta verde/blanco para servicios.html
+   Se aplica encima de servicios-styles.css
+═══════════════════════════════════════════════════ */
+
+/* ── BODY ── */
+body { background: #050505 !important; }
+
+/* ── CURSOR ── */
+.cursor { background: #6a8f1a !important; }
+.cursor-ring { border-color: rgba(106,143,26,.5) !important; }
+.cursor-hover .cursor { background: #95BB30 !important; }
+.cursor-hover .cursor-ring { border-color: #95BB30 !important; }
+
+/* Noise off */
+body::before { opacity: .01 !important; }
+
+/* ── NAV ── */
+/* Fix tamaño de letra */
+#navbar .nav-links a {
+  font-size: .85rem !important;
+  font-weight: 600 !important;
+  letter-spacing: .05em !important;
+}
+#navbar .nav-cta {
+  font-size: .83rem !important;
+  padding: 9px 22px !important;
+}
+
+/* Gradiente oscuro sobre el hero para legibilidad */
+.srv-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 180px;
+  background: linear-gradient(to bottom, rgba(0,0,0,.5) 0%, transparent 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Nav sin scroll — links blancos */
+#navbar:not(.scrolled) .srv-nav-links a,
+.srv-nav:not(.scrolled) .srv-nav-links a { color: rgba(255,255,255,.9) !important; }
+
+/* Nav scrolled — blanco con borde verde */
+#navbar.scrolled,
+.srv-nav.scrolled {
+  background: rgba(8,8,8,.96) !important;
+  backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid #95BB30 !important;
+}
+#navbar.scrolled .nav-links a { color: rgba(245,242,236,.85) !important; }
+#navbar.scrolled .nav-links a:hover { color: #CEE632 !important; }
+#navbar.scrolled .nav-social-link { color: rgba(245,242,236,.6) !important; }
+#navbar.scrolled .nav-social-link:hover { color: #95BB30 !important; }
+#navbar.scrolled .hamburger span { background: rgba(245,242,236,.9) !important; }
+.srv-nav.scrolled .srv-nav-links a { color: rgba(245,242,236,.85) !important; }
+
+#navbar:not(.scrolled) .nav-logo-img {
+  filter: brightness(0) invert(1) !important;
+}
+.dropdown-menu {
+  background: #111 !important;
+  border: 1px solid rgba(149,187,48,.35) !important;
+  border-top: 2px solid #95BB30 !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,.5) !important;
+}
+.dropdown-menu li a {
+  color: rgba(245,242,236,.85) !important;
+  font-size: .85rem !important;
+  font-weight: 600 !important;
+}
+.dropdown-menu li a:hover { background: rgba(149,187,48,.1) !important; color: #CEE632 !important; }
+.dd-icon { color: #95BB30 !important; }
+.nav-cta, .srv-nav-cta { background: #95BB30 !important; color: #fff !important; }
+.nav-cta:hover, .srv-nav-cta:hover { background: #6a8f1a !important; }
+.hamburger span { background: #fff !important; }
+
+/* ── MOBILE MENU ── */
+.mobile-menu { background: #0a0a0a !important; }
+.mobile-menu > ul > li > a { color: #fff !important; }
+.mobile-menu > ul > li > a:hover { color: #CEE632 !important; }
+.mob-label { color: rgba(206,230,50,.5) !important; }
+.mob-group ul li a { color: rgba(255,255,255,.7) !important; }
+.mob-group ul li a:hover { color: #CEE632 !important; }
+
+/* ── HERO SERVICIOS ── */
+.srv-hero-overlay {
+  background: linear-gradient(160deg, rgba(42,74,15,.7) 0%, rgba(42,74,15,.85) 50%, rgba(42,74,15,.97) 100%) !important;
+}
+.srv-hero-label { color: #CEE632 !important; }
+.srv-hero-title { color: #fff !important; }
+.srv-hero-title em { color: #CEE632 !important; }
+.srv-hero-title strong { color: #fff !important; }
+.srv-hero-desc { color: rgba(255,255,255,.8) !important; }
+.srv-hero-scroll-line { background: rgba(149,187,48,.5) !important; }
+.srv-hero-scroll span { color: rgba(255,255,255,.5) !important; }
+.srv-hero-num { color: rgba(149,187,48,.05) !important; }
+
+/* ── SELECTOR / STATS ── */
+.srv-selector {
+  background: #050505 !important;
+}
+.srv-selector::before {
+  background: linear-gradient(to right, transparent, #95BB30, transparent) !important;
+}
+.srv-selector-eyebrow { color: #6a8f1a !important; }
+.srv-selector-title { color: #f5f2ec !important; }
+.srv-selector-title em { color: #95BB30 !important; }
+.srv-selector-desc { color: rgba(245,242,236,.5) !important; }
+
+/* Stats bar */
+.srv-stats { background: #95BB30 !important; }
+.srv-stat { border-right-color: rgba(255,255,255,.3) !important; }
+.srv-stat-num { color: #fff !important; }
+.srv-stat-label { color: rgba(255,255,255,.8) !important; }
+
+/* ── TABS ── */
+.srv-tabs-inner {
+  background: #111 !important;
+  border: 1.5px solid rgba(149,187,48,.2) !important;
+}
+.srv-tab-btn { color: rgba(245,242,236,.6) !important; }
+.srv-tab-btn:hover { color: #f5f2ec !important; background: rgba(149,187,48,.05) !important; }
+.srv-tab-btn.active { color: #f5f2ec !important; background: rgba(149,187,48,.12) !important; }
+.srv-tab-btn::after { background: #95BB30 !important; }
+.srv-tab-btn { border-right-color: rgba(149,187,48,.2) !important; }
+
+/* ── PANEL HERO ── */
+.srv-panel-hero-overlay {
+  background: linear-gradient(to right, rgba(42,74,15,.9) 0%, rgba(42,74,15,.5) 55%, rgba(42,74,15,.2) 100%) !important;
+}
+.srv-panel-cat-label { color: #CEE632 !important; }
+.srv-panel-title { color: #fff !important; }
+.srv-panel-title em { color: #CEE632 !important; }
+.srv-panel-subtitle { color: rgba(255,255,255,.75) !important; }
+.srv-panel-hero-num { color: rgba(149,187,48,.07) !important; }
+
+/* ── PANEL BODY ── */
+.srv-panel-body { 
+  background: #0a0a0a !important; 
+}
+
+/* Works section */
+.srv-works-title { color: #f5f2ec !important; }
+.srv-works-title em { color: #95BB30 !important; }
+.srv-works-count { color: #CEE632 !important; }
+
+/* Works grid - overlay más sutil */
+.srv-work-overlay {
+  background: linear-gradient(to top, rgba(42,74,15,.95) 0%, transparent 55%) !important;
+}
+.srv-work-bg { filter: brightness(.8) saturate(.85) !important; }
+.srv-work:hover .srv-work-bg { filter: brightness(.55) saturate(.7) !important; }
+.srv-work-cat { color: #CEE632 !important; }
+.srv-work-title { color: #fff !important; }
+.srv-work-year { color: rgba(255,255,255,.5) !important; }
+.srv-work-cta { color: #CEE632 !important; }
+.srv-work-cta-line { background: #CEE632 !important; }
+
+/* Features */
+.srv-features-header h3 { color: #f5f2ec !important; }
+.srv-features-header h3 em { color: #95BB30 !important; }
+.srv-features-header p { color: rgba(245,242,236,.5) !important; }
+.srv-feature {
+  background: #111 !important;
+  border-color: rgba(149,187,48,.1) !important;
+}
+.srv-feature:hover {
+  background: rgba(149,187,48,.1) !important;
+  border-color: #95BB30 !important;
+}
+.srv-feature::before { background: #95BB30 !important; }
+.srv-feature-num { color: rgba(149,187,48,.1) !important; }
+.srv-feature h4 { color: #f5f2ec !important; }
+.srv-feature p { color: rgba(245,242,236,.4) !important; }
+
+/* CTA box */
+.srv-cta-box {
+  background: #111 !important;
+  border-color: rgba(149,187,48,.1) !important;
+}
+.srv-cta-label { color: #CEE632 !important; }
+.srv-cta-title { color: #f5f2ec !important; }
+.srv-cta-title em { color: #95BB30 !important; }
+.srv-btn-primary { background: #95BB30 !important; color: #fff !important; }
+.srv-btn-primary:hover { background: #6a8f1a !important; color: #fff !important; }
+.srv-btn-wa { background: #95BB30 !important; color: #fff !important; }
+.srv-btn-wa:hover { background: #6a8f1a !important; }
+
+/* ── FOOTER ── */
+.srv-footer { background: #050505 !important; border-top-color: rgba(149,187,48,.1) !important; }
+.srv-footer-tagline { color: #CEE632 !important; }
+.srv-footer-col h4 { color: rgba(206,230,50,.5) !important; }
+.srv-footer-col a { color: rgba(255,255,255,.45) !important; }
+.srv-footer-col a:hover { color: #CEE632 !important; }
+.srv-footer-soc { background: rgba(206,230,50,.1) !important; border-color: rgba(206,230,50,.2) !important; color: rgba(255,255,255,.5) !important; }
+.srv-footer-soc:hover { background: #CEE632 !important; color: #2a4a0f !important; border-color: #CEE632 !important; }
+.srv-footer-bottom { border-top-color: rgba(255,255,255,.06) !important; }
+.srv-footer-bottom p { color: rgba(255,255,255,.3) !important; }
+
+/* WhatsApp */
+.wa-float { box-shadow: 0 4px 20px rgba(37,211,102,.4) !important; }
