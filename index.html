@@ -234,10 +234,20 @@
   <style>
     .trayectoria-link:hover { gap: 20px !important; color: #CEE632 !important; border-bottom-color: #CEE632 !important; }
     .trayectoria-link:hover span { transform: translateX(8px); }
+    @media (max-width: 960px) {
+      .productos-grid { grid-template-columns: repeat(2,1fr) !important; }
+      #contactoGrid { grid-template-columns: 1fr !important; gap: 40px !important; }
+      .contacto-items { grid-template-columns: 1fr !important; }
+    }
     @media (max-width: 768px) {
       .trayectoria-stats-box { grid-template-columns: 1fr !important; }
       .trayectoria-stats-box > div { border-right: none !important; border-bottom: 1px solid rgba(149,187,48,0.1) !important; }
       .trayectoria-stats-box > div:last-child { border-bottom: none !important; }
+    }
+    @media (max-width: 560px) {
+      .productos-grid { grid-template-columns: 1fr !important; }
+      .productos-grid > a { height: 280px !important; }
+      #contactoGrid .contacto-form-wrap { padding: 24px !important; }
     }
   </style>
 
@@ -259,7 +269,7 @@
         </h2>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+      <div class="productos-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
 
         <!-- Departamentos -->
         <a href="bosque-vertical.html"
@@ -557,7 +567,7 @@
   <!-- ══════════════════════ CONTACTO ═════════════════ -->
   <section id="contacto" class="section-contacto" style="background: #050505; border-top: 1px solid rgba(149,187,48,0.1);">
     <div class="container">
-      <div class="contacto-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;">
+      <div class="contacto-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;" id="contactoGrid">
         
         <!-- Columna Izquierda: Info + Formulario -->
         <div class="contacto-left-col">
@@ -583,26 +593,27 @@
             </div>
           </div>
 
-          <div class="contacto-form-wrap" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(149,187,48,0.2); padding: 40px; border-radius: 8px;">
+          <div class="contacto-form-wrap">
+
             <form class="contacto-form" id="contactoForm" onsubmit="submitForm(event)">
               <h3 style="color: #fff; font-family: 'Playfair Display', serif; margin-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 16px;">Envíanos un mensaje</h3>
               <div class="form-row">
                 <div class="form-group">
                   <label style="color: rgba(255,255,255,0.5);">Nombre completo *</label>
-                  <input type="text" name="user_name" placeholder="Tu nombre" required style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff;" />
+                  <input type="text" name="user_name" placeholder="Tu nombre" required />
                 </div>
                 <div class="form-group">
                   <label style="color: rgba(255,255,255,0.5);">Teléfono</label>
-                  <input type="tel" name="user_phone" placeholder="+51 941 914 867" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff;" />
+                  <input type="tel" name="user_phone" placeholder="+51 941 914 867" />
                 </div>
               </div>
               <div class="form-group">
                 <label style="color: rgba(255,255,255,0.5);">Correo electrónico *</label>
-                <input type="email" name="user_email" placeholder="tu@correo.com" required style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff;" />
+                <input type="email" name="user_email" placeholder="tu@correo.com" required />
               </div>
               <div class="form-group">
                 <label style="color: rgba(255,255,255,0.5);">¿Qué te interesa?</label>
-                <select name="user_subject" style="background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1); color: #fff;">
+                <select name="user_subject">
                   <option value="">Seleccionar...</option>
                   <option>Departamento</option>
                   <option>Terreno</option>
@@ -612,7 +623,7 @@
               </div>
               <div class="form-group">
                 <label style="color: rgba(255,255,255,0.5);">Mensaje</label>
-                <textarea name="user_message" rows="4" placeholder="Cuéntanos qué producto estás buscando..." style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff;"></textarea>
+                <textarea name="user_message" rows="4" placeholder="Cuéntanos qué producto estás buscando..."></textarea>
               </div>
               <button type="submit" class="btn-primary full" id="btnEnviar" style="background: #95BB30; color: #000; font-weight: 700;">Enviar mensaje</button>
               <div class="form-success" id="formSuccess">✅ ¡Mensaje enviado! Te contactaremos pronto.</div>

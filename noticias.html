@@ -62,7 +62,7 @@
     }
     .not-hero-title em { font-style:italic; color:var(--green-lt); }
     .not-hero-sub {
-      font-size:.95rem; font-weight:300; color:rgba(255,255,255,.55); max-width:480px; line-height:1.85;
+      font-size:.95rem; font-weight:300; color:#ffffff; max-width:480px; line-height:1.85;
     }
 
     
@@ -73,8 +73,16 @@
   .not-grid {
     display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
   }
-    @media(max-width:960px){ .not-grid{ grid-template-columns:repeat(2,1fr); } }
-    @media(max-width:560px){ .not-grid{ grid-template-columns:1fr; } }
+    @media(max-width:960px){
+      .not-grid{ grid-template-columns:repeat(2,1fr); }
+      .not-hero-content { padding: 0 32px 48px; }
+      .not-container { padding: 0 24px; }
+    }
+    @media(max-width:560px){
+      .not-grid{ grid-template-columns:1fr; }
+      .not-hero-content { padding: 0 20px 40px; }
+      .not-container { padding: 0 16px; }
+    }
 
     /* CARD */
     .not-card {
@@ -115,7 +123,7 @@
       line-height:1.35; margin-bottom:10px;
     }
     .not-card-excerpt {
-      font-size:.82rem; font-weight:300; color:rgba(245,242,236,.4);
+      font-size:.82rem; font-weight:300; color:#ffffff;
       line-height:1.7; margin-bottom:14px;
       display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
     }
@@ -187,7 +195,7 @@
       padding-bottom:8px; border-bottom:1px solid rgba(149,187,48,.2);
     }
     .not-modal-text {
-      font-size:.88rem; font-weight:300; color:rgba(245,242,236,.6); line-height:1.9; margin-bottom:24px;
+      font-size:.88rem; font-weight:300; color:#ffffff; line-height:1.9; margin-bottom:24px;
     }
     .not-modal-actions {
       display:flex; gap:12px; flex-wrap:wrap;
@@ -227,7 +235,7 @@
       margin-bottom:12px; position:relative; z-index:1;
     }
     .not-cta-title em { font-style:italic; color:var(--green-lt); }
-    .not-cta-sub { font-size:.88rem; color:rgba(255,255,255,.5); margin-bottom:32px; position:relative; z-index:1; }
+    .not-cta-sub { font-size:.88rem; color:#ffffff; margin-bottom:32px; position:relative; z-index:1; }
     .not-cta-btn {
       display:inline-flex; align-items:center; gap:10px;
       background:var(--green); color:#fff;

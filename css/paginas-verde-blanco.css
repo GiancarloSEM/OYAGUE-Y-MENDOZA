@@ -165,7 +165,7 @@ body { background: #050505 !important; }
 .nos-mv-num { color: rgba(149,187,48,.15) !important; }
 .nos-mv-title { color: #f5f2ec !important; }
 .nos-mv-title em { color: #95BB30 !important; }
-.nos-mv-text { color: rgba(245,242,236,.5) !important; }
+.nos-mv-text { color: #ffffff !important; }
 .nos-mv-text strong { color: #6a8f1a !important; }
 
 /* Imagen quote */
@@ -200,7 +200,7 @@ body { background: #050505 !important; }
   border-color: #95BB30 !important;
 }
 .nos-valor-name { color: #f5f2ec !important; }
-.nos-valor-desc { color: rgba(245,242,236,.4) !important; }
+.nos-valor-desc { color: #ffffff !important; }
 
 /* Social section — verde clarito */
 .nos-social-section {
@@ -209,7 +209,7 @@ body { background: #050505 !important; }
   border-radius: 16px !important;
 }
 .nos-social-title { color: #f5f2ec !important; }
-.nos-social-sub { color: rgba(245,242,236,.4) !important; }
+.nos-social-sub { color: #ffffff !important; }
 
 /* Como trabajamos — mismo verde clarito que sección noticias */
 .nos-como-section {
@@ -233,7 +233,7 @@ body { background: #050505 !important; }
 }
 .nos-como-step-num { color: #95BB30 !important; }
 .nos-como-step-title { color: #f5f2ec !important; }
-.nos-como-step-desc { color: rgba(245,242,236,.5) !important; }
+.nos-como-step-desc { color: #ffffff !important; }
 .nos-como-tri-down { background: #95BB30 !important; }
 .nos-como-tri-up { background: #95BB30 !important; }
 .nos-como-card:hover .nos-como-tri-down,
@@ -257,7 +257,7 @@ body { background: #050505 !important; }
 .section-eyebrow { color: #6a8f1a !important; }
 .section-title { color: #f5f2ec !important; }
 .section-title em { color: #95BB30 !important; }
-.section-sub { color: rgba(245,242,236,.4) !important; }
+.section-sub { color: #ffffff !important; }
 
 /* ══════════════════════════════════════════════════
    EQUIPO.HTML
@@ -273,7 +273,7 @@ body { background: #050505 !important; }
 .eq-eyebrow { color: #6a8f1a !important; }
 .eq-title { color: #f5f2ec !important; }
 .eq-title em { color: #95BB30 !important; }
-.eq-sub { color: rgba(245,242,236,.5) !important; }
+.eq-sub { color: #ffffff !important; }
 
 /* Cards equipo — blanco con sombra verde */
 .eq-card {
@@ -292,7 +292,7 @@ body { background: #050505 !important; }
 .eq-card:hover .eq-card-num { color: #95BB30 !important; }
 .eq-card-nombre { color: #f5f2ec !important; }
 .eq-card-rol { color: #95BB30 !important; }
-.eq-card-desc { color: rgba(245,242,236,.4) !important; }
+.eq-card-desc { color: #ffffff !important; }
 .eq-card-btn {
   background: rgba(149,187,48,.1) !important;
   border-color: rgba(149,187,48,.2) !important;
@@ -326,7 +326,7 @@ body { background: #050505 !important; }
 .eq-join-eyebrow { color: #CEE632 !important; }
 .eq-join-title { color: #fff !important; }
 .eq-join-title em { color: #CEE632 !important; }
-.eq-join-sub { color: rgba(255,255,255,.7) !important; }
+.eq-join-sub { color: #ffffff !important; }
 .eq-btn-primary { background: #95BB30 !important; color: #fff !important; }
 .eq-btn-primary:hover { background: #CEE632 !important; color: #1a3a0a !important; }
 
@@ -348,7 +348,7 @@ body { background: #050505 !important; }
 .eq-adicional-eyebrow { color: #6a8f1a !important; }
 .eq-adicional-title { color: #f5f2ec !important; }
 .eq-adicional-title em { color: #95BB30 !important; }
-.eq-adicional-sub { color: rgba(245,242,236,.5) !important; }
+.eq-adicional-sub { color: #ffffff !important; }
 .eq-adic-card {
   background: #111 !important;
   box-shadow: 0 4px 20px rgba(0,0,0,.3) !important;
@@ -392,7 +392,7 @@ body { background: #050505 !important; }
 .ambiental .esg-sec-title em { color: #38a169 !important; }
 .social .esg-sec-title em { color: #3182ce !important; }
 .gobernanza .esg-sec-title em { color: #c09817 !important; }
-.esg-sec-desc { color: rgba(245,242,236,.5) !important; }
+.esg-sec-desc { color: #ffffff !important; }
 
 /* Cards ESG */
 .ambiental .esg-card {
@@ -420,7 +420,7 @@ body { background: #050505 !important; }
   border-color: rgba(214,158,46,.4) !important;
 }
 .esg-card-title { color: #f5f2ec !important; }
-.esg-card-text { color: rgba(245,242,236,.4) !important; }
+.esg-card-text { color: #ffffff !important; }
 .esg-card-num { opacity: .15 !important; color: #f5f2ec !important; }
 
 /* Métricas ESG */

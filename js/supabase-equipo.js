@@ -71,11 +71,6 @@
   (function injectEquipoStyles() {
     const s = document.createElement('style');
     s.textContent = `
-      @keyframes eq-sweep {
-        0%   { opacity: 0; left: -100%; }
-        50%  { opacity: 1; }
-        100% { opacity: 0; left: 200%; }
-      }
 
       /* ── Contenedor foto ── */
       .eq-card-foto {
@@ -163,19 +158,6 @@
         z-index: 0;
       }
 
-      /* ── Sweep animado ── */
-      .eq-card-foto::after {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0; bottom: 0;
-        left: -100%;
-        width: 60%;
-        z-index: 4;
-        background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,.1) 50%, transparent 100%);
-        animation: eq-sweep 3.5s ease-in-out infinite;
-        pointer-events: none;
-      }
 
       /* ── Body de la card ── */
       .eq-card-body {
@@ -203,7 +185,7 @@
 
       .eq-card-desc {
         font-size: .82rem !important;
-        color: rgba(255,255,255,0.5) !important;
+        color: #ffffff !important;
         line-height: 1.65 !important;
         margin-bottom: 16px !important;
       }

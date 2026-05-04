@@ -137,7 +137,7 @@
     }
     .srv-hero-desc {
       font-family: var(--font-sans); font-size: 1rem;
-      color: rgba(255,255,255,.55); max-width: 500px;
+      color: var(--white); max-width: 500px;
       line-height: 1.8; margin-bottom: 48px;
     }
     .srv-hero-scroll {
@@ -212,7 +212,7 @@
     .srv-selector-title em { font-style: italic; color: var(--sg-lt); }
     .srv-selector-desc {
       font-family: var(--font-sans); font-size: .92rem;
-      color: rgba(255,255,255,.45); line-height: 1.8;
+      color: var(--white); line-height: 1.8;
       align-self: end;
     }
 
@@ -288,7 +288,7 @@
     .srv-panel-title em { font-style: italic; }
     .srv-panel-subtitle {
       font-family: var(--font-sans); font-size: .92rem;
-      color: rgba(255,255,255,.6); line-height: 1.75;
+      color: var(--white); line-height: 1.75;
     }
 
     /* Número decorativo en panel hero */
@@ -403,7 +403,7 @@
     .srv-features-header h3 em { font-style: italic; color: var(--sg-lt); }
     .srv-features-header p {
       font-family: var(--font-sans); font-size: .88rem;
-      color: rgba(255,255,255,.4); margin-top: 12px; line-height: 1.7;
+      color: var(--white); margin-top: 12px; line-height: 1.7;
     }
 
     .srv-features-grid {
@@ -443,7 +443,7 @@
     }
     .srv-feature p {
       font-family: var(--font-sans); font-size: .83rem;
-      color: rgba(255,255,255,.45); line-height: 1.7;
+      color: var(--white); line-height: 1.7;
     }
 
     /* ── CTA FINAL ── */
@@ -631,4 +631,10 @@
       .srv-footer-bottom { flex-direction: column; gap: 8px; padding: 20px 24px; text-align: center; }
       body { cursor: auto; }
       .cursor, .cursor-ring { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .srv-hero-title { font-size: clamp(2.2rem, 10vw, 3rem); }
+      .srv-works-section, .srv-features-section, .srv-cta-section { padding: 0 12px; }
+      .srv-cta-box { padding: 28px 16px; }
     }

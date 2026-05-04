@@ -196,12 +196,60 @@
     .toast.success{background:var(--green);}
     .toast.error{background:var(--red);}
 
+    /* Tabla scroll horizontal en mobile */
+    .table-wrap { overflow-x: auto; }
+    table { min-width: 540px; }
+
+    /* Hamburger admin */
+    .admin-hamburger {
+      display: none;
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      background: var(--dark);
+      border: 1px solid rgba(149,187,48,.3);
+      border-radius: 8px;
+      padding: 10px 12px;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .admin-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      transition: all .25s;
+    }
+    .admin-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 49;
+    }
+    .admin-overlay.open { display: block; }
+    .admin-sidebar.open { transform: translateX(0) !important; }
+
     @media(max-width:960px){
-      .admin-sidebar{display:none;}
-      .admin-main{margin-left:0;padding:20px;}
+      .admin-hamburger { display: flex; }
+      .admin-sidebar {
+        transform: translateX(-100%);
+        transition: transform .3s ease;
+        z-index: 51;
+      }
+      .admin-main{margin-left:0;padding:20px;padding-top:64px;}
       .stats-grid{grid-template-columns:1fr 1fr;}
       .avance-manager-grid{grid-template-columns:1fr;}
       .etapas-selector{grid-template-columns:repeat(3,1fr);}
       .form-grid{grid-template-columns:1fr;}
       .card-type-grid{grid-template-columns:1fr 1fr 1fr;}
+    }
+
+    @media(max-width:560px){
+      .stats-grid { grid-template-columns: 1fr; }
+      .card-type-grid { grid-template-columns: 1fr 1fr; }
+      .etapas-selector { grid-template-columns: repeat(2,1fr); }
+      .admin-topbar { flex-direction: column; align-items: flex-start; gap: 12px; }
     }

@@ -26,7 +26,11 @@
 
 <!-- ADMIN -->
 <div id="adminScreen">
-  <aside class="admin-sidebar">
+  <button class="admin-hamburger" id="adminHamburger" onclick="toggleAdminSidebar()" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="admin-overlay" id="adminOverlay" onclick="toggleAdminSidebar()"></div>
+  <aside class="admin-sidebar" id="adminSidebar">
     <div class="sidebar-brand"><h2>Panel Admin</h2><span>Oyague & Mendoza</span></div>
     <nav class="sidebar-nav">
       <button class="sidebar-link active" onclick="showPanel('dashboard',this)"><span class="sl-icon">📊</span> Dashboard</button>
@@ -596,5 +600,13 @@
 <script src="js/admin-logic.js"></script>
 <script src="js/admin-colab-logic.js"></script>
 <script src="js/admin-testimonios-logic.js"></script>
+<script>
+  function toggleAdminSidebar() {
+    const sidebar = document.getElementById('adminSidebar');
+    const overlay = document.getElementById('adminOverlay');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+  }
+</script>
 </body>
 </html>

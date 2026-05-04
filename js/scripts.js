@@ -374,38 +374,82 @@ const track = document.getElementById('testiTrack');
 const dotsWrap = document.getElementById('testiDots');
 const prevBtn = document.getElementById('testiPrev');
 const nextBtn = document.getElementById('testiNext');
-const testiCards = track.querySelectorAll('.testi-card');
-const total = testiCards.length;
 let currentSlide = 0, autoplayTimer;
 
 function getVisible() { const w=window.innerWidth; return w<640?1:w<960?2:3; }
-function getTotalSlides() { return Math.max(4, total - getVisible()); }
+function getTotalSlides() { 
+  const cards = track.querySelectorAll('.testi-card');
+  return Math.max(0, cards.length - getVisible()); 
+}
+
 function buildDots() {
+  if (!dotsWrap) return;
   dotsWrap.innerHTML = '';
-  for (let i=0; i<=getTotalSlides(); i++) {
+  const max = getTotalSlides();
+  for (let i=0; i<=max; i++) {
     const d = document.createElement('button');
     d.className = 'testi-dot' + (i===0?' active':'');
     d.addEventListener('click', () => goTo(i));
     dotsWrap.appendChild(d);
   }
 }
+
 function goTo(n) {
-  noticiaSlide = Math.max(0, Math.min(n, getTotalSlides()));
+  if (!track) return;
+  const cards = track.querySelectorAll('.testi-card');
+  const total = cards.length;
+  if (total === 0) return;
+
+  const maxSlides = getTotalSlides();
+  currentSlide = Math.max(0, Math.min(n, maxSlides));
+  
   const visible = getVisible();
-  const trackWidth = track.parentElement.offsetWidth;
-  const cardW = (trackWidth - (24 * (visible - 1))) / visible + 24;
-  track.style.transform = `translateX(-${noticiaSlide * cardW}px)`;
-  document.querySelectorAll('.noticias-dot').forEach((d, i) => d.classList.toggle('active', i === noticiaSlide));
+  const gap = 20; 
+  const viewportWidth = track.parentElement.clientWidth;
+  const cardW = (viewportWidth - (gap * (visible - 1))) / visible;
+  
+  cards.forEach(c => {
+    c.style.flex = `0 0 ${cardW}px`;
+    c.style.width = `${cardW}px`;
+  });
+  
+  track.style.transform = `translateX(-${currentSlide * (cardW + gap)}px)`;
+  
+  document.querySelectorAll('.testi-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === currentSlide);
+  });
 }
-function next() { goTo(currentSlide+1>getTotalSlides()?0:currentSlide+1); }
-function prev() { goTo(currentSlide-1<0?getTotalSlides():currentSlide-1); }
-prevBtn.addEventListener('click', () => { prev(); resetAuto(); });
-nextBtn.addEventListener('click', () => { next(); resetAuto(); });
-function startAuto() { autoplayTimer = setInterval(next, 4500); }
+
+function next() { 
+  const max = getTotalSlides();
+  if (max === 0) return;
+  goTo(currentSlide+1 > max ? 0 : currentSlide+1); 
+}
+
+function prev() { 
+  const max = getTotalSlides();
+  if (max === 0) return;
+  goTo(currentSlide-1 < 0 ? max : currentSlide-1); 
+}
+
+if (prevBtn) prevBtn.addEventListener('click', () => { prev(); resetAuto(); });
+if (nextBtn) nextBtn.addEventListener('click', () => { next(); resetAuto(); });
+
+function startAuto() { 
+  if (getTotalSlides() > 0) autoplayTimer = setInterval(next, 4500); 
+}
 function resetAuto() { clearInterval(autoplayTimer); startAuto(); }
-buildDots(); startAuto();
-window.addEventListener('resize', () => { buildDots(); goTo(0); });
+
+// Inicialización diferida para esperar a Supabase
+setTimeout(() => {
+  buildDots(); 
+  goTo(0);
+  startAuto();
+}, 500);
+
+window.addEventListener('resize', () => { buildDots(); goTo(currentSlide); });
 window.addEventListener('load', () => { buildDots(); goTo(0); });
+
 
 // ── FORMULARIO CONTACTO ──────────────────────────
 function submitForm(e) {
